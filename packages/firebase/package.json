@@ -1,0 +1,18 @@
+{
+  "name": "@evolution/firebase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client/app.ts",
+    "./admin": "./src/admin/app.ts"
+  },
+  "dependencies": {
+    "firebase": "12.13.0",
+    "firebase-admin": "13.10.0"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

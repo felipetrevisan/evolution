@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Evolution System - Início</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dfd8e1",
+                        "secondary-container": "#e9def9",
+                        "on-tertiary-fixed": "#31101e",
+                        "on-error": "#ffffff",
+                        "outline": "#7b747e",
+                        "on-primary-container": "#24005b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fef7ff",
+                        "surface-container-highest": "#e8e0eb",
+                        "surface-container": "#eee6f0",
+                        "on-background": "#1d1a20",
+                        "surface-tint": "#6d47b4",
+                        "outline-variant": "#ccc3ce",
+                        "surface-container-low": "#f9f1fa",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#4a2533",
+                        "error": "#ba1a1a",
+                        "secondary": "#635b70",
+                        "surface-variant": "#e8e0eb",
+                        "primary-fixed-dim": "#d4bbff",
+                        "on-primary-fixed-variant": "#542b9a",
+                        "surface-bright": "#fef7ff",
+                        "background": "#fef7ff",
+                        "on-secondary-container": "#1f182b",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffd9e4",
+                        "tertiary": "#7d5261",
+                        "on-surface-variant": "#49454e",
+                        "on-secondary-fixed-variant": "#4b4358",
+                        "tertiary-container": "#643b49",
+                        "on-tertiary-fixed-variant": "#643b49",
+                        "inverse-primary": "#d4bbff",
+                        "secondary-fixed-dim": "#cdbed5",
+                        "primary-fixed": "#eadbff",
+                        "tertiary-fixed-dim": "#efb8c9",
+                        "inverse-surface": "#322f35",
+                        "primary": "#6d47b4",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1f182b",
+                        "on-surface": "#1d1a20",
+                        "on-primary-fixed": "#24005b",
+                        "primary-container": "#eadbff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e8e0eb",
+                        "secondary-fixed": "#e9def9",
+                        "inverse-on-surface": "#f6eff7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "gutter-desktop": "24px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); }
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(249, 241, 250, 0.4) 100%);
+            box-shadow: 0 4px 24px -4px rgba(109, 71, 180, 0.05);
+        }
+        .soft-shadow {
+            box-shadow: 0 8px 32px -8px rgba(109, 71, 180, 0.08);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background antialiased flex bg-background">
+<!-- SideNavBar -->
+<aside class="w-72 h-screen fixed left-0 top-0 bg-secondary-container dark:bg-on-secondary-fixed-variant flex flex-col gap-base p-stack-md z-20">
+<div class="flex items-center gap-4 mb-8 px-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-lowest flex items-center justify-center shrink-0">
+<img alt="Sistema Camila Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhzhA7qJcqM0tPVDH0BdoRdgDUmig9M2Gj_WK8Dc4xuJiNG-AdHnWPMvFJmIQ7l9_bm3YfuOlECOyoTOT-j9PJctfLDUuFgKvrQlcUfdrspEP_I6VU4_-lzd7As17IoSJpMHHYPDSuygFPXReYCk26FPpjyb0MvR6U9GHZAeqzXt-F9JknYUntGOdu7IUgLKj2HD_GT6AphXMkA2LSl3CynhLJpVeqzAyDaCqpQM2FEz-pUiqHMnfXEfQ">
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed leading-tight">Evolution System</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container opacity-80">Saúde Comportamental</span>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary font-bold border-l-4 border-primary bg-surface/50 dark:bg-surface-container/20 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-body-md text-body-md">Início</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">map</span>
+<span class="font-body-md text-body-md">Minha Jornada</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assignment</span>
+<span class="font-body-md text-body-md">Anamnese</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">event_note</span>
+<span class="font-body-md text-body-md">Plano</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+<span class="font-body-md text-body-md">Progresso</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-body-md text-body-md">Perfil</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2 pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+<span class="font-body-md text-body-md">Centro de Ajuda</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="font-body-md text-body-md">Sair</span>
+</a>
+</div>
+</aside>
+<div class="ml-72 flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-20 px-gutter-desktop bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-10">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight">Olá, [Nome]</h1>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full font-body-md text-body-md focus:ring-2 focus:ring-primary-container outline-none w-64 transition-all" placeholder="Buscar..." type="text">
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container border-2 border-surface overflow-hidden cursor-pointer ml-2">
+<div class="w-full h-full flex items-center justify-center bg-primary-container text-primary font-label-md">
+                        US
+                    </div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-gutter-desktop flex flex-col gap-stack-lg mx-auto w-full">
+<!-- Hero Empty State Card -->
+<section class="glass-card rounded-[24px] p-12 flex flex-col items-center justify-center text-center soft-shadow relative overflow-hidden mt-8">
+<div class="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-secondary-container via-primary to-secondary-container opacity-50"></div>
+<div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">assignment_ind</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 max-w-2xl">
+                Bem-vindo(a) ao início da sua transformação
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">
+                Para personalizar sua jornada, precisamos começar pela sua Anamnese. Este é o primeiro passo para entendermos suas necessidades e criarmos um plano sob medida.
+            </p>
+<button class="bg-primary text-on-primary hover:brightness-110 hover:shadow-lg transition-all duration-300 rounded-full px-8 py-4 font-label-md text-[16px] flex items-center gap-2">
+                Iniciar Anamnese
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</section>
+<!-- Journey Stepper -->
+<section class="bg-surface-container-lowest rounded-[24px] p-8 soft-shadow">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8">Sua Jornada</h3>
+<div class="relative flex justify-between items-center w-full px-4">
+<!-- Background Line -->
+<div class="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-1 bg-surface-variant rounded-full z-0"></div>
+<!-- Steps -->
+<div class="relative z-10 flex flex-col items-center gap-3 w-1/5">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-[0_0_0_4px_rgba(109,71,180,0.2)]">
+<span class="material-symbols-outlined text-[20px]">edit_document</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold text-center">1. Anamnese</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 w-1/5 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">filter_alt</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">2. Triagem</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 w-1/5 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">3. Autoavaliação</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 w-1/5 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">4. Plano de Ação</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 w-1/5 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">5. Acompanhamento</span>
+</div>
+</div>
+</section>
+<!-- How it works Bento -->
+<section class="flex flex-col gap-stack-sm mb-12">
+<h3 class="font-headline-md text-headline-md text-on-surface px-2">Como o sistema funciona</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card rounded-[24px] p-6 hover:-translate-y-1 transition-transform duration-300 border border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-2">Abordagem Integrada</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Avaliamos aspectos físicos, mentais e rotineiros para criar um perfil completo e seguro para o seu desenvolvimento.
+                    </p>
+</div>
+<div class="glass-card rounded-[24px] p-6 hover:-translate-y-1 transition-transform duration-300 border border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined">track_changes</span>
+</div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-2">Metas Adaptativas</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Seu plano evolui com você. Ajustamos as recomendações com base no seu progresso contínuo e feedback.
+                    </p>
+</div>
+<div class="glass-card rounded-[24px] p-6 hover:-translate-y-1 transition-transform duration-300 border border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-2">Privacidade Total</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Seus dados de saúde são tratados com o mais alto nível de segurança, visando apenas o seu benefício clínico.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+
+</body></html>

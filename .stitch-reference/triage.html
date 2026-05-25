@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Triagem Comportamental - Evolution System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#b7af2d",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#ccc3d3",
+                        "on-tertiary-container": "#454100",
+                        "on-secondary-fixed": "#211538",
+                        "secondary-fixed": "#ebdcff",
+                        "on-secondary-container": "#65567e",
+                        "secondary-container": "#e1cffe",
+                        "tertiary-fixed": "#f0e760",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#4a4451",
+                        "on-primary-fixed": "#260058",
+                        "primary-container": "#8562c3",
+                        "surface-tint": "#6e4bab",
+                        "surface-container-high": "#ede6ef",
+                        "on-tertiary-fixed-variant": "#4c4800",
+                        "surface-container-highest": "#e7e0e9",
+                        "surface-bright": "#fef7ff",
+                        "primary-fixed-dim": "#d4bbff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#553291",
+                        "tertiary-fixed-dim": "#d3ca47",
+                        "background": "#fef7ff",
+                        "surface-dim": "#dfd8e1",
+                        "on-background": "#1d1a21",
+                        "surface-variant": "#e7e0e9",
+                        "primary-fixed": "#ebdcff",
+                        "on-tertiary-fixed": "#1e1c00",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f6eef8",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#322f36",
+                        "tertiary": "#666000",
+                        "on-surface": "#1d1a21",
+                        "outline": "#7b7482",
+                        "surface-container": "#f3ebf5",
+                        "secondary": "#66587f",
+                        "on-secondary-fixed-variant": "#4e4066",
+                        "inverse-primary": "#d4bbff",
+                        "surface-container-low": "#f9f1fa",
+                        "surface": "#fef7ff",
+                        "primary": "#6b48a9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#d0bfec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .selected-card {
+            background-color: theme('colors.secondary-container');
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 15px rgba(107, 72, 169, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden h-screen flex">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low dark:bg-surface-container-lowest flex flex-col h-full py-lg px-md z-30">
+<div class="mb-xl px-sm flex flex-col items-start gap-sm">
+    <img src="https://lh3.googleusercontent.com/aida/ADBb0uhzhA7qJcqM0tPVDH0BdoRdgDUmig9M2Gj_WK8Dc4xuJiNG-AdHnWPMvFJmIQ7l9_bm3YfuOlECOyoTOT-j9PJctfLDUuFgKvrQlcUfdrspEP_I6VU4_-lzd7As17IoSJpMHHYPDSuygFPXReYCk26FPpjyb0MvR6U9GHZAeqzXt-F9JknYUntGOdu7IUgLKj2HD_GT6AphXMkA2LSl3CynhLJpVeqzAyDaCqpQM2FEz-pUiqHMnfXEfQ" alt="Evolution System Logo" class="w-12 h-12 mb-xs rounded-md">
+    <div>
+        <h1 class="font-headline-md text-headline-md text-primary font-bold">Evolution System</h1>
+        <p class="text-on-surface-variant font-label-md opacity-70">Health &amp; Wellness</p>
+    </div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-md">Início</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-primary font-bold border-r-4 border-primary hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-body-md">Minha Jornada</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md">Anamnese</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Plano</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-body-md">Progresso</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md">Perfil</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg">
+<button class="w-full bg-primary text-on-primary py-md px-lg rounded-xl font-body-md font-semibold hover:opacity-90 active:scale-95 transition-all">
+                Nova Sessão
+            </button>
+</div>
+</aside>
+<!-- Content Area -->
+<div class="flex-1 ml-64 flex flex-col relative overflow-y-auto">
+<!-- TopAppBar Anchor -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface/80 backdrop-blur-md flex justify-between items-center px-lg z-20">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-96 max-w-full">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xl pr-md py-xs bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary text-body-md" placeholder="Buscar na jornada..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-base text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-base text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden ml-md border-2 border-outline-variant">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgkYEa6_Hv8q8n2VKYtVknLqLVAk3jB-WfZfo9gpE95pdMyq27R2fyuZ15F4K9MYPJnsMx1WJWj1bzvGSAbspsE8QhfvndpW_2SJxTD-XwOze9h3GgEFc8PovHztzDo2b2bL81B1h1pxTXSQ_zOcRRnVSYcApTXVIeEXMd4rMhCeGeLhv2-KQJl8xPBq-jQC1_p6tKAOul1JpR53gvnXfnkazI8cOasTU_HW4Rj4MQgz3TsERGJ1FFJLn2evdpMkiVo201Yo_TmO4">
+</div>
+</div>
+</header>
+<!-- Main Triage Content -->
+<main class="mt-16 p-xl flex flex-col items-center max-w-5xl mx-auto w-full">
+<!-- Privacy Alert -->
+<div class="w-full mb-xl">
+<div class="bg-surface-container-low border border-outline-variant/30 p-lg rounded-xl flex items-center gap-md shadow-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="text-on-surface-variant font-body-md italic">
+                        Este espaço foi criado para você com segurança, privacidade e respeito à sua individualidade no Evolution System.
+                    </p>
+</div>
+</div>
+<!-- Stepper -->
+<div class="w-full flex justify-center items-center gap-lg mb-xl">
+<div class="flex items-center gap-base">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-label-md">1</div>
+<span class="font-body-md font-bold text-primary">FVA: Fragilidade Vetorial Atual</span>
+</div>
+<div class="h-px w-16 bg-outline-variant"></div>
+<div class="flex items-center gap-base opacity-40">
+<div class="w-8 h-8 rounded-full bg-outline text-on-surface flex items-center justify-center font-bold text-label-md">2</div>
+<span class="font-body-md">IM: Intenção de Mudança</span>
+</div>
+</div>
+<!-- Question Header -->
+<div class="text-center mb-xl">
+<span class="text-primary font-label-md uppercase tracking-widest mb-base block">Pergunta 1 de 6</span>
+<h2 class="font-headline-lg text-headline-lg text-on-background max-w-2xl mx-auto">
+                    Hoje, qual destas áreas mais dificulta sua evolução pessoal?
+                </h2>
+<p class="text-on-surface-variant font-body-md mt-md" id="selection-counter">0 de 6 selecionadas</p>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md w-full mb-xl">
+<!-- Behavioral Cards -->
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">bedtime</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Sono</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">center_focus_strong</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Foco</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">psychology</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Ansiedade</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">update_disabled</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Procrastinação</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">calendar_today</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Rotina</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">restaurant</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Alimentação</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">self_improvement</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Autocrítica</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">warning</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Medo</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">bolt</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Energia</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">groups</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Social</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">repeat</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Consistência</span>
+</button>
+<button class="behavior-card bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-md transition-all duration-300 hover:border-primary group active:scale-95" onclick="toggleCard(this)">
+<div class="p-md bg-secondary-container rounded-full text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-headline-md">cloud</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Clima Emocional</span>
+</button>
+</div>
+<!-- Footer Navigation -->
+<div class="w-full flex justify-between items-center py-lg mt-auto">
+<button class="flex items-center gap-base text-on-surface-variant font-semibold hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+                    Voltar
+                </button>
+<button class="bg-outline text-on-surface opacity-50 cursor-not-allowed py-md px-xl rounded-xl font-body-md font-semibold flex items-center gap-base transition-all" disabled="" id="btn-continue">
+                    Continuar
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Subtle Background Decorative Element -->
+<div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="fixed top-0 left-64 w-[300px] h-[300px] bg-secondary-container/10 rounded-full blur-[80px] -z-10"></div>
+</div>
+<script>
+        let selectedCount = 0;
+        const maxSelected = 6;
+        const counterText = document.getElementById('selection-counter');
+        const continueBtn = document.getElementById('btn-continue');
+
+        function toggleCard(element) {
+            const isSelected = element.classList.contains('selected-card');
+            
+            if (!isSelected && selectedCount < maxSelected) {
+                element.classList.add('selected-card');
+                selectedCount++;
+            } else if (isSelected) {
+                element.classList.remove('selected-card');
+                selectedCount--;
+            }
+
+            updateUI();
+        }
+
+        function updateUI() {
+            counterText.textContent = `${selectedCount} de ${maxSelected} selecionadas`;
+            
+            if (selectedCount === maxSelected) {
+                continueBtn.disabled = false;
+                continueBtn.classList.remove('bg-outline', 'opacity-50', 'cursor-not-allowed', 'text-on-surface');
+                continueBtn.classList.add('bg-primary', 'text-on-primary', 'hover:opacity-90', 'active:scale-95');
+                counterText.classList.add('text-primary', 'font-bold');
+            } else {
+                continueBtn.disabled = true;
+                continueBtn.classList.add('bg-outline', 'opacity-50', 'cursor-not-allowed', 'text-on-surface');
+                continueBtn.classList.remove('bg-primary', 'text-on-primary', 'hover:opacity-90', 'active:scale-95');
+                counterText.classList.remove('text-primary', 'font-bold');
+            }
+        }
+    </script>
+
+
+</body></html>

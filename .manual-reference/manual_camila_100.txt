@@ -1,0 +1,3810 @@
+MANUAL DO SISTEMA
+Arquitetura Adaptativa Comportamental
+Versão 3.0 — Atualização Estrutural Completa
+
+
+
+1. Visão Geral do Sistema
+O Sistema Camila é uma plataforma de acompanhamento personalizado que apoia o usuário no percurso do Ponto A ao Ponto B dentro do universo de saúde, bem-estar e condicionamento físico, gerando respostas adaptativas conforme as escolhas que ele faz ao longo do processo. O sistema integra quatro domínios — corpo, nutrição, saúde mental e hábitos de vida — em uma arquitetura sequencial com coleta de dados, avaliação multidimensional em duas camadas, geração de índices e planos de ação adaptativos.
+
+A arquitetura opera em 5 camadas independentes e complementares, separando com precisão as funções de triagem, investigação, execução, interpretação e adaptação.
+
+📌 Nota Técnica: A separação em camadas distintas tem objetivo matemático e operacional claro: eliminar sobreposição lógica entre módulos, reduzir redundância nos cálculos e aumentar a precisão do direcionamento adaptativo para cada usuário.
+
+SEÇÃO 1.1 — FLUXO DO SISTEMA
+
+Table
+Etapa
+Módulo
+Nome
+Função Principal
+Camada Ativada
+1
+Seção 2
+Anamnese
+Dados clínicos, corporais, contexto, rotina e objetivos desejados
+Camada Contextual
+2
+Seção 3
+Triagem Vetorial Comportamental
+Identificação do mecanismo comportamental dominante
+Camada 1 — Triagem Vetorial
+3
+Seção 5
+Investigação Adaptativa
+Aprofundamento direcionado do principal vetor de fragilidade
+Camada 2 — Investigação Adaptativa
+4
+Seção 6
+Autoavaliação Operacional
+Medição prática dos domínios comportamentais e operacionais
+Camada 3 — Autoavaliação Operacional
+5
+Seção 7
+Motor Interpretativo
+Integração matemática, priorização adaptativa e geração de outputs interpretativos
+Camada 4
+6
+Seção 8
+Sistema Adaptativo
+Personalização da experiência e do plano
+Camada 5
+ADICIONAR APÓS A TABELA:
+📌 Nota Técnica: O sistema opera em 5 camadas técnicas (1 a 5) mais a Anamnese (camada contextual). Após a conclusão da Camada 5, o sistema gera o Plano de Ação de 45 dias — um documento vivo que integra diagnóstico, protocolo de execução, acompanhamento diário e reavaliação. O Plano de Ação não é uma camada técnica nem uma seção deste manual: é o output executável que materializa os outputs das 5 camadas na experiência do usuário.
+
+1.2 As 5 Camadas Estruturais do Sistema
+A partir desta versão, o sistema opera oficialmente em 5 camadas estruturais independentes e complementares. Cada camada possui:
+
+	•	Função própria
+	•	Variáveis específicas
+	•	Lógica matemática independente
+	•	Objetivo comportamental distinto
+
+📌 Nota Técnica: A arquitetura em camadas desacopladas permite: expansão futura sem comprometimento da engine central; personalização adaptativa por usuário; desacoplamento matemático entre módulos; compatibilidade longitudinal dos dados; e leitura causal do comportamento ao longo do tempo.
+
+Camada
+Pergunta Central
+Função e Variáveis Geradas
+Camada 1 — Triagem Vetorial
+Qual mecanismo comportamental mais interfere na evolução do usuário?
+Identifica fragilidade dominante através dos 4 vetores comportamentais. Mede intensidade relativa de Comportamento, Constância, Gestão Pessoal e Controle Emocional. Gera scores vetoriais normalizados e priorização adaptativa inicial.
+Camada 2 — Investigação Adaptativa
+Como o problema principal funciona?
+Aprofunda o vetor dominante através de blocos causais específicos. Investiga origem, manifestação prática e sustentação emocional do mecanismo dominante. Gera mapas internos de fragilidade causal.
+Camada 3 — Autoavaliação Operacional
+O que o usuário realmente faz na prática?
+Mede hábitos, frequência, regularidade, aderência e comportamento operacional observável. Opera por domínios objetivos da rotina. Gera índices operacionais e score geral de execução.
+Camada 4 — Motor Interpretativo
+O que está causando os resultados atuais?
+Integra vetores, scores operacionais, padrões adaptativos, GAPs, riscos comportamentais e padrões longitudinais. Opera como núcleo lógico do sistema. Gera interpretação causal, priorização estratégica e níveis adaptativos.
+Camada 5 — Sistema Adaptativo
+Como o sistema deve responder ao usuário?
+Personaliza linguagem, intensidade, progressão, metas, intervenção, suporte emocional e protocolos de retomada. Utiliza toda a estrutura anterior para adaptar a experiência individualmente. Não gera novos scores.
+
+
+SEÇÃO 1.3 — ESTRUTURA OFICIAL DOS VETORES COMPORTAMENTAIS
+O sistema opera oficialmente com 4 vetores comportamentais centrais. Os vetores funcionam como mecanismos transversais de interpretação do comportamento humano e representam padrões dominantes de funcionamento comportamental.
+Os vetores NÃO representam:
+	•	áreas da vida
+	•	sintomas clínicos
+	•	diagnóstico psicológico
+	•	performance física
+Os vetores representam:
+	•	mecanismos centrais de aderência comportamental
+A arquitetura vetorial do sistema opera em quatro processos psicológicos fundamentais:
+	•	iniciar
+	•	continuar
+	•	organizar
+	•	regular emocionalmente
+Cada vetor possui função estrutural própria, mecanismo psicológico dominante e lógica matemática independente.
+Table
+Vetor
+Processo Psicológico
+Função Central
+Pergunta Central
+Comportamento
+Iniciar
+Capacidade de ativar ação e sair da intenção para prática. Mede ativação, iniciativa, impulso de ação, procrastinação e saída da inércia.
+"A pessoa consegue agir?"
+Constância
+Continuar
+Capacidade de manter continuidade ao longo do tempo. Mede repetição, manutenção, sustentação e retomada após interrupções.
+"A pessoa consegue continuar?"
+Gestão Pessoal
+Organizar
+Capacidade de organizar, conduzir e administrar a própria rotina. Mede planejamento, priorização, gestão do tempo e estrutura funcional.
+"A pessoa consegue administrar a própria rotina?"
+Controle Emocional
+Regular
+Impacto emocional sobre comportamento, rotina e tomada de decisão. Mede interferência emocional, oscilação, ansiedade e regulação emocional.
+"As emoções interferem no funcionamento?"
+📌 Nota Técnica: Os vetores são desacoplados da estrutura textual das perguntas. Isso significa que novas perguntas poderão ser adicionadas, removidas ou modificadas futuramente sem comprometer a engine matemática do sistema, pois a lógica vetorial é calculada exclusivamente pelas alternativas selecionadas — nunca pelas perguntas, blocos ou seções.
+
+1.4 CONSTANTES GLOBAIS DO SISTEMA
+As constantes estruturais abaixo são a fonte única de verdade para toda a arquitetura. Nenhuma constante pode ser hardcoded diretamente em frontend ou backend — todas devem ser consumidas de camada central de configuração.
+Table
+Constante
+Valor
+Descrição
+TOTAL_VETORES
+4
+Número de vetores comportamentais
+PERGUNTAS_TRIAGEM
+6
+Total de perguntas na Camada 1
+ALTERNATIVAS_POR_PERGUNTA
+12
+Alternativas exibidas por pergunta
+ALTERNATIVAS_POR_VETOR
+3
+Alternativas de cada vetor por pergunta
+SELECOES_OBRIGATORIAS
+6
+Seleções obrigatórias do usuário por pergunta
+MAX_SCORE_VETOR
+9
+Máximo teórico de pontos por vetor (3 perguntas × 3 alternativas × peso 1)
+CICLO_PADRAO_DIAS
+45
+Duração padrão do ciclo de reavaliação
+📌 Nota Técnica: Estas constantes são imutáveis entre versões. Qualquer alteração requer atualização da versão estrutural do sistema e preservação dos ciclos históricos (ver Seção 6 — Persistência Longitudinal da Padronização).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sessão 2
+Anamnese
+A anamnese é a etapa inicial do sistema. Todos os campos utilizam seleção múltipla com opção de texto complementar quando necessário. Realizada uma única vez, podendo ser atualizada a cada ciclo de 45 dias.
+
+2.1 Especificação Técnica — Composição Corporal
+O bloco de composição corporal é implementado como componente de interface interativo:
+	•	Exibir imagem ilustrativa do corpo humano (vista frontal e lateral) com apontadores visuais indicando cada região: peso, altura, circunferência abdominal, quadril, braço e perna
+	•	Cada apontador é clicável e abre campo de entrada numérica vinculado àquela medida específica
+	•	Cada medida registrada é salva com timestamp no histórico do usuário
+	•	O histórico alimenta o gráfico de evolução no Dashboard, exibindo a curva de cada medida ao longo das reavaliações (a cada 45 dias)
+	•	O sistema calcula e exibe automaticamente o IMC (peso ÷ altura²) sempre que peso e altura estiverem preenchidos
+	•	Validação de IMC: Se o valor calculado for < 10 ou > 60, o sistema exibe alerta: "Por favor, verifique os valores inseridos. Se estiverem corretos, consulte um profissional de saúde." O valor não é registrado no histórico até confirmação do usuário.
+📌 Nota Técnica: Campos obrigatórios: peso e altura. Demais medidas são opcionais mas recomendadas para análise de composição corporal ao longo do tempo.
+
+📌 Especificação da Imagem Ilustrativa:
+Table
+Componente
+Especificação
+Formato
+SVG vetorial (escalável, responsivo)
+Dimensões base
+400×600px (proporção 2:3)
+Vistas
+Frontal e lateral (toggle ou abas)
+Regiões interativas
+6 apontadores clicáveis: peso, altura, circunferência abdominal, quadril, braço, perna
+Estilo visual
+Silhueta humana neutra (sem identificação de gênero explícita), linhas limpas, paleta monocromática
+Fonte
+Imagem proprietária do sistema ou licenciada (sem dependência de serviços externos)
+Acessibilidade
+Atributos ARIA para leitores de tela; texto alternativo para cada apontador
+Fallback
+Se imagem não carregar, exibir lista de campos numéricos em formato de formulário padrão
+
+2.2 Especificação Técnica — Histórico de Saúde
+Campo binário único com comportamento condicional:
+
+	•	Pergunta exibida: "Você possui alguma condição de saúde, doença crônica ou faz uso de medicação contínua?"
+	•	Se Não: sistema avança normalmente
+	•	Se Sim: modal de aviso é exibido imediatamente com mensagem de orientação. Após fechar o modal, o usuário continua normalmente. A resposta Sim é registrada no perfil e pode gerar recomendação de acompanhamento médico no Plano de Ação
+
+Mensagem Exibida ao Usuário — Histórico de Saúde
+Este sistema foi desenvolvido para te auxiliar de forma segura, leve e estruturada, respeitando seu ritmo, sua história e suas condições individuais. Ele não substitui o acompanhamento de profissionais de saúde. Pelo contrário: o suporte médico e profissional continua sendo fundamental para que você possa cuidar da sua saúde da melhor forma possível e extrair o melhor de si em cada etapa da sua jornada.
+O sistema vem para complementar esse processo, oferecendo apoio, organização e direcionamento, sem excluir os cuidados e orientações que já foram passados para você. Em caso de dúvidas, sintomas ou qualquer condição específica, mantenha sempre o acompanhamento com seu médico e profissionais responsáveis.
+
+📌 Nota Técnica: A simplificação para Sim/Não é intencional. O sistema não analisa diagnósticos específicos — apenas sinaliza a condição para que o plano de ação considere maior cautela. Detalhes clínicos são responsabilidade do profissional de saúde.
+
+2.3 Especificação Técnica — Saúde Feminina
+	•	Renderização condicional: o bloco só é carregado (não apenas ocultado) quando o usuário selecionar Feminino no campo Sexo biológico
+	•	Campos: ciclo menstrual, uso de anticoncepcional ou TRH, gestação ou amamentação atual
+	•	Gestação ou amamentando = Sim gera flag de atenção no dashboard e observação no plano de ação
+
+2.4 Campos da Anamnese
+Dados Pessoais
+Sexo biológico
+
+[ ]  Feminino
+[ ]  Masculino
+
+Faixa etária
+
+[ ]  18–24 anos
+[ ]  25–34 anos
+[ ]  35–44 anos
+[ ]  45–54 anos
+[ ]  55+ anos
+
+Composição Corporal
+📌 Nota Técnica: A coleta de medidas corporais é realizada conforme especificado na Seção 2.1. O único campo de seleção neste bloco é o histórico de peso descrito abaixo.
+
+Campo
+Obrigatório
+Unidade
+Observação
+Peso
+Sim
+kg
+Entrada numérica decimal. Ex: 72.5
+Altura
+Sim
+cm
+Entrada numérica inteira. Ex: 170
+Circunferência abdominal
+Não
+cm
+Opcional. Recomendada para análise de composição ao longo do tempo
+Circunferência do quadril
+Não
+cm
+Opcional. Recomendada para análise de composição ao longo do tempo
+Circunferência do braço
+Não
+cm
+Opcional. Recomendada para análise de composição ao longo do tempo
+Circunferência da perna
+Não
+cm
+Opcional. Recomendada para análise de composição ao longo do tempo
+IMC
+—
+kg/m²
+Calculado automaticamente. Exibido em tempo real sempre que Peso e Altura estiverem preenchidos
+
+Cálculo do IMC — Especificação Técnica Completa
+Componente
+Especificação
+Fórmula
+IMC = Peso (kg) ÷ [Altura (m)]²
+Conversão de altura
+Altura_m = Altura_cm ÷ 100
+Fórmula expandida
+IMC = Peso_kg ÷ (Altura_cm ÷ 100)²
+Exemplo de cálculo
+Peso = 72 kg · Altura = 170 cm → Altura_m = 1,70 m → IMC = 72 ÷ (1,70)² = 72 ÷ 2,89 = 24,91 kg/m²
+Arredondamento
+2 casas decimais (ex: 24,91)
+Gatilho de cálculo
+Calcular e exibir em tempo real sempre que os campos Peso e Altura estiverem preenchidos com valores válidos (> 0)
+Validação de entrada
+Peso: valor numérico > 0, máx. 300 kg · Altura: valor numérico > 0, máx. 250 cm
+Exibição ao usuário
+Exibir o valor calculado + classificação correspondente abaixo dos campos Peso e Altura
+
+Classificação IMC — Tabela de Referência (OMS)
+Faixa de IMC (kg/m²)
+Classificação
+Conduta do Sistema
+< 18,5
+Abaixo do peso
+Exibir classificação. Registrar no perfil.
+18,5 – 24,9
+Peso normal
+Exibir classificação. Registrar no perfil.
+25,0 – 29,9
+Sobrepeso
+Exibir classificação. Registrar no perfil.
+30,0 – 34,9
+Obesidade grau I
+Exibir classificação. Registrar no perfil.
+35,0 – 39,9
+Obesidade grau II
+Exibir classificação. Registrar no perfil.
+≥ 40,0
+Obesidade grau III
+Exibir classificação. Registrar no perfil.
+
+📌 Nota Técnica: O IMC é um indicador de triagem, não de diagnóstico. O sistema exibe o valor e a classificação de forma informativa. Nenhuma restrição de acesso ou conduta clínica é gerada automaticamente com base no IMC. O valor é salvo com timestamp no histórico do usuário e exibido no Dashboard para acompanhamento longitudinal.
+
+📌 Nota Técnica: Armazenamento e Histórico: cada medida é salva com timestamp (data e hora) e direcionada ao Dashboard, onde alimenta o gráfico de evolução com a curva de cada medida ao longo das reavaliações (a cada 45 dias). Os campos de composição corporal são liberados para atualização a cada 45 dias.
+
+Histórico de Saúde
+Você possui alguma condição de saúde, doença crônica ou faz uso de medicação contínua?
+
+[ ]  Não
+[ ]  Sim
+
+Saúde Feminina — exibido apenas quando Sexo biológico = Feminino
+📌 Nota Técnica: Renderização condicional: este bloco só é carregado quando o usuário selecionar Feminino. Ver especificação completa na Seção 2.3.
+
+Ciclo menstrual
+
+[ ]  Regular
+[ ]  Irregular
+[ ]  Ausente
+[ ]  Não se aplica
+
+Uso de anticoncepcional ou TRH?
+
+[ ]  Não
+[ ]  Sim — anticoncepcional oral
+[ ]  Sim — DIU hormonal
+[ ]  Sim — TRH
+[ ]  Outro
+
+Gestação ou amamentação atual?
+
+[ ]  Não
+[ ]  Gestante
+[ ]  Amamentando
+
+📌 Nota Técnica: Os campos de Composição corporal são liberados para atualização a cada 45 dias. A cada nova entrada, o sistema armazena os valores com a data correspondente, permitindo acompanhamento do histórico completo no Dashboard.
+
+Contexto de Vida e Rotina
+Disponibilidade semanal para treino
+
+[ ]  Menos de 2h
+[ ]  2–3h
+[ ]  4–5h
+[ ]  6h ou mais
+
+Nível de experiência com atividade física
+
+[ ]  Nunca pratiquei
+[ ]  Iniciante (menos de 6 meses)
+[ ]  Intermediário (6 meses–2 anos)
+[ ]  Avançado (mais de 2 anos)
+
+Histórico de peso no último ano
+
+[ ]  Estável
+[ ]  Ganhei peso
+[ ]  Perdi peso
+[ ]  Oscilação frequente
+
+Resultados Desejados
+Qual resultado você quer priorizar nos próximos 45 dias?
+
+[ ]  Perda de gordura
+[ ]  Ganho de massa muscular
+[ ]  Mais energia e disposição
+[ ]  Melhorar o sono
+[ ]  Reduzir estresse
+[ ]  Criar consistência
+
+Qual é o seu maior motivador?
+
+[ ]  Saúde e longevidade
+[ ]  Aparência e autoestima
+[ ]  Performance e energia
+[ ]  Exemplo para família
+[ ]  Superação pessoal
+[ ]  Qualidade de vida
+
+📌 Nota Técnica: Ambas as perguntas de Resultados Desejados são de seleção única (radio button) — o usuário escolhe 1 opção em cada. As respostas são registradas no perfil e exibidas no Dashboard como o 'Foco do usuário' — indicando o resultado prioritário para os próximos 45 dias e o motivador principal que sustenta o engajamento.
+
+
+Sessão 3
+CAMADA 1: Triagem Vetorial Comportamental
+Aparece logo após a anamnese, antes da Autoavaliação Operacional. É o espaço onde a pessoa identifica seus padrões de dificuldade, constrói sua identidade desejada e se compromete com o processo. Essas respostas fundamentam o vínculo entre os índices e o propósito pessoal da transformação. Essa camada utiliza e funciona em conjunto com as informações das Tabelas de Mapeamento da Seção 4.
+
+🔒  Este espaço foi criado para você com segurança, privacidade e respeito à sua individualidade.  Todas as informações registradas aqui permanecem confidenciais e serão utilizadas exclusivamente para compreender seu momento atual e personalizar sua experiência dentro do sistema.
+O objetivo não é julgamento, comparação ou perfeição. O sistema funciona com base na sua realidade, nos seus padrões e na forma como sua rotina funciona hoje.
+Por isso, responda com sinceridade e tranquilidade. Não existem respostas certas ou erradas, existem apenas informações importantes para que o sistema consiga construir uma leitura mais precisa, humana e alinhada com aquilo que você realmente precisa neste momento.
+* Esta mensagem deve ser aberta antes de iniciar essa camada.
+3.1 Arquitetura da Camada 1 — Identidade Subjetiva
+Esta etapa opera oficialmente como a Camada 1 — Identidade Subjetiva do sistema. Constrói um mapa psicológico e comportamental que complementa a matematização quantitativa, identificando o que a pessoa sente, evita, busca e teme, e qual identidade deseja construir.
+
+Diferença fundamental em relação à Autoavaliação Operacional: esta camada não mede disciplina operacional, frequência ou rotina. Mede percepção psicológica e ativação subjetiva.
+
+As respostas desta etapa alimentam:
+	•	Placeholders estruturais do ICC, IDP e IID --- dimensões conceituais exclusivas da Camada 1 (formalização matemática pendente, ver Seção 3.1.1) 
+	•	Priorização comportamental no Protocolo de Execução (Camada 5)
+	•	Protocolos de retomada personalizados por vetor dominante
+	•	Gatilhos motivacionais contextuais
+	•	Mensagens adaptativas do Dashboard
+	•	Reforço contextual dos 4 Vetores Comportamentais (Camada 3)
+
+📌 Nota Técnica: ICC = Índice de Clareza Comportamental; IDP = Índice de Direção Pessoal; IID = Índice de Identidade Desejada. Esses três índices são calculados exclusivamente a partir das respostas da Camada 1 e não possuem equivalente nas demais camadas. Eles compõem a dimensão subjetiva do perfil do usuário, que é integrada ao Motor Interpretativo (Camada 4) para personalização da linguagem e das intervenções.
+3.2 Diretriz de Implementação
+Toda a seção deve seguir as seguintes regras de interface e operação:
+
+	•	Cada tela exibe apenas UMA pergunta por vez
+	•	O usuário nunca deve perceber esta etapa como um questionário tradicional
+	•	O tom da interface deve ser de reflexão guiada e construção pessoal
+	•	As transições entre perguntas devem ser suaves e progressivas
+	•	O sistema deve priorizar interação visual por seleção antes de exigir escrita longa
+	•	As respostas devem ser salvas individualmente no perfil do usuário
+	•	Cada seleção realizada deve alimentar variáveis internas do motor de personalização comportamental
+	•	Esta etapa ocorre obrigatoriamente antes da Autoavaliação
+	•	O sistema deve permitir reavaliação completa desta seção a cada novo ciclo de 45 dias
+
+📌 Nota Técnica: A diretriz de exibição de uma pergunta por tela é uma decisão de UX com impacto direto na qualidade das respostas. Questionários com múltiplas perguntas simultâneas reduzem o engajamento reflexivo e aumentam respostas automáticas e pouco representativas. O formato de reflexão guiada aumenta a precisão do mapa subjetivo e, consequentemente, a relevância das personalizações geradas.
+
+3.2.1 Estrutura da Etapa
+A etapa é dividida em 2 fases psicológicas sequenciais, de execução obrigatória e ordem fixa:
+
+Fase
+Objetivo Psicológico
+Tipo de Interação
+Etapa 1 — Fragilidade Vetorial Atual (FVA)
+Identificar dor e dificuldade dominante
+Seleção visual
+Etapa 2 — INTENÇÃO DE MUDANÇA (IM)
+Identificar direção aspiracional
+Seleção visual
+
+SEÇÃO 3.3 — Etapa 1 — Fragilidade Vetorial Atual (FVA)
+Objetivo: identificar os principais fatores subjetivos que comprometem continuidade, organização e evolução da pessoa.
+Alimenta: vetor de dor principal, gatilho de abandono, área de maior desgaste emocional e vulnerabilidade comportamental dominante.
+As perguntas e alternativas da Etapa 1 (FVA) estão especificadas nas Tabelas de Mapeamento da Seção 4 (Perguntas 1, 2 e 3). Cada alternativa possui vinculação exclusiva com um vetor comportamental e a dimensão FVA, conforme detalhamento técnico abaixo.
+
+Pergunta 1 (FVA)
+"Hoje, qual destas áreas mais dificulta sua evolução pessoal?" (selecionar 6)
+Table
+Gestão Pessoal
+Constância
+Comportamento
+Controle Emocional
+Rotina caótica
+Paro e recomeço
+Inércia de ação
+Ansiedade alta
+Direção perdida
+Ciclos de abandono
+Procrastino
+Estresse constante
+Tempo escasso
+Dificuldade de retomada
+Fico paralisado
+Emoções dominam
+
+Pergunta 2 (FVA)
+"Quando você tenta mudar sua rotina, o que mais faz você parar?" (selecionar 6)
+Table
+Gestão Pessoal
+Comportamento
+Constância
+Controle Emocional
+Rotina desorganizada
+Motivação oscila
+Abandono rápido
+Comer emocional
+Perder prioridades
+Cansaço físico
+Falha e desisto
+Autocrítica forte
+Planejamento falho
+Trava no início
+Sustentação frágil
+Ansiedade bloqueia
+
+Pergunta 3 (FVA)
+"O que mais incomoda você quando pensa na sua saúde e no seu corpo?" (selecionar 6)
+Table
+Comportamento
+Constância
+Gestão Pessoal
+Controle Emocional
+Sedentarismo
+Rotina instável
+Desorganização
+Peso como escape
+Corpo inativo
+Sempre recomeçando
+Estrutura ausente
+Baixa autoestima
+Energia baixa
+Persistência curta
+Caos diário
+Descontrole geral
+
+📌 Nota Técnica: Etapa 1 — Nota Técnica: Cada alternativa pertence a um único Pilar da Disciplina. As respostas NÃO geram score visível ao usuário — funcionam como camada complementar de interpretação comportamental. O sistema cruza: respostas subjetivas + scores quantitativos + flags binárias para refinar a priorização do Plano Parte 2. Seleção de 6 opções obrigatórias · 12 alternativas · 3 por pilar.
+
+SEÇÃO 3.4 — Etapa 2 — INTENÇÃO DE MUDANÇA (IM)
+Objetivo: identificar quais características e estados emocionais a pessoa deseja construir durante o processo.
+Alimenta: vetor aspiracional, linguagem motivacional personalizada, perfil de reforço emocional e direção comportamental desejada.
+As perguntas e alternativas da Etapa 2 (IM) estão especificadas nas Tabelas de Mapeamento da Seção 4 (Perguntas 4, 5 e 6). Cada alternativa possui vinculação exclusiva com um vetor comportamental e a dimensão IM, conforme detalhamento técnico abaixo.
+
+Pergunta 4 (IM)
+"Escolha as palavras que representam quem você quer construir nos próximos 45 dias" (selecionar 6)
+Table
+Comportamento
+Constância
+Gestão Pessoal
+Controle Emocional
+Disciplinado
+Constante
+Organizado
+Equilibrado
+Ativo
+Persistente
+Estruturado
+Leve
+Iniciador
+Regular
+Planejado
+Centrado
+
+Pergunta 5 (IM)
+"O que você mais quer sentir daqui para frente?" (selecionar 6)
+Table
+Comportamento
+Constância
+Gestão Pessoal
+Controle Emocional
+Disposição
+Progresso real
+Controle da rotina
+Paz mental
+Motivação
+Continuidade
+Direção clara
+Serenidade
+Energia
+Ritmo firme
+Previsibilidade
+Orgulho pessoal
+
+Pergunta 6 (IM)
+"Qual destas características mais falta para você hoje?" (selecionar 6)
+Table
+Gestão Pessoal
+Constância
+Comportamento
+Controle Emocional
+Clareza
+Constância
+Ação
+Autocontrole
+Prioridade
+Persistência
+Iniciativa
+Autoconfiança
+Foco
+Regularidade
+Execução
+Equilíbrio
+
+📌 Nota Técnica: Etapa 2 — Nota Técnica: Cada palavra selecionada alimenta um sistema interno de associação comportamental. As palavras são utilizadas para: adaptar mensagens motivacionais; personalizar textos da Camila; definir linguagem do Plano Parte 2; e construir mensagens contextuais de retomada. A linguagem do sistema passa a espelhar o vocabulário aspiracional do próprio usuário, aumentando o engajamento e a identificação com o processo. Seleção de 6 opções obrigatórias · 12 alternativas · 3 por pilar.
+
+3.5 Triagem Vetorial — Detalhamento Matemático e Operacional
+Seu objetivo é identificar quais mecanismos comportamentais estão mais influenciando o funcionamento atual do usuário naquele momento.
+
+Esta etapa funciona como núcleo de direcionamento adaptativo do sistema. A partir dela, o sistema define:
+	•	quais mecanismos precisam ser aprofundados
+	•	quais investigações serão abertas
+	•	quais fragilidades possuem maior prioridade
+	•	quais estratégias adaptativas serão utilizadas nas próximas etapas
+
+A Triagem Vetorial opera oficialmente em duas dimensões psicológicas complementares:
+	•	Fragilidade Vetorial Atual (FVA)
+	•	Intenção de Mudança (IM)
+
+As duas dimensões utilizam os mesmos vetores comportamentais, porém possuem interpretações completamente independentes.
+
+📌 Nota Técnica: A Triagem Vetorial NÃO mede saúde geral, disciplina total, gravidade clínica ou performance física. Ela mede exclusivamente mecanismos comportamentais dominantes relacionados à aderência, continuidade, organização e interferência emocional.
+
+3.5.0 — Estrutura das Perguntas da Triagem Vetorial
+A etapa é composta por 6 perguntas principais. Cada pergunta possui:
+	•	12 alternativas
+	•	3 alternativas para cada vetor (obrigatório: distribuição fixa 3-3-3-3)
+	•	Seleção obrigatória de 6 respostas por pergunta
+A estrutura da etapa é dividida em duas dimensões psicológicas distintas:
+Table
+Grupo de Perguntas
+Dimensão
+Objetivo
+Perguntas 1–3
+Fragilidade Vetorial Atual (FVA)
+Identificar sofrimento percebido, bloqueios e mecanismos de dificuldade
+Perguntas 4–6
+Intenção de Mudança (IM)
+Identificar prontidão psicológica e intenção de evolução em cada vetor
+Table
+Item
+Quantidade
+Perguntas por etapa
+6
+Alternativas por pergunta
+12
+Alternativas por vetor por pergunta
+3 (fixo)
+Alternativas totais apresentadas na etapa
+72 (6 perguntas × 12 alternativas)
+Seleções efetivas do usuário
+36 (6 perguntas × 6 seleções obrigatórias)
+📌 Nota Técnica: As duas dimensões utilizam a mesma estrutura vetorial e a mesma lógica matemática de pontuação. A diferença está exclusivamente na interpretação psicológica e na função adaptativa dentro do sistema. A distribuição 3-3-3-3 é invariável: qualquer alteração no número de alternativas por vetor invalida a normalização para escala 0–100 (Seção 3.6).
+
+SEÇÃO 3.5.1 — Estrutura e Regras das Perguntas 
+Cada alternativa pertence exclusivamente a um vetor comportamental e exclusivamente a uma dimensão (FVA ou IM). Ao ser selecionada, adiciona pontuação apenas ao vetor e dimensão correspondentes.
+Regra de Peso: na versão 3.1 do sistema, todas as alternativas possuem peso fixo igual a 1, em ambas as dimensões (FVA e IM).
+📌 Nota Técnica: A utilização de pesos iguais é intencional: simplifica validação matemática; reduz distorções iniciais; facilita calibração futura com dados empíricos; e evita supervalorização prematura de determinados padrões.
+3.5.2 Regras e Cálculos Matemáticos
+3.5.3 Princípio Fundamental
+Cada alternativa pertence exclusivamente a um vetor e exclusivamente a uma dimensão (FVA ou IM). Ao ser selecionada, adiciona pontuação apenas ao vetor e dimensão correspondentes.
+
+Regra de Peso: na versão 3.1 do sistema, todas as alternativas possuem peso fixo igual a 1, em ambas as dimensões (FVA e IM).
+
+📌 Nota Técnica: A utilização de pesos iguais é intencional: simplifica validação matemática; reduz distorções iniciais; facilita calibração futura com dados empíricos; e evita supervalorização prematura de determinados padrões.
+
+3.5.4 Cálculo do Score Bruto — FVA
+A FVA utiliza exclusivamente as respostas das perguntas 1, 2 e 3.
+
+Fórmula oficial:
+FVAv = Σ (Respostas selecionadas no vetor v nas perguntas 1, 2, 3)
+Onde:
+	•	v = vetor comportamental (Comportamento, Constância, Gestão Pessoal, Controle Emocional)
+	•	Cada resposta selecionada soma 1 ponto ao vetor correspondente
+	•	Máximo teórico por vetor: 9 pontos (3 perguntas × 3 alternativas por vetor × peso 1)
+
+Exemplo de cálculo:
+
+Vetor
+Pergunta 1
+Pergunta 2
+Pergunta 3
+FVAv
+Comportamento
+2
+1
+2
+5
+Constância
+1
+2
+1
+4
+Gestão Pessoal
+2
+2
+1
+5
+Controle Emocional
+1
+1
+2
+4
+
+3.5.5 Cálculo do Score Bruto — IM (Intenção de Mudança)
+A IM utiliza exclusivamente as respostas das perguntas 4, 5 e 6.
+
+Fórmula oficial:
+IMv = Σ (Respostas selecionadas no vetor v nas perguntas 4, 5, 6)
+Onde:
+	•	v = vetor comportamental
+	•	Cada resposta selecionada soma 1 ponto ao vetor correspondente
+	•	Máximo teórico por vetor: 9 pontos (3 perguntas × 3 alternativas por vetor × peso 1)
+
+⚠️ ATENÇÃO — Versão 3.1: IM não mede 'pilar forte' ou 'ponto positivo'. IM mede Intenção de Mudança — o quanto a pessoa reconhece valor e está disposta a evoluir em cada vetor. Um score alto em IM significa alta vontade de mudar, não ausência de problema.
+
+Exemplo de cálculo:
+
+Vetor
+Pergunta 4
+Pergunta 5
+Pergunta 6
+IMv
+Comportamento
+1
+2
+1
+4
+Constância
+2
+2
+2
+6
+Gestão Pessoal
+2
+1
+2
+5
+Controle Emocional
+1
+1
+1
+3
+
+
+
+3.5.6 Regra de Independência Absoluta
+FVA e IM NÃO devem ser somadas, subtraídas, multiplicadas ou combinadas diretamente em nenhuma circunstância.
+
+Dimensão
+Mede
+Score alto significa
+Score baixo significa
+FVA
+Dificuldade percebida
+Maior fragilidade e sofrimento
+Menor impacto daquele mecanismo
+IM
+Intenção de Mudança
+Maior vontade de evoluir naquele pilar
+Menor mobilização para mudança
+
+⚠️ Regra de Ouro: FVA e IM devem ser interpretados como vetores paralelos. A relação entre eles é calculada pelo Motor Interpretativo (Camada 4), nunca pela Camada 1. Não existe regra de exclusividade entre as duas dimensões.
+
+3.6 Normalização dos Scores
+3.6.1 Fórmula de Normalização
+Todos os scores brutos são convertidos para escala padronizada de 0 a 100.
+
+Fórmula oficial — FVA:
+FVAnorm(v) = (FVAv ÷ 9) × 100
+Fórmula oficial — IM:
+IMnorm(v) = (IMv ÷ 9) × 100
+Onde:
+	•	FVAv e IMv = scores brutos do vetor v
+	•	9 = máximo teórico (3 perguntas × 3 alternativas por vetor × peso 1)
+	•	Resultado arredondado e com %
+
+Exemplo completo:
+
+Vetor
+FVAv
+FVAnorm
+IMv
+IMnorm
+
+
+Comportamento
+5
+55%
+4
+44%
+
+
+Constância
+4
+44%
+6
+66%
+
+
+Gestão Pessoal
+5
+55%
+5
+55%
+
+
+Controle Emocional
+4
+44%
+3
+33%
+
+
+
+📌 Nota Técnica: A normalização para escala 0–100 é necessária para compatibilidade com o Motor Interpretativo (Camada 4), permitindo integração matemática entre múltiplos índices sem distorções de escala.
+3.6.2 Consideração sobre o Máximo Teórico
+O máximo de 9 pontos é teórico e depende do usuário selecionar as 3 alternativas de um mesmo vetor em todas as 3 perguntas de uma dimensão.
+
+Na prática:
+	•	O usuário deve selecionar 6 alternativas por pergunta
+	•	Como há apenas 3 alternativas por vetor por pergunta, o máximo por vetor por pergunta é 3
+	•	A distribuição das 6 seleções entre os 4 vetores segue a percepção subjetiva do usuário
+	•	Scores próximos de 100 são raros e indicam padrão extremamente concentrado
+
+3.7 Classificação Oficial dos Vetores
+3.7.1 Classificação FVA — Fragilidade Vetorial Atual
+Faixa de FVAnorm
+Classificação
+Interpretação
+0,00 – 24,99
+Fragilidade Mínima
+O mecanismo tem pouco ou nenhum impacto no funcionamento atual do usuário.
+25,00 – 49,99
+Fragilidade Leve
+O mecanismo gera dificuldade ocasional, mas não é central no perfil de bloqueio.
+50,00 – 74,99
+Fragilidade Moderada
+O mecanismo gera dificuldade recorrente e merece atenção no plano de ação.
+75,00 – 100,00
+Fragilidade Dominante
+O mecanismo é a principal fonte de bloqueio comportamental do usuário.
+
+3.7.2 Classificação IM — Intenção de Mudança
+Faixa de IMnorm
+Classificação
+Interpretação
+0,00 – 24,99
+Intenção Mínima
+Baixa mobilização psicológica para mudança neste vetor. Intervenções devem ser mais graduais.
+25,00 – 49,99
+Intenção Leve
+Intenção presente, mas não é prioridade subjetiva do usuário.
+50,00 – 74,99
+Intenção Moderada
+Boa prontidão para evolução. O usuário reconhece valor em desenvolver este vetor.
+75,00 – 100,00
+Intenção Dominante
+Alta intenção subjetiva de evolução. O usuário está psicologicamente aberto para trabalhar este vetor.
+
+📌 Nota Técnica: As classificações são independentes entre FVA e IM. Um vetor pode ser simultaneamente Fragilidade Dominante (FVA) e Intenção Dominante (IM) — indicando alto sofrimento com alta prontidão para mudança. Esse cruzamento é processado pelo Motor Interpretativo na Camada 4.
+
+3.8 Função da Triagem Vetorial
+3.8.1 Outputs Gerados
+A Triagem Vetorial produz os seguintes dados para as camadas subsequentes:
+Table
+Output
+Formato
+Destino
+Scores normalizados FVA
+4 valores (0–100)
+Motor Interpretativo (Camada 4)
+Scores normalizados IM
+4 valores (0–100)
+Motor Interpretativo (Camada 4)
+Classificação de fragilidade por vetor
+4 classificações
+Dashboard, perfil do usuário
+Classificação de intenção por vetor
+4 classificações
+Dashboard, perfil do usuário
+Vetor Prioritário FVA (Pilar Ruim)
+1 vetor
+Abertura exclusiva da Autoavaliação Operacional (Camada 3)
+Vetor Prioritário IM
+1 vetor
+Personalização de linguagem (Camada 5)
+Matriz de perfil FVA-IM
+Matriz 4×2
+Dashboard, análise longitudinal
+Diagnóstico padrão
+Texto gerado
+Tela de resultado da Triagem
+📌 Nota Técnica: O Vetor Prioritário FVA é o output mais crítico da Camada 1. Ele determina todo o fluxo subsequente: qual pilar será investigado operacionalmente, qual protocolo será ativado e qual linguagem de intervenção será utilizada. A seleção é matematicamente objetiva: sempre o vetor de maior fragilidade percebida.
+
+3.8.2 Regra de Priorização para Investigação Adaptativa — Seleção do Pilar Ruim
+A Triagem Vetorial identifica o Vetor Prioritário FVA através do seguinte fluxo obrigatório:
+Passo 1 — Identificar o Pilar Ruim (Vetor Prioritário FVA)
+Regra Fundamental: O sistema seleciona o vetor com MAIOR FVAnorm como o Vetor Prioritário FVA. Este é o "pilar ruim" — o mecanismo comportamental onde o usuário mais sofre atualmente.
+Lógica de Seleção:
+	•	Maior FVAnorm = Maior fragilidade percebida = Pior pilar = Selecionado para aprofundamento
+	•	O sistema sempre prioriza o ponto de maior vulnerabilidade subjetiva
+Consequência direta: O Vetor Prioritário FVA determinado neste Passo 1 é o único critério de abertura da Autoavaliação Operacional (Camada 3). Apenas as 12 perguntas correspondentes a este vetor serão exibidas ao usuário. Os demais vetores não geram perguntas operacionais neste ciclo.
+Exemplo de seleção:
+Table
+Vetor
+FVAnorm
+Classificação FVA
+Seleção
+Comportamento
+33,33
+Fragilidade Leve
+—
+Constância
+75,00
+Fragilidade Dominante
+✓ SELECIONADO (Pilar Ruim)
+Gestão Pessoal
+25,00
+Fragilidade Mínima
+—
+Controle Emocional
+66,67
+Fragilidade Moderada
+—
+Resultado: Autoavaliação Operacional abre exclusivamente o PILAR 2 — Constância (12 perguntas nos blocos X, Y, Z).
+Passo 2 — Em caso de empate em FVA
+Table
+Situação
+Ação do Sistema
+Empate entre 2 vetores
+Exibir modal com os 2 vetores empatados. Texto: "Você indicou dificuldades equivalentes em [VETOR A] e [VETOR B]. Qual destes você sente que mais interfere na sua rotina hoje?"
+Empate entre 3 ou 4 vetores
+Exibir modal com todos os vetores empatados (máximo 4). Texto: "Você indicou dificuldades equilibradas entre múltiplas áreas. Escolha a que mais te preocupa neste momento:"
+Os vetores são ordenados alfabeticamente para eliminar viés de posição. O vetor escolhido recebe +0,01 ponto no score normalizado (apenas para fins de ordenação, sem alterar classificação textual). Flag empate_resolvido = true é registrada no perfil.
+Passo 3 — Vetor resultante
+O vetor resultante (após desempate, quando necessário) é o Vetor Prioritário FVA (Pilar Ruim) que abre a Autoavaliação Operacional (Camada 3).
+⚠️ Regra de Ouro: O desempate em IM segue a mesma lógica, mas o Vetor Prioritário IM não abre investigações adicionais — influencia apenas a linguagem e personalização da Camada 5.
+📌 Nota Técnica: A transição da Camada 1 para a Camada 3 inclui obrigatoriamente a Camada 2 — Investigação Adaptativa entre elas. O Vetor Prioritário FVA abre a Camada 2 (investigação qualitativa do padrão de fragilidade: origem, gatilhos e histórico de tentativas) e, após sua conclusão, a Camada 3 (Autoavaliação Operacional). A sequência completa é: Camada 1 → Camada 2 → Camada 3 → Camada 4 → Camada 5.
+
+3.8.3 Regra de Transição Obrigatória: Camada 1 → Camada 3
+A transição da Triagem Vetorial (Camada 1) para a Autoavaliação Operacional (Camada 3) segue regra absoluta:
+Table
+Elemento
+Especificação
+Gatilho de abertura
+Conclusão das 6 perguntas da Triagem Vetorial + resolução de empates (se houver)
+Critério de seleção
+Vetor com MAIOR FVAnorm (maior fragilidade = pilar ruim)
+Nome técnico
+Vetor Prioritário FVA ou "Pilar Ruim"
+Conteúdo aberto
+Apenas as 12 perguntas Likert do vetor selecionado
+Perguntas de outros vetores
+NÃO são exibidas neste ciclo
+Persistência da seleção
+O vetor selecionado permanece fixo durante todo o ciclo de 45 dias
+📌 Nota Técnica: A Autoavaliação Operacional NUNCA abre mais de um pilar simultaneamente. A profundidade operacional exige foco absoluto no mecanismo de maior fragilidade. A avaliação dos demais vetores permanece disponível na Triagem Vetorial (Camada 1) para reavaliação futura, mas não gera perguntas operacionais neste ciclo.
+
+3.8.4 Matriz de Diagnóstico Padrão — Cruzamento FVA + IM
+O sistema gera automaticamente uma resposta padrão baseada no cruzamento do pior pilar (FVA) com a intenção de mudança naquele mesmo pilar (IM).
+Estrutura do diagnóstico padrão:
+"Seu pior pilar é [VETOR_FVA] (FVA [VALOR_FVA]). Você [TEM/NÃO TEM] a maior vontade de melhorar justamente em [VETOR_FVA] (IM [VALOR_IM]). [FRASE_COMPLEMENTAR]."
+
+📌 Nota Técnica: Na matriz abaixo, "alto sofrimento" equivale à classificação Fragilidade Dominante (FVAnorm ≥ 75), "sofrimento moderado" equivale a Fragilidade Moderada (FVAnorm 50–74), e "baixo sofrimento" equivale a Fragilidade Mínima/Leve (FVAnorm < 50).
+
+Tabela completa de frases complementares:
+Table
+#
+Situação
+Condição
+Frase Complementar
+1
+Alto sofrimento + Alta intenção
+FVAnorm ≥ 75 E IMnorm ≥ 75
+"Isso é excelente — você já está motivado para trabalhar exatamente onde mais precisa. A intervenção será direcionada a transformar essa vontade em resultados concretos de [VETOR_FVA]."
+2
+Alto sofrimento + Intenção moderada
+FVAnorm ≥ 75 E IMnorm 50–74
+"Você reconhece a importância de evoluir em [VETOR_FVA], e isso é um ótimo ponto de partida. Vamos fortalecer essa prontidão com pequenas vitórias."
+3
+Alto sofrimento + Baixa intenção
+FVAnorm ≥ 75 E IMnorm < 50
+"Você sofre muito com [VETOR_FVA], mas ainda não se sente pronto para mudar. Nosso primeiro passo será criar segurança e conexão com esse pilar, sem pressa."
+4
+Sofrimento moderado + Alta intenção
+FVAnorm 50–74 E IMnorm ≥ 75
+"Você tem uma energia impressionante para evoluir em [VETOR_FVA]. Vamos canalizar essa força antes que a dificuldade se agrave."
+5
+Sofrimento moderado + Intenção moderada
+FVAnorm 50–74 E IMnorm 50–74
+"Há um equilíbrio entre desafio e disposição em [VETOR_FVA]. Esse é o momento ideal para construir novos padrões."
+6
+Sofrimento moderado + Baixa intenção
+FVAnorm 50–74 E IMnorm < 50
+"A dificuldade em [VETOR_FVA] existe, mas ainda não é sentida como prioridade. Vamos explorar o custo oculto de manter as coisas como estão."
+7
+Baixo sofrimento + Alta intenção
+FVAnorm < 50 E IMnorm ≥ 75
+"Curiosamente, você tem enorme vontade de evoluir em [VETOR_FVA], mesmo não sendo seu pior pilar. Isso pode indicar um potencial de crescimento acelerado."
+8
+Baixo sofrimento + Intenção moderada
+FVAnorm < 50 E IMnorm 50–74
+"Você está em uma posição confortável com [VETOR_FVA], mas sente que pode ir além. Vamos explorar esse espaço de expansão."
+9
+Baixo sofrimento + Baixa intenção
+FVAnorm < 50 E IMnorm < 50
+"[VETOR_FVA] não é prioridade no momento — nem como dificuldade, nem como foco de evolução. A atenção será direcionada aos outros pilares."
+
+3.8.5 Influência na Linguagem e Protocolos
+A dimensão IM influencia diretamente a Camada 5 (Sistema Adaptativo):
+Table
+IM do Vetor Prioritário FVA
+Ação da Camada 5
+Intenção Dominante (75–100)
+Linguagem de reforço progressivo, metas desafiadoras, autonomia elevada
+Intenção Moderada (50–74)
+Linguagem de construção conjunta, metas estruturadas, suporte moderado
+Intenção Leve (25–49)
+Linguagem de descoberta gradual, micro-metas, suporte frequente
+Intenção Mínima (0–24)
+Linguagem de segurança, micro-movimentos, protocolo de retomada intensivo
+
+3.8.6 Exemplo de Interpretação Completa
+Dados do usuário:
+Table
+Vetor
+FVAnorm
+Classificação FVA
+IMnorm
+Classificação IM
+Constância
+75,00
+Fragilidade Dominante
+83,33
+Intenção Dominante
+Controle Emocional
+66,67
+Fragilidade Moderada
+58,33
+Intenção Moderada
+Comportamento
+33,33
+Fragilidade Leve
+41,67
+Intenção Leve
+Gestão Pessoal
+25,00
+Fragilidade Mínima
+72,22
+Intenção Moderada
+Diagnóstico padrão gerado:
+"Seu pior pilar é Constância (FVA 75,00). Você tem a maior vontade de melhorar justamente em Constância (IM 83,33). Isso é excelente — você já está motivado para trabalhar exatamente onde mais precisa. A intervenção será direcionada a transformar essa vontade em resultados concretos de Constância."
+Interpretação do sistema:
+	•	Vetor Prioritário FVA (Pilar Ruim): Constância (fragilidade dominante, maior score FVA) → Abre Autoavaliação Operacional do PILAR 2 — Constância
+	•	Perfil de fragilidade: principal problema é sustentação e continuidade ao longo do tempo
+	•	Fragilidade secundária: Controle Emocional (moderada) — interferência emocional recorrente
+	•	Prontidão psicológica: excelente para Constância (IM dominante) — usuário altamente motivado
+	•	Oportunidade: Gestão Pessoal tem alta intenção (72,22) mas baixa fragilidade (25,00) — potencial de reforço estrutural
+Ações adaptativas:
+	•	Abrir Autoavaliação Operacional exclusivamente no vetor Constância (12 perguntas, blocos X, Y, Z)
+	•	Aprofundar ciclos de interrupção e retomada
+	•	Abrir investigação complementar em Controle Emocional (intensidade moderada) — apenas na Camada 2, não na Camada 3
+	•	Utilizar linguagem de reforço progressivo e construção de identidade
+	•	Ativar protocolos de continuidade e manutenção no Plano de Ação
+	•	Considerar módulo de Gestão Pessoal como suporte estrutural (não prioritário)
+📌 Nota Técnica: A função adaptativa da triagem é o que diferencia este sistema de um questionário estático. O resultado não é apenas informativo — ele reorganiza a sequência das próximas etapas, determina qual pilar será investigado operacionalmente e personaliza a experiência do usuário desde o início.
+
+3.9 Diretrizes de Implementação
+3.9.1 Validações Obrigatórias
+	•	Seleção obrigatória: o usuário deve selecionar exatamente 6 alternativas por pergunta. Menos ou mais devem gerar erro de validação.
+	•	Persistência imediata: cada seleção deve ser salva individualmente no perfil do usuário, permitindo recuperação em caso de interrupção.
+	•	Cálculo em tempo real: o sistema pode calcular scores preliminares em tempo real, mas o resultado oficial só é gerado após conclusão das 6 perguntas.
+	•	Reavaliação: a Camada 1 completa pode ser reavaliada a cada novo ciclo de 45 dias. Dados históricos devem ser preservados para análise longitudinal.
+SEÇÃO 3.9.2 — Separação Vetorial Obrigatória (VERSÃO FINAL COMPLETA)
+	•	Nenhuma pergunta poderá medir simultaneamente ativação, organização, continuidade ou regulação emocional. Cada alternativa deve medir apenas um mecanismo dominante. Alternativas híbridas são proibidas.
+	•	Vinculação estrutural obrigatória por vetor:
+
+Table
+Comportamento
+Constância
+Gestão Pessoal
+Controle Emocional
+agir, ação, começar, iniciativa, iniciador, procrastinação, procrastino, ativação, decisão prática, impulso de ação, saída da inércia, inércia, inércia de ação, transformar intenção em ação, execução, disciplina, disciplinado, disposição, motivação, motivação oscila, energia, energia baixa, ativo, trava no início, fico paralisado, cansaço físico, sedentarismo, corpo inativo
+continuidade, permanência, manutenção, repetição, retomada, sustentação, sustentação frágil, manter ao longo do tempo, continuar após interrupção, constância, constante, persistente, persistência, persistência curta, regular, regularidade, ritmo firme, progresso real, paro e recomeço, ciclos de abandono, dificuldade de retomada, abandono rápido, falha e desisto, sempre recomeçando, rotina instável, interrompo fácil, não retomo
+organização, planejamento, prioridades, prioridade, rotina, gestão do tempo, estrutura, estrutura ausente, administração do dia, condução da rotina, direção, direção perdida, clareza, foco, controle da rotina, direção clara, previsibilidade, rotina caótica, desorganização, caos diário, perder prioridades, planejamento falho, tempo escasso, sem direção, sem estrutura, sem planejamento
+ansiedade, ansiedade alta, ansiedade bloqueia, estresse, estresse constante, emocional, emoções dominam, oscilação emocional, regulação emocional, impulsividade emocional, interferência emocional, impacto emocional, comer emocional, autocrítica, autocrítica forte, peso como escape, baixa autoestima, descontrole geral, equilibrado, equilíbrio, leve, leveza, centrado, centramento, paz mental, serenidade, orgulho pessoal, autocontrole, autoconfiança
+
+TABELA OFICIAL DE VINCULAÇÃO — PALAVRAS DAS ALTERNATIVAS POR VETOR
+Esta tabela é a fonte única de verdade para validação de todas as alternativas do sistema. Nenhuma palavra fora desta lista pode ser utilizada em alternativas de Triagem Vetorial.
+
+
+
+Table
+#
+Comportamento
+Constância
+Gestão Pessoal
+Controle Emocional
+1
+agir
+continuidade
+organização
+ansiedade
+2
+ação
+permanência
+planejamento
+ansiedade alta
+3
+começar
+manutenção
+prioridades
+ansiedade bloqueia
+4
+iniciativa
+repetição
+prioridade
+estresse
+5
+iniciador
+retomada
+rotina
+estresse constante
+6
+procrastinação
+sustentação
+gestão do tempo
+emocional
+7
+procrastino
+sustentação frágil
+estrutura
+emoções dominam
+8
+ativação
+manter ao longo do tempo
+estrutura ausente
+oscilação emocional
+9
+decisão prática
+continuar após interrupção
+administração do dia
+regulação emocional
+10
+impulso de ação
+constância
+condução da rotina
+impulsividade emocional
+11
+saída da inércia
+constante
+direção
+interferência emocional
+12
+inércia
+persistente
+direção perdida
+impacto emocional
+13
+inércia de ação
+persistência
+clareza
+comer emocional
+14
+transformar intenção em ação
+persistência curta
+foco
+autocrítica
+15
+execução
+regular
+controle da rotina
+autocrítica forte
+16
+disciplina
+regularidade
+direção clara
+peso como escape
+17
+disciplinado
+ritmo firme
+previsibilidade
+baixa autoestima
+18
+disposição
+progresso real
+rotina caótica
+descontrole geral
+19
+motivação
+paro e recomeço
+desorganização
+equilibrado
+20
+motivação oscila
+ciclos de abandono
+caos diário
+equilíbrio
+21
+energia
+dificuldade de retomada
+perder prioridades
+leve
+22
+energia baixa
+abandono rápido
+planejamento falho
+leveza
+23
+ativo
+falha e desisto
+tempo escasso
+centrado
+24
+trava no início
+sempre recomeçando
+sem direção
+centramento
+25
+fico paralisado
+rotina instável
+sem estrutura
+paz mental
+26
+cansaço físico
+interrompo fácil
+sem planejamento
+serenidade
+27
+sedentarismo
+não retomo
+—
+orgulho pessoal
+28
+corpo inativo
+—
+—
+autocontrole
+29
+—
+—
+—
+autoconfiança
+📌 Nota Técnica: Esta tabela consolida todas as 72 alternativas validadas das 6 perguntas da Triagem Vetorial. Cada palavra possui vinculação exclusiva com um único vetor. A adição de novas alternativas no futuro requer validação cruzada contra esta tabela para garantir que nenhum conceito híbrido ou ambíguo seja introduzido. A regra de ouro permanece: nenhum conceito listado em um vetor pode aparecer em alternativas de outro vetor.
+📌 Nota Técnica: A vinculação vetorial ocorre exclusivamente por TAG estrutural definida no banco de dados, não por NLP, interpretação semântica automática, sinônimos ou análise textual dinâmica. Cada alternativa nasce previamente vinculada a: 1 vetor, 1 dimensão (FVA/IM), 1 pergunta, 1 camada. Alternativas híbridas são proibidas (ver Padronização Oficial, Seção 4).
+
+3.9.3 Compatibilidade com o Motor Interpretativo e Abertura da Camada 3
+A Camada 1 deve entregar para as camadas subsequentes:
+Table
+Output
+Destino
+Uso
+Scores normalizados FVA e IM (8 valores numéricos)
+Camada 4
+Integração matemática no SVC
+Classificações textuais (8 classificações)
+Camada 4, Dashboard
+Perfil do usuário
+Identificação do Vetor Prioritário FVA (1 vetor — Pilar Ruim)
+Camada 3
+Abertura exclusiva da Autoavaliação Operacional
+Identificação do Vetor Prioritário IM (1 vetor)
+Camada 5
+Personalização de linguagem
+Flag de empate (booleano)
+Camada 4, perfil
+Registro de resolução
+Diagnóstico padrão (texto gerado)
+Tela de resultado, Camada 5
+Apresentação ao usuário
+Timestamp do processamento
+Sistema, histórico
+Rastreabilidade
+A Camada 4 utilizará esses dados para:
+	•	Integrar com índices operacionais da Camada 3 (do Pilar Ruim selecionado)
+	•	Calcular GAPs e riscos comportamentais
+	•	Definir priorização estratégica do Plano de Ação
+	•	Gerar interpretação causal completa
+
+3.10 Glossário da Camada 1 (Atualizado)
+Table
+Termo
+Definição
+FVA
+Fragilidade Vetorial Atual — dimensão que mede dificuldade percebida e bloqueios
+IM
+Intenção de Mudança — dimensão que mede prontidão psicológica para evoluir em cada vetor
+Vetor
+Mecanismo comportamental central (Comportamento, Constância, Gestão Pessoal, Controle Emocional)
+Score bruto
+Soma de pontos antes da normalização (máximo 9 por vetor por dimensão)
+Score normalizado
+Score convertido para escala 0–100
+Vetor Prioritário FVA
+Vetor com maior score FVA — pior pilar do usuário, selecionado para abrir a Autoavaliação Operacional (Camada 3)
+Pilar Ruim
+Sinônimo do Vetor Prioritário FVA — vetor de maior fragilidade que direciona a investigação operacional
+Vetor Prioritário IM
+Vetor com maior score IM — maior intenção de mudança do usuário
+Empate
+Situação em que dois ou mais vetores possuem o mesmo score
+Ciclo
+Período de 45 dias entre reavaliações completas
+Diagnóstico padrão
+Texto gerado automaticamente cruzando FVA e IM do vetor prioritário
+Flag binária
+Variável booleana (Sim/Não) que ativa protocolos específicos no Plano de Ação
+Bloco investigativo
+Conjunto de 4 perguntas Likert dentro de um vetor (X = origem, Y = manifestação, Z = sustentação emocional)
+SEÇÃO 4 — Tabelas de Mapeamento Vetorial: Perguntas e Alternativas
+As tabelas a seguir são a fonte única de verdade para o cálculo dos scores da Camada 1 — Triagem Vetorial Comportamental.
+Estrutura fixa:
+	•	6 perguntas (3 FVA + 3 IM)
+	•	12 alternativas por pergunta (3 por vetor × 4 vetores)
+	•	6 seleções obrigatórias por pergunta
+	•	72 alternativas totais / 36 seleções efetivas do usuário
+Dimensões:
+	•	Perguntas 1–3: Fragilidade Vetorial Atual (FVA) — dificuldade percebida e bloqueios
+	•	Perguntas 4–6: Intenção de Mudança (IM) — prontidão para evolução e construção pessoal
+Regras de vinculação:
+	•	Cada alternativa pertence a um único vetor e uma única dimensão
+	•	Nenhuma alternativa híbrida ou ambígua é permitida
+	•	A lógica vetorial é calculada exclusivamente pelas alternativas selecionadas — nunca pelas perguntas, blocos ou seções
+📌 Nota Técnica: A distribuição 3-3-3-3 (3 alternativas por vetor, 4 vetores, 12 alternativas) é obrigatória e invariável em todas as perguntas. Qualquer desvio invalida a normalização matemática dos scores (Seção 3.6).
+TABELAS OFICIAIS — SEÇÃO 4
+4.1 Etapa 1 — Pergunta 1 (FVA)
+"Hoje, qual destas áreas mais dificulta sua evolução pessoal?" (selecionar 6)
+Table
+#
+Alternativa
+Vetor
+1
+Rotina caótica
+Gestão Pessoal
+2
+Direção perdida
+Gestão Pessoal
+3
+Tempo escasso
+Gestão Pessoal
+4
+Paro e recomeço
+Constância
+5
+Ciclos de abandono
+Constância
+6
+Dificuldade de retomada
+Constância
+7
+Inércia de ação
+Comportamento
+8
+Procrastino
+Comportamento
+9
+Fico paralisado
+Comportamento
+10
+Ansiedade alta
+Controle Emocional
+11
+Estresse constante
+Controle Emocional
+12
+Emoções dominam
+Controle Emocional
+📌 Nota Técnica: 3 alternativas por vetor × 4 vetores = 12 alternativas. Seleção obrigatória de 6.
+4.2 Etapa 1 — Pergunta 2 (FVA)
+"Quando você tenta mudar sua rotina, o que mais faz você parar?" (selecionar 6)
+Table
+#
+Alternativa
+Vetor
+1
+Rotina desorganizada
+Gestão Pessoal
+2
+Perder prioridades
+Gestão Pessoal
+3
+Planejamento falho
+Gestão Pessoal
+4
+Motivação oscila
+Comportamento
+5
+Cansaço físico
+Comportamento
+6
+Trava no início
+Comportamento
+7
+Abandono rápido
+Constância
+8
+Falha e desisto
+Constância
+9
+Sustentação frágil
+Constância
+10
+Comer emocional
+Controle Emocional
+11
+Autocrítica forte
+Controle Emocional
+12
+Ansiedade bloqueia
+Controle Emocional
+📌 Nota Técnica: 3 alternativas por vetor × 4 vetores = 12 alternativas. Seleção obrigatória de 6.
+
+4.3 Etapa 1 — Pergunta 3 (FVA)
+"O que mais incomoda você quando pensa na sua saúde e no seu corpo?" (selecionar 6)
+Table
+#
+Alternativa
+Vetor
+1
+Sedentarismo
+Comportamento
+2
+Corpo inativo
+Comportamento
+3
+Energia baixa
+Comportamento
+4
+Rotina instável
+Constância
+5
+Sempre recomeçando
+Constância
+6
+Persistência curta
+Constância
+7
+Desorganização
+Gestão Pessoal
+8
+Estrutura ausente
+Gestão Pessoal
+9
+Caos diário
+Gestão Pessoal
+10
+Peso como escape
+Controle Emocional
+11
+Baixa autoestima
+Controle Emocional
+12
+Descontrole geral
+Controle Emocional
+📌 Nota Técnica: 3 alternativas por vetor × 4 vetores = 12 alternativas. Seleção obrigatória de 6.
+
+4.4 Etapa 2 — Pergunta 4 (IM)
+"Escolha as palavras que representam quem você quer construir nos próximos 45 dias" (selecionar 6)
+Table
+#
+Alternativa
+Vetor
+1
+Disciplinado
+Comportamento
+2
+Ativo
+Comportamento
+3
+Iniciador
+Comportamento
+4
+Constante
+Constância
+5
+Persistente
+Constância
+6
+Regular
+Constância
+7
+Organizado
+Gestão Pessoal
+8
+Estruturado
+Gestão Pessoal
+9
+Planejado
+Gestão Pessoal
+10
+Equilibrado
+Controle Emocional
+11
+Leve
+Controle Emocional
+12
+Centrado
+Controle Emocional
+📌 Nota Técnica: 3 alternativas por vetor × 4 vetores = 12 alternativas. Seleção obrigatória de 6.
+4.5 Etapa 2 — Pergunta 5 (IM)
+"O que você mais quer sentir daqui para frente?" (selecionar 6)
+Table
+#
+Alternativa
+Vetor
+1
+Disposição
+Comportamento
+2
+Motivação
+Comportamento
+3
+Energia
+Comportamento
+4
+Progresso real
+Constância
+5
+Continuidade
+Constância
+6
+Ritmo firme
+Constância
+7
+Controle da rotina
+Gestão Pessoal
+8
+Direção clara
+Gestão Pessoal
+9
+Previsibilidade
+Gestão Pessoal
+10
+Paz mental
+Controle Emocional
+11
+Serenidade
+Controle Emocional
+12
+Orgulho pessoal
+Controle Emocional
+📌 Nota Técnica: 3 alternativas por vetor × 4 vetores = 12 alternativas. Seleção obrigatória de 6.
+4.6 Etapa 2 — Pergunta 6 (IM)
+"Qual destas características mais falta para você hoje?" (selecionar 6)
+Table
+#
+Alternativa
+Vetor
+1
+Clareza
+Gestão Pessoal
+2
+Prioridade
+Gestão Pessoal
+3
+Foco
+Gestão Pessoal
+4
+Constância
+Constância
+5
+Persistência
+Constância
+6
+Regularidade
+Constância
+7
+Ação
+Comportamento
+8
+Iniciativa
+Comportamento
+9
+Execução
+Comportamento
+10
+Autocontrole
+Controle Emocional
+11
+Autoconfiança
+Controle Emocional
+12
+Equilíbrio
+Controle Emocional
+📌 Nota Técnica: 3 alternativas por vetor × 4 vetores = 12 alternativas. Seleção obrigatória de 6.
+RESUMO ESTRUTURAL — VERIFICAÇÃO FINAL
+Table
+Pergunta
+Dimensão
+Gestão Pessoal
+Constância
+Comportamento
+Controle Emocional
+Total
+1
+FVA
+3
+3
+3
+3
+12
+2
+FVA
+3
+3
+3
+3
+12
+3
+FVA
+3
+3
+3
+3
+12
+4
+IM
+3
+3
+3
+3
+12
+5
+IM
+3
+3
+3
+3
+12
+6
+IM
+3
+3
+3
+3
+12
+TOTAL
+
+18
+18
+18
+18
+72
+📌 Nota Técnica: A estrutura de 6 perguntas, 12 alternativas por pergunta e 3 alternativas por vetor é mantida em todas as dimensões. O total de 72 alternativas (6 perguntas × 12 alternativas) e 36 seleções do usuário (6 perguntas × 6 seleções obrigatórias) permanece inalterado. A lógica vetorial continua calculada exclusivamente pelas alternativas selecionadas — nunca pelas perguntas, blocos ou seções.
+
+
+
+
+
+
+SEÇÃO 5
+CAMADA 2: INVESTIGAÇÃO ADAPTATIVA
+5.1 Definição e Posicionamento
+A Camada 2 realiza o aprofundamento qualitativo e causal do Vetor Prioritário FVA (Pilar Ruim) identificado na Camada 1 (Triagem Vetorial). Seu objetivo é investigar origens, gatilhos contextuais, histórico de tentativas de solução e construção de hipóteses causais sobre o mecanismo de fragilidade prioritário — ou seja, o pilar que obteve o maior score FVA (maior fragilidade) na Triagem.
+Esta camada opera no espaço entre a identificação (Camada 1) e a medição (Camada 3). Ela não mede. Investiga. Não gera scores numéricos. Gera estrutura causal qualitativa que será quantificada pelo Motor Interpretativo (Camada 4) em conjunto com os dados operacionais da Camada 3.
+📌 Nota Técnica: A Camada 2 não mede. Ela investiga. Não gera scores numéricos. Gera estrutura causal qualitativa que será quantificada pelo Motor Interpretativo (Camada 4) em conjunto com os dados operacionais da Camada 3. A investigação é sempre direcionada ao Pilar Ruim selecionado na Camada 1.
+
+5.2 Estrutura da Investigação
+A Camada 2 é organizada em 3 blocos investigativos sequenciais, cada um com perguntas ramificadas (árvore de decisão). A ramificação é obrigatória: a resposta da pergunta anterior determina qual pergunta seguinte é exibida.
+Cada bloco possui:
+	•	1 pergunta-base (obrigatória)
+	•	3-4 alternativas de resposta
+	•	1 pergunta de ramificação condicional (nem todos os caminhos a ativam)
+	•	1 pergunta de fechamento (obrigatória para todos)
+Profundidade máxima: até 4 níveis de perguntas por bloco. A maioria dos blocos opera em 3 níveis (pergunta-base → ramificação → fechamento). O Bloco Z possui um nível adicional de aprofundamento condicional (Z2) para caminhos específicos que demandam identificação do Fator de Sustentação.
+📌 Nota Técnica: Todos os textos das perguntas e alternativas são adaptados ao Vetor Prioritário FVA específico do usuário. A estrutura da árvore permanece idêntica para os 4 vetores, mas a linguagem reflete o mecanismo de fragilidade identificado na Camada 1.
+
+Além da investigação principal do Vetor Prioritário FVA, a Camada 2 pode
+abrir **investigação complementar secundária** quando:
+
+-   Um segundo vetor apresentar classificação **≥ Fragilidade Moderada**
+    (FVAnorm ≥ 50,00); **OU**
+-   Houver diferença **inferior a 10 pontos** entre o primeiro e o
+    segundo vetor no ranking FVA
+
+**Regras da investigação complementar:**
+
+-   **NÃO altera** o Vetor Prioritário FVA
+-   **NÃO abre** Autoavaliação Operacional adicional (Camada 3)
+-   **NÃO gera** Mapa Causal próprio
+-   Serve **exclusivamente** para refinamento interpretativo da Camada 4
+    (Motor Interpretativo)
+-   Gera apenas **flags binárias** de refinamento (não estrutura causal
+    completa)
+
+> **ü“Œ Nota Técnica:** *A investigação secundária opera com profundidade
+> reduzida: apenas Bloco Y (Gatilhos Contextuais) e Bloco Z (Histórico
+> de Tentativas), sem Bloco X (Origem). Seu output é uma flag de
+> contexto adicional para o Motor Interpretativo, não um segundo Mapa
+> Causal.*
+
+5.3 Bloco X — Origem do Padrão
+Investiga como a dificuldade no Vetor Prioritário FVA (Pilar Ruim) se instalou historicamente.
+Pergunta-base (X1):
+"Quando você pensa na sua dificuldade com [VETOR PRIORITÁRIO FVA], ela parece ter começado em algum momento específico da sua vida, ou foi algo que foi se construindo aos poucos?"
+Table
+Alternativa
+Ramificação
+[ ] Começou em um momento específico
+→ X1a
+[ ] Foi se construindo aos poucos
+→ X1b
+[ ] Sempre foi assim
+→ X1c
+Pergunta de ramificação X1a:
+"Esse momento foi relacionado a mudança de rotina, estresse intenso, ou outra circunstância?"
+Table
+Alternativa
+[ ] Mudança de rotina
+[ ] Estresse intenso
+[ ] Outra circunstância
+Pergunta de ramificação X1b:
+"Você consegue identificar quando começou a notar que isso era um padrão recorrente?"
+Table
+Alternativa
+[ ] Nos últimos 6 meses
+[ ] Nos últimos 2-3 anos
+[ ] Há mais tempo que consigo lembrar
+Pergunta de ramificação X1c:
+"Desde quando você se lembra, essa dificuldade já existia em alguma forma?"
+Table
+Alternativa
+[ ] Desde a infância
+[ ] Desde a adolescência
+[ ] Desde a vida adulta
+Pergunta de fechamento (X2):
+"Considerando o que você descreveu, você diria que esse padrão começou de forma súbita, gradual, ou que sempre fez parte de você?"
+Table
+Alternativa
+[ ] De forma súbita
+[ ] De forma gradual
+[ ] Sempre fez parte de mim
+Output do Bloco X: Classificação de origem (súbita / gradual / congênita) + gatilho identificado (se houver)
+
+5.4 Bloco Y — Gatilhos Contextuais
+Investiga o que ativa o padrão do Vetor Prioritário FVA (Pilar Ruim) no dia a dia.
+Pergunta-base (Y1):
+"Nos últimos 45 dias, em que tipo de situação você notou que sua dificuldade com [VETOR PRIORITÁRIO FVA] ficou mais evidente?"
+Table
+Alternativa
+Ramificação
+[ ] Quando minha rotina muda
+→ Y1a
+[ ] Quando estou emocionalmente sobrecarregado
+→ Y1b
+[ ] Quando tento fazer algo novo ou diferente
+→ Y1c
+[ ] Não consigo identificar um padrão
+→ Y1d
+Pergunta de ramificação Y1a:
+"Qual tipo de mudança mais afeta?"
+Table
+Alternativa
+[ ] Mudança de horário
+[ ] Mudança de local
+[ ] Mudança de compromissos
+[ ] Mudança na saúde
+Pergunta de ramificação Y1b:
+"Essa sobrecarga vem de trabalho, relacionamentos, ou de você mesmo?"
+Table
+Alternativa
+[ ] Trabalho
+[ ] Relacionamentos
+[ ] De mim mesmo
+Pergunta de ramificação Y1c:
+"O que te faz desistir: falta de resultado, comparação, ou cansaço?"
+Table
+Alternativa
+[ ] Falta de resultado
+[ ] Comparação com outros
+[ ] Cansaço
+Pergunta de ramificação Y1d:
+"A dificuldade parece aparecer mesmo sem motivo aparente?"
+Table
+Alternativa
+[ ] Sim, aparece de forma imprevisível
+[ ] Às vezes sim, às vezes há motivo
+Pergunta de fechamento (Y2):
+"Se você pudesse eliminar uma dessas situações, qual faria mais diferença para sua [VETOR PRIORITÁRIO FVA]?"
+Table
+Alternativa
+[ ] Mudanças de rotina
+[ ] Sobrecarga emocional
+[ ] Tentar coisas novas
+[ ] Não sei identificar
+Output do Bloco Y: Gatilho principal identificado + contexto de vulnerabilidade
+
+5.5 Bloco Z — Histórico de Tentativas
+Investiga o que já foi tentado para melhorar o Vetor Prioritário FVA (Pilar Ruim) e por que não funcionou. Além das respostas selecionadas, este bloco gera dois outputs inferidos automaticamente pelo sistema: Fator de Sustentação e Flag de tentativa prévia falha.  Pergunta-base (Z1):
+"Você já tentou alguma estratégia específica para melhorar sua [VETOR PRIORITÁRIO FVA]?"
+Table
+Alternativa
+Ramificação
+Inferência automática
+[ ] Sim, várias vezes
+→ Z1a
+Flag tentativa_prévia_falha = true
+[ ] Tentei uma ou duas vezes
+→ Z1b
+Flag tentativa_prévia_falha = true
+[ ] Nunca tentei de forma estruturada
+→ Z1c
+Flag tentativa_prévia_falha = false
+[ ] Tentei, mas desisti antes de ver resultado
+→ Z1d
+Flag tentativa_prévia_falha = true
+Pergunta de ramificação Z1a:
+"O que geralmente faz com que a estratégia pare de funcionar?"
+Table
+Alternativa
+[ ] Perdi o ritmo e não retomei
+[ ] Não vi resultado rápido
+[ ] Aconteceu algo que interrompeu
+[ ] Outro
+Pergunta de ramificação Z1b:
+"O que aconteceu na primeira vez que tentou?"
+Table
+Alternativa
+[ ] Funcionou bem no início
+[ ] Não funcionou desde o começo
+[ ] Funcionou, mas parei sem motivo claro
+Pergunta de ramificação Z1c:
+"O que te impediu de começar?"
+Table
+Alternativa
+[ ] Medo de não conseguir
+[ ] Falta de tempo
+[ ] Não sabia por onde começar
+Pergunta de ramificação Z1d:
+"Quanto tempo passou até desistir?"
+Table
+Alternativa
+[ ] Menos de 1 semana
+[ ] 1-2 semanas
+[ ] 1 mês
+[ ] Mais de 1 mês
+Pergunta de aprofundamento (Z2) — ativada apenas para quem respondeu Z1a ou Z1d:
+"Das estratégias que você tentou, qual durou mais tempo?"
+Table
+Alternativa
+Fator de Sustentação inferido
+[ ] A que tinha acompanhamento de alguém
+Companhia social
+[ ] A que tinha horário fixo
+Horário fixo
+[ ] A que eu realmente gostava de fazer
+Prazer na atividade
+[ ] Nenhuma durou mais que as outras
+Nenhum fator identificado
+📌 Nota Técnica: A pergunta de aprofundamento Z2 é ativada apenas para os caminhos Z1a ("Sim, várias vezes") e Z1d ("Tentei, mas desisti antes de ver resultado") porque são os únicos caminhos onde o usuário demonstra histórico de tentativa real — seja múltipla ou precoce. Nessas situações, identificar o que funcionou melhor (Fator de Sustentação) é crítico para o protocolo da Camada 5. Os caminhos Z1b ("Tentei uma ou duas vezes") e Z1c ("Nunca tentei de forma estruturada") não ativam Z2 porque não há histórico suficiente para inferir um fator de sustentação confiável.  Pergunta de fechamento (Z3):
+"Se você pudesse tentar novamente com uma condição diferente, qual seria?"
+Table
+Alternativa
+[ ] Ter alguém me acompanhando
+[ ] Ter horário fixo e inegociável
+[ ] Começar com algo que goste mais
+[ ] Ter um plano mais simples
+Outputs do Bloco Z
+Table
+Output
+Origem
+Tipo
+Padrão de abandono
+Z1 + Z1a/Z1b/Z1c/Z1d
+Categórico
+Fator de Sustentação
+Z2 (inferido da alternativa selecionada)
+Texto
+Flag tentativa_prévia_falha
+Z1 (inferido da alternativa selecionada)
+Booleano
+
+5.6 Regras de Ramificação
+5.6.1 Estrutura da Árvore de Decisão
+Cada bloco segue o padrão: pergunta-base → ramificação condicional → pergunta de fechamento. A pergunta de aprofundamento aparece apenas nos caminhos Z1a e Z1d do Bloco Z.
+O sistema nunca exibe mais de uma pergunta por tela. As transições entre perguntas são suaves, sem indicar ao usuário que está em uma árvore de decisão.
+5.6.2 Fluxo Completo por Vetor
+O Vetor Prioritário FVA (Pilar Ruim) identificado na Camada 1 determina qual conjunto de perguntas é carregado. A estrutura da árvore permanece idêntica para os 4 vetores, mas o texto das perguntas e alternativas é adaptado ao vetor específico.
+Exemplo de adaptação textual:
+Table
+Vetor
+Pergunta-base X1
+Comportamento
+"Quando você pensa na sua dificuldade de começar a agir..."
+Constância
+"Quando você pensa na sua dificuldade de manter constância..."
+Gestão Pessoal
+"Quando você pensa na sua dificuldade de organizar sua rotina..."
+Controle Emocional
+"Quando você pensa na sua dificuldade de regular emocionalmente..."
+📌 Nota Técnica: A adaptação textual é automática baseada no Vetor Prioritário FVA selecionado na Camada 1. Não há perguntas genéricas — toda a investigação fala diretamente sobre o mecanismo de fragilidade identificado.
+
+
+5.7 — TABELA DE OUTPUTS CORRIGIDA A Camada 2 entrega para o Motor Interpretativo (Camada 4):
+
+Table
+Output
+Tipo
+Descrição
+Fonte
+Mapa Causal
+Texto estruturado
+Origem → Gatilho → Padrão de abandono
+Template 5.7.1
+Histórico de Tentativas
+Texto estruturado
+Síntese do Bloco Z para registro longitudinal
+Bloco Z — Z1 + ramificações
+Classificação de Origem
+Categórico
+súbita / gradual / congênita
+Bloco X — X2
+Gatilho Principal / Gatilhos Dominantes
+Categórico
+rotina / emocional / novidade / não_identificado
+Bloco Y — Y2
+Contexto de Vulnerabilidade / Contexto Causal Predominante
+Categórico
+trabalho / relacionamento / interno / múltiplo
+Bloco Y — Y1a/Y1b/Y1c/Y1d
+Fatores de Interrupção
+Flags
+Eventos específicos que quebraram tentativas anteriores
+Bloco Z — Z1a/Z1d
+Padrão de Abandono
+Categórico
+precoce / após_resultado / após_interrupção / nunca_tentou
+Bloco Z — Z1 + inferência
+Perfil de Resistência
+Classificação
+Nível de dificuldade subjetiva reportada na retomada
+Bloco Z — Z3 + cruzamento X1
+Fator de Sustentação
+Texto
+O que funcionou melhor (se houver)
+Bloco Z — Z2 (se ativada)
+Grau de Prontidão Subjetiva
+Escala 0-100
+IMnorm do Vetor Prioritário FVA replicado como contexto
+Camada 1 — importado
+Intensidade de Autossabotagem Percebida
+Escala 0-100
+Inverso do Fator de Sustentação: quão forte foi o padrão de abandono
+Bloco Z — inferido de Z1 + Z3
+tentativa_prévia_falha
+Booleano
+true quando histórico de estratégias abandonadas
+Bloco Z — Z1
+gatilho_identificado
+Booleano
+true quando Gatilho_Principal ≠ "não_identificado"
+Bloco Y — Y2
+origem_traumática
+Booleano
+true quando Classificação_Origem = "súbita" E (Contexto_Vulnerabilidade = "relacionamento" OU "trabalho") E descrição do evento em X1a/X1b/X1c contiver indicadores de intensidade
+Bloco X + Y + regras 5.7
+
+NOTA TÉCNICA (adicionar após a tabela):
+📌 Nota Técnica: Os outputs em negrito (Histórico de Tentativas, Fatores de Interrupção, Perfil de Resistência, Grau de Prontidão Subjetiva, Intensidade de Autossabotagem Percebida, Contexto Causal Predominante) correspondem à nomenclatura oficial da Padronização (Seção 3). No Motor Interpretativo (Camada 4), estes outputs são mapeados para as variáveis internas de refinamento adaptativo.
+
+
+
+5.7.1 Template de Geração do Mapa Causal
+O Mapa Causal é um texto estruturado gerado automaticamente pelo Motor Interpretativo (Camada 4) a partir das seleções do usuário na Camada 2. Não há campo de texto livre em nenhuma etapa da investigação.
+O sistema utiliza o template fixo abaixo, preenchendo as variáveis com os outputs categóricos da Camada 2:
+plain
+Copy
+"O padrão de [VETOR PRIORITÁRIO FVA] do usuário tem origem [ORIGEM]
+[DETALHE_ORIGEM]. O gatilho principal é [GATILHO],
+contextualizado em [CONTEXTO]. O histórico de tentativas
+revela padrão de abandono [PADRÃO_ABANDONO].
+[FATOR_SUSTENTAÇÃO se houver]."
+Variáveis do Template
+Table
+Variável
+Fonte na Camada 2
+Valor esperado
+[VETOR PRIORITÁRIO FVA]
+Camada 1 (Triagem Vetorial)
+Comportamento / Constância / Gestão Pessoal / Controle Emocional
+[ORIGEM]
+Bloco X — X2
+súbita / gradual / congênita
+[DETALHE_ORIGEM]
+Bloco X — X1a/X1b/X1c
+Texto da alternativa selecionada (ex: "após mudança de rotina", "nos últimos 6 meses", "desde a infância")
+[GATILHO]
+Bloco Y — Y2
+rotina / emocional / novidade / não_identificado
+[CONTEXTO]
+Bloco Y — Y1a/Y1b/Y1c/Y1d
+Texto da alternativa selecionada (ex: "mudança de horário", "trabalho", "falta de resultado")
+[PADRÃO_ABANDONO]
+Bloco Z — Z3 (ou inferido de Z1)
+precoce / após_resultado / após_interrupção / nunca_tentou
+[FATOR_SUSTENTAÇÃO]
+Bloco Z — Z2 (se ativada)
+Texto da alternativa selecionada (ex: "horário fixo", "acompanhamento de alguém")
+Regras de Montagem
+	•	Se origem = "súbita": [DETALHE_ORIGEM] inclui "após" + descrição do evento
+	•	Se origem = "gradual": [DETALHE_ORIGEM] inclui período de tempo
+	•	Se origem = "congênita": [DETALHE_ORIGEM] inclui "desde" + fase da vida
+	•	Se gatilho = "não_identificado": frase do gatilho é substituída por "O gatilho principal não foi identificado pelo usuário"
+	•	Se Z2 não foi ativada (usuário respondeu Z1b ou Z1c): última frase é omitida
+	•	Se padrão de abandono = "nunca_tentou": frase do histórico é substituída por "O usuário não possui histórico de tentativas estruturadas"
+Exemplo Completo
+Seleções do usuário (Vetor Prioritário FVA = Constância):
+	•	X1: "Começou em um momento específico" → X1a: "Mudança de rotina" → X2: "De forma súbita"
+	•	Y1: "Quando minha rotina muda" → Y1a: "Mudança de horário" → Y2: "Mudanças de rotina"
+	•	Z1: "Sim, várias vezes" → Z1a: "Perdi o ritmo e não retomei" → Z2: "A que tinha horário fixo" → Z3: "Ter horário fixo e inegociável"
+Mapa Causal gerado:
+"O padrão de Constância do usuário tem origem súbita após mudança de rotina. O gatilho principal é mudança de rotina, contextualizado em mudança de horário. O histórico de tentativas revela padrão de abandono após interrupção. O fator de sustentação identificado foi horário fixo."
+Exemplo sem Fator de Sustentação
+Seleções do usuário (Vetor Prioritário FVA = Gestão Pessoal):
+	•	X1: "Foi se construindo aos poucos" → X1b: "Nos últimos 2-3 anos" → X2: "De forma gradual"
+	•	Y1: "Quando estou emocionalmente sobrecarregado" → Y1b: "Trabalho" → Y2: "Sobrecarga emocional"
+	•	Z1: "Nunca tentei de forma estruturada" → Z1c: "Não sabia por onde começar" → Z3: "Ter um plano mais simples"
+Mapa Causal gerado:
+"O padrão de Gestão Pessoal do usuário tem origem gradual nos últimos 2-3 anos. O gatilho principal é sobrecarga emocional, contextualizado em trabalho. O usuário não possui histórico de tentativas estruturadas."
+
+5.8 Integração com o Motor Interpretativo (Camada 4)
+5.8.1 Inputs Adicionais da Camada 2
+A Camada 4 recebe da Camada 2:
+	•	Mapa causal (texto para inserção na Narrativa Causal — Bloco A)
+	•	Classificação de origem (ajuste de intensidade inicial)
+	•	Padrão de abandono (seleção de protocolo base)
+	•	Fator de sustentação (elemento a ser replicado no plano)
+	•	Flags binárias (ativação de protocolos de segurança)
+📌 Nota Técnica: Todos os inputs da Camada 2 referem-se exclusivamente ao Vetor Prioritário FVA (Pilar Ruim). Não há investigação paralela de outros vetores neste ciclo.
+5.8.2 Impacto na Narrativa Causal
+A Narrativa Causal (Seção 7.6.1) incorpora o Mapa Causal da Camada 2 no Bloco A:
+"Seu mecanismo central de dificuldade está em [VETOR PRIORITÁRIO FVA] (SVC [VALOR]). Esse padrão parece ter se instalado de forma [origem] [gatilho], e se mantém porque [padrão de abandono] — você já tentou várias estratégias, mas [descrição do abandono]. O que funcionou melhor foi quando [fator de sustentação]."
+5.8.3 Impacto na Seleção de Protocolo (Camada 5)
+Table
+Padrão de Abandono
+Protocolo Ajustado na Camada 5
+precoce
+Micro-objetivos de 5 min, celebração imediata
+após_resultado
+Foco em processo, não em resultado
+após_interrupção
+Protocolo de retomada em 24h, regra do "não zero"
+nunca_tentou
+Linguagem de segurança máxima, nenhuma meta quantitativa nas 2 primeiras semanas
+
+5.9 Diretrizes de Implementação
+5.9.1 Interface
+	•	Cada tela exibe apenas uma pergunta
+	•	O usuário seleciona entre alternativas textuais pré-definidas em todas as perguntas
+	•	Nenhum campo de texto livre em nenhuma etapa da Camada 2
+	•	Barra de progresso mostra "Investigação: Bloco X de 3"
+	•	Tom de reflexão guiada, sem pressa
+5.9.2 Persistência
+	•	Cada seleção salva individualmente no perfil do usuário
+	•	Se o usuário abandonar, retoma no mesmo bloco (não reinicia do zero)
+	•	Tempo máximo de inatividade: 30 minutos antes de oferecer "Continuar depois"
+5.9.3 Duração Esperada
+	•	5-7 minutos (vs. 8-10 da Camada 1, 6-8 da Camada 3)
+	•	Se ultrapassar 10 minutos, o sistema oferece "Continuar depois" e salva progresso
+5.9.4 Reavaliação
+	•	A Camada 2 completa pode ser reavaliada a cada novo ciclo de 45 dias
+	•	Na reavaliação, comparação longitudinal: o mapa causal mudou? O gatilho principal permanece o mesmo?
+	•	Se o Vetor Prioritário FVA mudou entre ciclos: nova investigação completa sobre o novo pilar ruim, preservando histórico do anterior
+
+5.10 Glossário da Camada 2
+Table
+Termo
+Definição
+Vetor Prioritário FVA (Pilar Ruim)
+Vetor com maior FVAnorm, selecionado na Camada 1, objeto exclusivo da investigação na Camada 2
+Mapa Causal
+Estrutura narrativa que liga origem → gatilho → padrão de abandono
+Ramificação
+Caminho de perguntas condicionado pela resposta anterior
+Pergunta-base
+Primeira pergunta de cada bloco, obrigatória para todos
+Pergunta de ramificação
+Segunda pergunta condicional, ativada por respostas específicas da pergunta-base
+Pergunta de aprofundamento
+Terceira pergunta condicional, ativada apenas em caminhos específicos (Z1a e Z1d)
+Pergunta de fechamento
+Última pergunta de cada bloco, obrigatória para todos
+Fator de Sustentação
+Elemento que funcionou em tentativas anteriores, inferido automaticamente pela alternativa selecionada em Z2
+Flag de tentativa prévia falha
+Booleano que indica histórico de estratégias abandonadas, inferido automaticamente pela alternativa selecionada em Z1
+
+
+
+
+
+
+
+
+
+
+
+
+SEÇÃO 6
+CAMADA 3: Autoavaliação Operacional
+A Autoavaliação Operacional possui função exclusivamente operacional e matemática. Seu objetivo é medir comportamento observável, sustentação, repetição, estabilidade, execução, permanência e controle emocional operacional. 
+Essa camada é aberta após a definição do pilar mais fraco da pessoa, ou seja seu FVA.  Exemplo: se o pilar mais fraco foi gestão pessoal, irá abrir apenas as perguntas vinculadas a esse pilar, de forma que a pessoa possa aprofundar seu entendimento de onde estão acontecendo as falhas e melhorando a clareza.
+6.1 Escala Likert operacional
+A escala transforma comportamento subjetivo em matemática, intensidade operacional, score, comparação estatística e cálculo de GAP:
+
+Valor
+Âncora verbal
+1
+Nunca acontece comigo
+2
+Acontece raramente
+3
+Acontece às vezes
+4
+Acontece com frequência
+5
+Acontece quase sempre
+6
+Isso me representa totalmente
+
+Instrução de resposta: responder com base no comportamento habitual dos últimos 45 dias, salvo indicação contrária no enunciado.
+
+A Autoavaliação Operacional é ativada após a identificação do vetor dominante na Triagem Vetorial (Camada 1 — FVA). O sistema abre exclusivamente as 12 perguntas correspondentes ao pilar mais fraco do usuário, organizadas em 3 blocos investigativos (X, Y, Z) com 4 perguntas cada. Os blocos são visualizados no Dashboard com marcação cromática: verde (bom), amarelo (atenção) e vermelho (ponto crítico de melhoria).
+
+PILAR 1 — Comportamento
+
+Bloco X — Ativação da Ação
+Investiga a origem do problema: como a dificuldade de ativar ação se instaurou.
+Nº
+Pergunta
+Âncoras
+Q01
+Tenho dificuldade de começar tarefas importantes para mim.
+1 = nunca acontece · 6 = me representa totalmente
+Q02
+Mesmo querendo mudar, acabo não agindo.
+1 = nunca acontece · 6 = me representa totalmente
+Q03
+Frequentemente adio ações importantes para mim.
+1 = nunca acontece · 6 = me representa totalmente
+Q04
+Tenho dificuldade de transformar decisão em ação.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Y — Movimento e Iniciativa
+Investiga a manifestação prática: como a inércia aparece no comportamento observável.
+Nº
+Pergunta
+Âncoras
+Q05
+Costumo deixar decisões importantes para depois.
+1 = nunca acontece · 6 = me representa totalmente
+Q06
+Tenho dificuldade de agir rapidamente no que preciso resolver.
+1 = nunca acontece · 6 = me representa totalmente
+Q07
+Muitas vezes espero “o momento certo” para começar.
+1 = nunca acontece · 6 = me representa totalmente
+Q08
+Acabo travando mesmo sabendo o que preciso fazer.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Z — Desgaste da Inércia
+Investiga a sustentação emocional e as consequências: o que mantém e agrava o padrão.
+Nº
+Pergunta
+Âncoras
+Q09
+Me sinto frustrado por não conseguir agir como gostaria.
+1 = nunca acontece · 6 = me representa totalmente
+Q10
+Quanto mais adio, mais difícil parece começar.
+1 = nunca acontece · 6 = me representa totalmente
+Q11
+Sinto que a inércia se tornou um padrão automático para mim.
+1 = nunca acontece · 6 = me representa totalmente
+Q12
+Sinto que estou sempre tentando sair do mesmo lugar.
+1 = nunca acontece · 6 = me representa totalmente
+
+Perguntas binárias de atenção — Vetor Comportamento
+Nº
+Pergunta de atenção
+Ativa
+Efeito
+B01
+Você já buscou ajuda profissional (psicólogo, coach, mentor) para superar bloqueios de ação e procrastinação?
+Não
+Atenção — Suporte profissional especializado aumenta significativamente a taxa de ativação e superação da inércia.
+B02
+A dificuldade de agir impacta diretamente outras áreas da sua vida (trabalho, relacionamentos, finanças)?
+Sim
+Flag amarela — Padrão de inação generalizado. O plano deve incluir estratégias de ativação comportamental progressiva.
+📌 NOTA TÉCNICA   O Bloco Z do vetor Comportamento investiga o ciclo de retroalimentação da inércia: a frustração com a inação reduz a autoeficácia percebida, o que aumenta a resistência ao início — perpetuando o padrão. Este vetor NÃO mede planejamento, organização ou administração do tempo.
+
+PILAR 2 — Constância
+
+Bloco X — Interrupção e Retomada
+Investiga a origem do problema: como a dificuldade de manter continuidade se instaurou.
+Nº
+Pergunta
+Âncoras
+Q01
+Tenho dificuldade de continuar quando saio da rotina.
+1 = nunca acontece · 6 = me representa totalmente
+Q02
+Pequenas falhas me fazem interromper completamente.
+1 = nunca acontece · 6 = me representa totalmente
+Q03
+Quando perco o ritmo, demoro para retomar.
+1 = nunca acontece · 6 = me representa totalmente
+Q04
+Tenho dificuldade de voltar ao foco depois de interrupções.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Y — Continuidade Prática
+Investiga a manifestação prática: como a descontinuidade aparece no comportamento observável.
+Nº
+Pergunta
+Âncoras
+Q05
+Tenho dificuldade de manter hábitos por muitos dias seguidos.
+1 = nunca acontece · 6 = me representa totalmente
+Q06
+Minha rotina perde continuidade facilmente.
+1 = nunca acontece · 6 = me representa totalmente
+Q07
+Frequentemente interrompo processos antes de gerar resultado.
+1 = nunca acontece · 6 = me representa totalmente
+Q08
+Tenho dificuldade de manter repetição por longos períodos.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Z — Desgaste pela Repetição
+Investiga a sustentação emocional: o que mantém e agrava o ciclo de recomeço.
+Nº
+Pergunta
+Âncoras
+Q09
+Me sinto frustrado por não conseguir manter constância.
+1 = nunca acontece · 6 = me representa totalmente
+Q10
+Quanto mais interrompo, mais difícil parece continuar.
+1 = nunca acontece · 6 = me representa totalmente
+Q11
+Já perdi confiança na minha capacidade de manter rotina.
+1 = nunca acontece · 6 = me representa totalmente
+Q12
+Sinto que vivo preso em ciclos de recomeço.
+1 = nunca acontece · 6 = me representa totalmente
+
+Perguntas binárias de atenção — Vetor Constância
+Nº
+Pergunta de atenção
+Ativa
+Efeito
+B01
+Você já seguiu algum programa estruturado (treino, alimentação, hábito) por mais de 45 dias consecutivos?
+Não
+Atenção — Histórico sem continuidade indica necessidade de estratégia específica de adesão desde a primeira semana.
+B02
+Você costuma abandonar rotinas em períodos de estresse ou mudança de circunstâncias externas?
+Sim
+Flag amarela — Plano deve incluir protocolo de contingência e estratégias de retomada para períodos atípicos.
+📌 NOTA TÉCNICA   O padrão investigado no Bloco Z do vetor Constância é o ciclo de recomeço perpetuado: cada interrupção reforça a crença de incapacidade de manutenção, reduzindo a tolerância a falhas. A Camada Adaptativa deve trabalhar com protocolos de retomada e redefinição do que constitui uma “falha real”.
+
+PILAR 3 — Gestão Pessoal
+
+Bloco X — Organização e Direção
+Investiga a origem do problema: como a dificuldade de organizar a rotina se instaurou.
+Nº
+Pergunta
+Âncoras
+Q01
+Tenho dificuldade de organizar meu dia.
+1 = nunca acontece · 6 = me representa totalmente
+Q02
+Minha rotina funciona sem planejamento claro.
+1 = nunca acontece · 6 = me representa totalmente
+Q03
+Frequentemente me perco nas minhas prioridades.
+1 = nunca acontece · 6 = me representa totalmente
+Q04
+Tenho dificuldade de administrar meu tempo.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Y — Condução da Rotina
+Investiga a manifestação prática: como a desorganização aparece no comportamento observável.
+Nº
+Pergunta
+Âncoras
+Q05
+Minha rotina muda demais ao longo da semana.
+1 = nunca acontece · 6 = me representa totalmente
+Q06
+Tenho dificuldade de manter meu planejamento.
+1 = nunca acontece · 6 = me representa totalmente
+Q07
+Frequentemente deixo tarefas importantes incompletas.
+1 = nunca acontece · 6 = me representa totalmente
+Q08
+Sinto que meu dia funciona de forma desorganizada.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Z — Impacto da Desorganização
+Investiga a sustentação emocional: o que mantém e agrava o padrão de desorganização.
+Nº
+Pergunta
+Âncoras
+Q09
+Me sinto sobrecarregado pela forma como administro minha rotina.
+1 = nunca acontece · 6 = me representa totalmente
+Q10
+Sinto que minha vida funciona sem direção clara.
+1 = nunca acontece · 6 = me representa totalmente
+Q11
+A desorganização da minha rotina me desgasta mentalmente.
+1 = nunca acontece · 6 = me representa totalmente
+Q12
+A desorganização da minha rotina me afasta dos meus objetivos de vida.
+1 = nunca acontece · 6 = me representa totalmente
+
+Perguntas binárias de atenção — Vetor Gestão Pessoal
+Nº
+Pergunta de atenção
+Ativa
+Efeito
+B01
+Você utiliza alguma ferramenta ou sistema regular de planejamento (agenda, aplicativo, lista de tarefas)?
+Não
+Atenção — A ausência de ferramentas de organização é um preditor de dificuldade de gestão. O plano incluirá estratégias práticas de estruturação da rotina.
+B02
+A desorganização da sua rotina já gerou consequências relevantes em sua vida profissional ou pessoal?
+Sim
+Flag amarela — Impacto sistêmico identificado. O plano deve priorizar estrutura mínima viável e protocolos de organização progressiva.
+📌 NOTA TÉCNICA   O vetor Gestão Pessoal avalia a dimensão executiva da rotina: planejamento, priorização e administração do tempo. Este vetor NÃO mede ativação inicial, impulso de ação ou procrastinação primária — elementos do vetor Comportamento. Déficits neste vetor frequentemente coexistem com scores baixos em Constância, pois a ausência de estrutura é um antecedente direto do abandono de hábitos.
+
+PILAR 4 — Controle Emocional
+
+Bloco X — Interferência Emocional
+Investiga a origem do problema: como o impacto emocional sobre o comportamento se instaurou.
+Nº
+Pergunta
+Âncoras
+Q01
+Meu emocional interfere diretamente na minha rotina.
+1 = nunca acontece · 6 = me representa totalmente
+Q02
+Ansiedade ou estresse atrapalham minhas decisões.
+1 = nunca acontece · 6 = me representa totalmente
+Q03
+Quando estou emocionalmente mal, abandono meus hábitos.
+1 = nunca acontece · 6 = me representa totalmente
+Q04
+Meu estado emocional muda minha capacidade de agir.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Y — Impacto na Rotina
+Investiga a manifestação prática: como a interferência emocional aparece no comportamento observável.
+Nº
+Pergunta
+Âncoras
+Q05
+Compenso emoções negativas comendo ou com comportamentos impulsivos.
+1 = nunca acontece · 6 = me representa totalmente
+Q06
+Oscilações emocionais afetam minha constância.
+1 = nunca acontece · 6 = me representa totalmente
+Q07
+Tenho dificuldade de manter equilíbrio emocional ao longo da semana.
+1 = nunca acontece · 6 = me representa totalmente
+Q08
+Meu emocional interfere na qualidade das minhas escolhas.
+1 = nunca acontece · 6 = me representa totalmente
+
+Bloco Z — Desgaste Emocional
+Investiga a sustentação emocional: o que mantém e agrava o padrão de interferência emocional.
+Nº
+Pergunta
+Âncoras
+Q09
+Me sinto emocionalmente cansado da forma como vivo hoje.
+1 = nunca acontece · 6 = me representa totalmente
+Q10
+Tenho dificuldade de recuperar equilíbrio depois de períodos difíceis.
+1 = nunca acontece · 6 = me representa totalmente
+Q11
+Sinto que minhas emoções controlam mais minha rotina do que eu gostaria.
+1 = nunca acontece · 6 = me representa totalmente
+Q12
+Meu desgaste emocional afeta minha confiança em mim mesmo.
+1 = nunca acontece · 6 = me representa totalmente
+
+Perguntas binárias de atenção — Vetor Controle Emocional
+Nº
+Pergunta de atenção
+Ativa
+Efeito
+B01
+Você percebe que seus estados emocionais interferem diretamente na sua capacidade de manter hábitos saudáveis com frequência?
+Sim
+Flag amarela — Interferência emocional operacional identificada. O plano incluirá estratégias de regulação emocional integradas às ações comportamentais.
+B02
+Você percebe que estados emocionais negativos são o principal gatilho para o abandono dos seus hábitos?
+Sim
+Flag amarela — Padrão de regulação emocional comprometida identificado. O plano incluirá estratégias específicas de manejo emocional.
+📌 NOTA TÉCNICA   O vetor Controle Emocional não realiza triagem psicológica clínica. Avalia exclusivamente o grau em que estados emocionais funcionam como variáveis moduladoras do comportamento e da rotina. Scores dominantes indicam que intervenções comportamentais puras terão eficácia limitada sem estratégias de regulação emocional integradas ao plano.
+
+📌 Nota Técnica: O vetor Controle Emocional não avalia saúde mental nem realiza triagem psicológica. Avalia exclusivamente o grau em que estados emocionais funcionam como variáveis moduladoras do comportamento e da rotina. Este vetor NÃO mede organização, planejamento ou continuidade operacional. Scores dominantes indicam que intervenções comportamentais puras terão eficácia limitada sem estratégias de regulação emocional integradas ao plano.
+
+
+
+6.2 Seleção do Pilar Ruim (Vetor Prioritário FVA)
+A Autoavaliação Operacional é ativada exclusivamente após a conclusão da Camada 2 — Investigação Adaptativa, que por sua vez é aberta pelo Vetor Prioritário FVA identificado na Camada 1.. O sistema utiliza o Vetor Prioritário FVA (pilar com maior Fragilidade Vetorial Atual) como critério de abertura.
+6.2.1 Regra de Seleção
+O sistema identifica o pilar ruim através do seguinte fluxo:
+plain
+Copy
+PASSO 1: Calcular FVAnorm para os 4 vetores
+         → Comportamento, Constância, Gestão Pessoal, Controle Emocional
+
+PASSO 2: Identificar o vetor com MAIOR FVAnorm (maior fragilidade)
+         → Este é o Vetor Prioritário FVA
+
+PASSO 3: Abrir exclusivamente as 12 perguntas correspondentes a esse vetor
+📌 Nota Técnica: O pilar selecionado é sempre o de MAIOR fragilidade (maior FVAnorm), ou seja, o "pior pilar" do usuário naquele momento. Isso garante que a investigação operacional seja direcionada exatamente onde o mecanismo de bloqueio é mais intenso.
+6.2.2 Exemplo Prático de Seleção
+Table
+Vetor
+FVAnorm
+Classificação
+Constância
+75,00
+Fragilidade Dominante ← SELECIONADO
+Controle Emocional
+66,67
+Fragilidade Moderada
+Comportamento
+33,33
+Fragilidade Leve
+Gestão Pessoal
+25,00
+Fragilidade Mínima
+Resultado: O sistema abre apenas as 12 perguntas do PILAR 2 — Constância, organizadas nos blocos X, Y e Z.
+6.2.3 Regra de Empate (se necessário)
+Se dois ou mais vetores apresentarem o mesmo FVAnorm:
+Table
+Situação
+Ação do Sistema
+Empate entre 2 vetores
+Modal: "Você indicou dificuldades equivalentes em [VETOR A] e [VETOR B]. Qual interfere mais na sua rotina hoje?"
+Empate entre 3 ou 4 vetores
+Modal com todos os vetores empatados, ordenados alfabeticamente. Texto: "Você indicou dificuldades equilibradas entre múltiplas áreas. Escolha a que mais te preocupa neste momento:"
+O vetor escolhido recebe +0,01 ponto no score normalizado (apenas para fins de ordenação, sem alterar classificação textual). Flag empate_resolvido = true é registrada no perfil.
+
+6.3 Estrutura de Blocos Investigativos
+As 12 perguntas do pilar selecionado são organizadas em 3 blocos investigativos sequenciais, com 4 perguntas Likert cada:
+Table
+Bloco
+Nome Técnico
+Função
+Perguntas
+X
+Origem do Padrão
+Investiga como a dificuldade se instalou
+Q01 a Q04
+Y
+Manifestação Prática
+Investiga como a dificuldade aparece no comportamento observável
+Q05 a Q08
+Z
+Sustentação Emocional
+Investiga o que mantém e agrava o padrão
+Q09 a Q12
+📌 Nota Técnica: Cada bloco investiga uma dimensão causal distinta do mecanismo de fragilidade. A separação em blocos permite identificar não apenas "onde" está o problema, mas "como ele se instala" (X), "como ele se manifesta" (Y) e "por que ele persiste" (Z).
+
+6.4 Lógica Matemática — Cálculo de Scores
+6.4.1 Score Bruto do Pilar
+Fórmula oficial:
+plain
+Copy
+Score_Bruto_Pilar = Σ (Respostas Likert Q01 a Q12)
+Onde:
+	•	Cada resposta Likert vale de 1 a 6
+	•	Mínimo teórico: 12 (12 perguntas × 1)
+	•	Máximo teórico: 72 (12 perguntas × 6)
+6.4.2 Score Normalizado do Pilar (0-100)
+Fórmula oficial:
+plain
+Copy
+Score_Normalizado_Pilar = [(Score_Bruto_Pilar − 12) ÷ 60] × 100
+Onde:
+	•	12 = mínimo teórico
+	•	60 = amplitude (72 − 12)
+	•	Resultado: escala 0–100, onde 100 = máxima vulnerabilidade operacional
+Exemplo:
+Table
+Cálculo
+Valor
+Score Bruto
+42
+Normalização
+(42 − 12) ÷ 60 × 100 = 50,00%
+6.4.3 Score Bruto por Bloco
+Fórmula oficial:
+plain
+Copy
+Score_Bruto_Bloco = Σ (Respostas Likert das 4 perguntas do bloco)
+Onde:
+	•	Cada bloco tem 4 perguntas
+	•	Mínimo teórico por bloco: 4 (4 × 1)
+	•	Máximo teórico por bloco: 24 (4 × 6)
+6.4.4 Score Normalizado por Bloco (0-100)
+Fórmula oficial:
+plain
+Copy
+Score_Normalizado_Bloco = [(Score_Bruto_Bloco − 4) ÷ 20] × 100
+Onde:
+	•	4 = mínimo teórico do bloco
+	•	20 = amplitude (24 − 4)
+Exemplo completo:
+Table
+Bloco
+Perguntas
+Score Bruto
+Score Normalizado
+X — Origem
+Q01-Q04
+18
+(18−4)÷20×100 = 70,00%
+Y — Manifestação
+Q05-Q08
+14
+(14−4)÷20×100 = 50,00%
+Z — Sustentação
+Q09-Q12
+10
+(10−4)÷20×100 = 30,00%
+TOTAL PILAR
+Q01-Q12
+42
+50,00%
+
+6.5 Sistema Cromático de Blocos (Dashboard)
+Cada bloco recebe uma cor no dashboard de acordo com seu Score Normalizado:
+Table
+Faixa de Score Normalizado
+Cor
+Significado
+Classificação
+0,00% — 33,33%
+🟢 Verde
+Bloco funcional, baixa vulnerabilidade
+Bom
+33,34% — 66,66%
+🟡 Amarelo
+Bloco com atenção necessária, vulnerabilidade moderada
+Atenção
+66,67% — 100,00%
+🔴 Vermelho
+Bloco crítico, alta vulnerabilidade, ponto prioritário de intervenção
+Ponto Crítico de Melhoria
+📌 Nota Técnica: As cores são aplicadas individualmente por bloco, não pelo pilar total. Isso permite identificar precisamente qual dimensão causal (origem, manifestação ou sustentação) está mais comprometida, direcionando a intervenção da Camada 5 com maior precisão.
+6.6 Gráficos de Evolução Longitudinal
+O sistema mantém histórico completo de scores para permitir visualização do avanço do usuário ao longo do tempo.
+6.6.1 Dados Armazenados por Ciclo
+A cada reavaliação (a cada 45 dias), o sistema registra:
+Table
+Dado
+Formato
+Fonte
+Score Bruto Pilar
+Numérico (12-72)
+Autoavaliação Operacional
+Score Normalizado Pilar
+Numérico (0-100)
+Cálculo automático
+Score Normalizado Bloco X
+Numérico (0-100)
+Cálculo automático
+Score Normalizado Bloco Y
+Numérico (0-100)
+Cálculo automático
+Score Normalizado Bloco Z
+Numérico (0-100)
+Cálculo automático
+Timestamp
+Data/hora
+Sistema
+Número do Ciclo
+Inteiro
+Sistema
+6.6.2 Visualizações do Dashboard
+Gráfico 1 — Evolução do Score Geral do Pilar
+plain
+Copy
+Score (%)
+100 │                                   
+ 75 │         ●────●                    
+ 50 │    ●────┘    └────●               
+ 25 │ ●────┘              └────●        
+  0 └────────────────────────────────
+       C1    C2    C3    C4    C5
+            (Ciclos de 45 dias)
+	•	Eixo Y: Score Normalizado do Pilar (0-100)
+	•	Eixo X: Ciclos (C1, C2, C3...)
+	•	Linha contínua conectando os pontos
+	•	Tendência de queda = melhora (menor vulnerabilidade)
+📌 Nota Técnica: A tendência desejada é de QUEDA no score, pois menor score significa menor vulnerabilidade operacional. O gráfico deve incluir indicador visual de "meta de melhoria" (ex: linha tracejada em 33%, correspondente ao limite superior da classificação verde — vulnerabilidade mínima).
+Gráfico 2 — Evolução Comparativa dos 3 Blocos
+plain
+Copy
+Score (%)
+100 │    X🔴      Y🟡      Z🟢
+ 75 │    ●        ●        ●
+ 50 │    ●        ●        ●
+ 25 │    ●        ●        ●
+  0 └────────────────────────────────
+       C1    C2    C3    C4    C5
+       
+       (3 linhas simultâneas, cada bloco
+        com sua cor de classificação atual)
+Gráfico 3 — Heatmap de Blocos ao Longo do Tempo
+plain
+Copy
+        C1    C2    C3    C4    C5
+Bloco X  🔴    🔴    🟡    🟡    🟢
+Bloco Y  🟡    🟡    🟡    🟢    🟢
+Bloco Z  🟢    🟢    🟢    🟢    🟢
+📌 Nota Técnica: O heatmap permite visualização imediata de qual bloco está respondendo melhor à intervenção e qual permanece como gargalo ao longo dos ciclos.
+6.6.3 Regras de Exibição
+Table
+Situação
+Regra
+Primeiro ciclo
+Gráficos vazios com mensagem: "Seu histórico será construído aqui ao longo dos próximos ciclos."
+Ciclo 2+
+Linha conectando C1 ao ciclo atual
+Mudança de pilar prioritário
+Gráfico anterior preservado em aba "Histórico — [Nome do Pilar Anterior]". Novo gráfico iniciado para o novo pilar.
+2+ ciclos no mesmo pilar
+Exibir comparação percentual: "Seu score em Bloco X melhorou 23% desde o Ciclo 1."
+
+6.7 Integração com o Motor Interpretativo (Camada 4)
+A Autoavaliação Operacional entrega para a Camada 4:
+Table
+Output
+Formato
+Uso na Camada 4
+Score_Operacional(v)
+Numérico (12-72)
+Cálculo do SVC
+Score_Op_Normalizado(v)
+Numérico (0-100)
+Cálculo do SVC e GAP-E
+Média_Bloco_X
+Numérico (1-6)
+Análise de profundidade causal
+Média_Bloco_Y
+Numérico (1-6)
+Análise de profundidade causal
+Média_Bloco_Z
+Numérico (1-6)
+Análise de profundidade causal
+Flags_Binárias (B01, B02)
+Booleanos
+Ativação de protocolos de segurança
+Fórmula do SVC (repetida da Seção 7.3.1 para referência):
+plain
+Copy
+SVC(v) = [FVAnorm(v) × 0.40] + [(100 − IMnorm(v)) × 0.25] + [Score_Op_Normalizado(v) × 0.35]
+
+6.8 Glossário Adicional da Camada 3
+Table
+Termo
+Definição
+Pilar Ruim
+Vetor Prioritário FVA — pilar com maior fragilidade identificada na Camada 1
+Score Bruto
+Soma das respostas Likert antes da normalização
+Score Normalizado
+Score convertido para escala 0–100
+Bloco Investigativo
+Conjunto de 4 perguntas Likert dentro de um vetor (X = origem, Y = manifestação, Z = sustentação emocional)
+Classificação Cromática
+Sistema de cores (verde/amarelo/vermelho) aplicado por bloco conforme faixa de vulnerabilidade
+Evolução Longitudinal
+Acompanhamento do score ao longo de múltiplos ciclos de 45 dias
+Heatmap
+Matriz visual que mostra a classificação cromática de cada bloco em cada ciclo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SEÇÃO 7
+CAMADA 4: MOTOR INTERPRETATIVO
+7.1 Função e Posicionamento
+A Camada 4 é o núcleo lógico e matemático do sistema. Recebe dados de todas as camadas anteriores, processa relações causais, quantifica distâncias entre perfil atual e perfil desejado, e gera os parâmetros que alimentam a personalização da Camada 5.
+📌 Nota Técnica: A Camada 4 não emite diagnósticos clínicos nem julgamentos de valor. Opera exclusivamente com variáveis comportamentais quantificadas, produzindo outputs matemáticos que serão traduzidos em linguagem humana pela Camada 5.
+
+7.2 Inputs Recebidos
+Table
+Fonte
+Variável
+Formato
+Descrição
+Camada 1
+FVAnorm(v)
+4 valores (0–100)
+Fragilidade por vetor
+Camada 1
+IMnorm(v)
+4 valores (0–100)
+Intenção de mudança por vetor
+Camada 1
+Vetor_Prioritário_FVA
+1 vetor
+Pior pilar identificado
+Camada 1
+Vetor_Prioritário_IM
+1 vetor
+Maior intenção identificada
+Camada 1
+Diagnóstico_Padrão
+Texto
+Cruzamento FVA+IM do vetor prioritário
+Camada 2
+Mapa_Causal
+Texto estruturado
+Narrativa causal do vetor prioritário FVA
+Camada 2
+Classificação_Origem
+Categórico
+súbita / gradual / congênita
+Camada 2
+Gatilho_Principal
+Categórico
+rotina / emocional / novidade / não_identificado
+Camada 2
+Contexto_Vulnerabilidade
+Categórico
+trabalho / relacionamento / interno / múltiplo
+Camada 2
+Padrão_Abandono
+Categórico
+precoce / após_resultado / após_interrupção / nunca_tentou
+Camada 2
+Fator_Sustentação
+Texto
+O que funcionou melhor em tentativas anteriores
+Camada 2
+tentativa_prévia_falha
+Booleano
+Histórico de estratégias abandonadas
+Camada 3
+Score_Operacional(v)
+1 valor (12–72)
+Soma Likert do vetor dominante
+Camada 3
+Score_Op_Normalizado(v)
+1 valor (0–100)
+Score operacional normalizado
+Camada 3
+B01
+Booleano
+Flag de atenção específica do vetor
+Camada 3
+B02
+Booleano
+Flag de impacto sistêmico
+Camada 3
+Média_Bloco_X, Y, Z
+3 valores (1–6)
+Média por bloco investigativo
+Anamnese
+Disponibilidade_Semanal
+Categórico
+<2h, 2–3h, 4–5h, 6h+
+Anamnese
+Experiência_AF
+Categórico
+Nunca, Iniciante, Intermediário, Avançado
+Anamnese
+Resultado_Desejado
+Categórico
+Perda gordura, Ganho massa, etc.
+Anamnese
+Motivador
+Categórico
+Saúde, Aparência, Performance, etc.
+Anamnese
+Histórico_Saúde
+Booleano
+Sim/Não
+Anamnese
+IMC
+Numérico
+kg/m²
+
+7.3 Algoritmo de Integração — Fase 1: Construção do Perfil Integrado
+7.3.1 Fórmula do SVC
+Para cada vetor v, o sistema calcula o SVC (Score de Vulnerabilidade Comportamental), que integra fragilidade percebida (FVA), intenção de mudança (IM), performance operacional (quando disponível) e modificadores da investigação qualitativa.
+Caso 1: Vetor prioritário FVA (com Autoavaliação na Camada 3)
+plain
+Copy
+SVC(v) = [FVAnorm(v) × 0.40] + [(100 − IMnorm(v)) × 0.25] + [Score_Op_Normalizado(v) × 0.35] + Modificador_Camada2(v)
+Caso 2: Vetores não avaliados na Camada 3 (sem Autoavaliação)
+plain
+Copy
+SVC(v) = [FVAnorm(v) × 0.60] + [(100 − IMnorm(v)) × 0.40]
+📌 Nota Técnica: Quando Score Operacional não está disponível, o peso de 0.35 é redistribuído: +0.20 para FVA e +0.15 para IM, mantendo a soma = 1.00. Isso ocorre porque vetores não investigados operacionalmente na Camada 3 carecem de dados comportamentais objetivos, e a inferência deve recair mais fortemente sobre a percepção subjetiva (FVA) e a disposição psicológica (IM).
+📌 Nota Técnica: A comparação entre vetores via GAP-P assume que a ausência de Score Operacional nos demais vetores subestima seu SVC real. Vetores não investigados na Camada 3 tendem a apresentar SVC aparentemente mais baixo do que seriam se mensurados operacionalmente. O Motor Interpretativo compensa isso aplicando o Modificador_Camada2 apenas ao vetor prioritário, onde a investigação qualitativa (Camada 2) fornece dados adicionais de profundidade.
+
+7.3.2 Classificação do SVC
+Table
+Faixa SVC
+Classificação
+Cor no Dashboard
+Significado
+0 – 24,99
+Vulnerabilidade Mínima
+🟢 Verde
+Vetor funcional, manutenção preventiva
+25 – 49,99
+Vulnerabilidade Moderada
+🟡 Amarelo
+Atenção pontual, monitoramento
+50 – 74,99
+Vulnerabilidade Alta
+🟠 Laranja
+Intervenção estruturada necessária
+75 – 100
+Vulnerabilidade Crítica
+🔴 Vermelho
+Intervenção intensiva prioritária
+
+7.3.3 Modificador Camada 2
+O sistema ajusta o SVC do Vetor Prioritário FVA com base nos outputs qualitativos da investigação adaptativa.
+Table
+Condição
+Valor
+Classificação_Origem = "súbita"
++3
+Classificação_Origem = "congênita"
++5
+tentativa_prévia_falha = true
++3
+Padrão_Abandono = "precoce"
++2
+Gatilho_Principal = "não_identificado"
++2
+Regras:
+	•	Máximo de 3 modificadores aplicados por vetor
+	•	Teto do ajuste: +10 pontos
+	•	SVC nunca ultrapassa 100
+Exemplo:
+Table
+Componente
+Valor
+SVC base (Constância)
+51,67
++ origem súbita
++3,00
++ tentativa prévia falha
++3,00
+SVC ajustado
+57,67
+📌 Nota Técnica: O modificador de Gatilho_Principal = "não_identificado" reflete maior incerteza causal no perfil do usuário. Quando o gatilho não é identificado, o sistema assume risco elevado de recorrência do padrão de fragilidade, justificando o acréscimo no SVC.
+
+7.4 Algoritmo de Integração — Fase 2: Cálculo de GAPs
+7.4.1 GAP de Perfil (GAP-P)
+Mede a distância entre o perfil atual do usuário e o perfil mínimo viável para progresso sustentável.
+plain
+Copy
+GAP-P = SVC(Vetor_Prioritário_FVA) − Média_SVC(demais_vetores)
+Interpretação:
+	•	GAP-P > 30: Desequilíbrio severo. O vetor dominante compromete todo o sistema.
+	•	GAP-P 15–30: Desequilíbrio moderado. Vetor dominante exige atenção principal.
+	•	GAP-P < 15: Perfil equilibrado. Foco pode ser distribuído.
+📌 Nota Técnica: O GAP-P assume que vetores não investigados na Camada 3 (sem Score Operacional) têm SVC subestimado. A média dos demais vetores pode ser artificialmente baixa, inflacionando o GAP-P. Isso é aceitável porque direciona o sistema a priorizar o vetor investigado, mas deve ser considerado na interpretação clínica do perfil.
+
+7.4.2 GAP de Execução (GAP-E)
+Mede a distância entre intenção declarada (IM) e performance real (Autoavaliação).
+plain
+Copy
+GAP-E = IMnorm(Vetor_Prioritário_FVA) − Score_Op_Normalizado(Vetor_Prioritário_FVA)
+Interpretação:
+	•	GAP-E > 30: Alta intenção, baixa execução. Risco de frustração e abandono.
+	•	GAP-E 0–30: Alinhamento razoável. Espaço para otimização.
+	•	GAP-E < 0: Execução superior à intenção. Usuário subestima seu progresso.
+
+7.4.3 GAP de Contexto (GAP-C)
+Ajusta expectativas com base nos dados da Anamnese e flags operacionais.
+Table
+Fator
+Peso
+Cálculo
+Disponibilidade semanal
++0 a +15
+Menos de 2h = +15; 2–3h = +10; 4–5h = +5; 6h+ = 0
+Experiência em AF
++0 a +10
+Nunca = +10; Iniciante = +5; Intermediário = +2; Avançado = 0
+Histórico de peso oscilante
++5
+Se oscilação frequente = +5
+Condição de saúde
++5
+Se Sim na Anamnese = +5
+B02 = Sim
++5
+Flag de impacto sistêmico ativada na Camada 3
+plain
+Copy
+GAP-C = Σ(fatores_contexto)
+Uso do GAP-C:
+	•	Soma-se ao GAP-P para ajustar intensidade da intervenção
+	•	GAP-C > 20: reduzir ambição inicial do plano em 20%
+	•	GAP-C 10–20: reduzir ambição em 10%
+	•	GAP-C < 10: manter ambição padrão
+📌 Nota Técnica: A flag B02 (impacto sistêmico) indica que a dificuldade do vetor prioritário se estende a outras áreas da vida do usuário (trabalho, relacionamentos, finanças). Isso eleva o GAP-C porque a complexidade contextual da intervenção aumenta — não basta tratar o vetor isoladamente, é necessário considerar seus efeitos cascata.
+
+7.5 Algoritmo de Integração — Fase 3: Priorização Estratégica
+7.5.1 Score de Prioridade de Intervenção (SPI)
+plain
+Copy
+SPI = (SVC × 0.50) + (GAP-P × 0.20) + (|GAP-E| × 0.20) + (GAP-C × 0.10)
+Arredondamento: 2 casas decimais
+
+7.5.2 Matriz de Decisão — Definição do Nível Adaptativo
+Table
+SPI
+Nível Adaptativo
+Intensidade
+Tom da Camada 5
+Protocolo Base
+0 – 25
+Nível 1 — Fundação
+Mínima
+Contenedor, seguro
+Micro-movimentos, 5 min/dia
+25,01 – 45
+Nível 2 — Estruturação
+Leve
+Explorador gentil
+Compromissos pequenos, 10–15 min
+45,01 – 65
+Nível 3 — Construção
+Moderada
+Parceiro colaborativo
+Metas semanais definidas, 20–30 min
+65,01 – 80
+Nível 4 — Aceleração
+Intensa
+Desafiante construtivo
+Metas desafiadoras, 30–45 min
+80,01 – 100
+Nível 5 — Transformação
+Máxima
+Coach direto
+Protocolo intensivo, 45+ min
+
+7.6 Algoritmo de Integração — Fase 4: Construção da Narrativa Causal
+7.6.1 Estrutura da Interpretação Causal
+O Motor Interpretativo gera uma narrativa estruturada em 4 blocos:
+Bloco A — Diagnóstico do Vetor Prioritário
+"Seu mecanismo central de dificuldade está em [VETOR] (SVC [VALOR]). Esse padrão parece ter se instalado de forma [origem], e se mantém porque [padrão de abandono]. O que funcionou melhor foi quando [fator de sustentação].""
+Bloco B — Análise do GAP de Execução
+"Você demonstra [alta/moderada/baixa] intenção de evoluir nesta área (IM [VALOR]), enquanto sua execução prática está em [nível] (Autoavaliação [VALOR]). O GAP entre intenção e prática é de [GAP-E] pontos — [interpretação do GAP-E]."
+Bloco C — Contextualização
+"Considerando sua disponibilidade de [X horas/semana] e sua experiência [nível], o sistema calibra sua jornada para [ajuste de intensidade]."
+Bloco D — Direcionamento Estratégico
+"Seu Nível Adaptativo é [NÍVEL] (SPI [VALOR]). A intervenção será [descrição do protocolo base]."
+
+7.6.2 Exemplo Completo de Output
+Dados do usuário:
+	•	Vetor Prioritário FVA: Constância (FVA 75,00, IM 83,33)
+	•	Score Operacional Constância: 42 (normalizado: 50,00)
+	•	Disponibilidade: 2–3h/semana
+	•	Experiência: Iniciante
+	•	Histórico de peso: Oscilação frequente
+	•	Sem condição de saúde
+	•	Camada 2: Origem súbita, tentativa_prévia_falha = true, Padrão_Abandono = após_interrupção
+	•	Camada 3: B01 = Não, B02 = Sim
+Cálculos:
+plain
+Copy
+SVC = [75 × 0.40] + [(100 − 83,33) × 0.25] + [50 × 0.35] + Modificador_Camada2
+
+Modificador_Camada2 = +3 (origem súbita) + +3 (tentativa_prévia_falha) = +6
+
+SVC = 30 + 4,17 + 17,50 + 6,00 = 57,67 → Vulnerabilidade Alta
+
+GAP-P = 57,67 − Média_SVC(demais vetores) = 57,67 − 35,42 = 22,25
+
+GAP-E = 83,33 − 50,00 = 33,33 → Alto risco de frustração
+
+GAP-C = 10 (disponibilidade) + 5 (experiência) + 5 (oscilação) + 5 (B02 = Sim) = 25
+
+SPI = (57,67 × 0.50) + (22,25 × 0.20) + (33,33 × 0.20) + (25 × 0.10)
+SPI = 28,84 + 4,45 + 6,67 + 2,50 = 42,46 → Nível 3 — Construção
+Narrativa gerada:
+"Seu mecanismo central de dificuldade está em Constância (SVC 57,67). Esse padrão parece ter se instalado de forma súbita, e se mantém porque você já tentou várias estratégias, mas perde o ritmo e não retoma. O que funcionou melhor foi quando tinha horário fixo.
+Você demonstra alta intenção de evoluir nesta área (IM 83,33), enquanto sua execução prática está em nível moderado (Autoavaliação 50,00). O GAP entre intenção e prática é de 33,33 pontos — você está muito motivado, mas sua rotina ainda não reflete essa vontade. Esse desalinhamento é um dos principais gatilhos de frustração e abandono.
+Considerando sua disponibilidade de 2–3 horas por semana e sua experiência iniciante, o sistema calibra sua jornada para reduzir a ambição inicial em 20%, garantindo que você construa confiança antes de aumentar a carga.
+Seu Nível Adaptativo é Nível 3 — Construção (SPI 42,46). A intervenção será estruturada com metas semanais definidas, sessões de 20–30 minutos, e protocolo de retomada ativado para prevenir ciclos de abandono."
+
+7.7 Outputs Entregues para a Camada 5
+Table
+Output
+Formato
+Destino
+SVC por vetor (4 valores)
+Numérico 0–100
+Dashboard, evolução longitudinal
+SVC_ajustado
+Numérico 0–100
+Calibração de intensidade do plano
+Vetor Prioritário Integrado
+Vetor + classificação
+Título do plano, foco principal
+GAP-P, GAP-E, GAP-C
+Numéricos
+Análise de risco, calibração
+SPI + Nível Adaptativo
+Numérico + categórico
+Definição de intensidade do plano
+Narrativa Causal (4 blocos)
+Texto estruturado
+Diagnóstico apresentado ao usuário
+Flags de Risco
+Booleanos
+Protocolos de segurança ativados
+Recomendação de Ajuste Contextual
+Texto
+Personalização de metas iniciais
+
+📌 Regra de Acumulação de Flags de Redução: Quando múltiplas flags que exigem redução de meta estiverem ativas simultaneamente, o sistema aplica apenas a maior redução individual (não cumulativa). O teto máximo de redução é 40%. Flags que exigem ações diferentes de redução (ex: risco_contexto que estende ciclo) operam independentemente e são aplicadas em paralelo.
+7.8 Regras de Segurança e Validação
+7.8.1 Flags de Risco
+Table
+Condição
+Flag
+Ação da Camada 5
+GAP-E > 40
+risco_frustração
+Reduzir meta inicial em 30%, reforçar celebração
+SVC > 75 em 2+ vetores
+risco_sistêmico
+Intervenção mínima viável em todos os vetores
+GAP-C > 25
+risco_contexto
+Estender ciclo para 60 dias
+IM < 25 no vetor prioritário
+risco_resistência
+Linguagem de segurança máxima, nenhuma meta quantitativa nas 2 primeiras semanas
+Histórico_Saúde = Sim + SVC > 60
+risco_médico
+Incluir disclaimer de acompanhamento profissional no Plano de Ação gerado pela Camada 5
+B01 = Não + SVC > 60
+risco_profissional
+Recomendar suporte especializado no Plano
+B02 = Sim
+risco_sistêmico_operacional
+Reduzir meta inicial em 25%
+B01 = Sim + B02 = Sim + SVC > 70
+risco_reincidência
+Evitar estratégias já tentadas
+📌 Nota Técnica: A flag risco_profissional é ativada quando B01 = Não (usuário nunca buscou ajuda profissional) combinado com SVC > 60 (vulnerabilidade alta ou crítica). Isso indica que o usuário enfrenta dificuldade significativa sem suporte especializado prévio, elevando o risco de abandono por falta de recursos de coping adequados.
+📌 Nota Técnica: A flag risco_reincidência identifica padrão de tentativa e fracasso prévio (B01 = Sim) com impacto generalizado (B02 = Sim) em contexto de alta vulnerabilidade (SVC > 70). Nesse cenário, o sistema evita replicar estratégias já tentadas, priorizando abordagens inéditas para quebrar o ciclo de reincidência.
+
+7.8.2 Validação Cruzada
+Antes de entregar outputs, o Motor Interpretativo verifica:
+	•	Consistência matemática: SVC está entre 0 e 100? ✅
+	•	Coerência lógica: Vetor Prioritário FVA tem o maior SVC? (tolerância: ±5 pontos) ✅
+	•	Dados completos: Todos os inputs da Camada 1, 2 e 3 estão presentes? ✅
+	•	Ausência de conflito: IM > 75 e Score_Op_Normalizado < 25? → Ativar risco_frustração ✅
+	•	Coerência de priorização: Se SVC de qualquer vetor não prioritário > SVC(Vetor_Prioritário_FVA) + 5 pontos → Ativar revisão de dados: verificar integridade dos inputs da Camada 3 ou reavaliar Vetor Prioritário FVA.
+7.9 Glossário da Camada 4
+Table
+Termo
+Definição
+SVC
+Score de Vulnerabilidade Comportamental — integra FVA, IM, operacional e qualitativo
+GAP-P
+GAP de Perfil — desequilíbrio entre vetor prioritário e demais
+GAP-E
+GAP de Execução — distância entre intenção e performance real
+GAP-C
+GAP de Contexto — ajuste baseado em fatores da Anamnese e flags operacionais
+SPI
+Score de Prioridade de Intervenção — define Nível Adaptativo
+Nível Adaptativo
+Intensidade calibrada da intervenção (1 a 5)
+Narrativa Causal
+Texto estruturado de 4 blocos apresentado ao usuário
+Flag de Risco
+Booleano que ativa protocolos de segurança na Camada 5
+Modificador_Camada2
+Ajuste qualitativo ao SVC baseado na investigação adaptativa
+
+7.10 Calibração Adaptativa dos Pesos
+A partir do Ciclo 3 de operação do usuário, o sistema habilita mecanismo de calibração adaptativa dos pesos do SVC.
+7.10.1 Condições de Ativação
+Table
+Condição
+Requisito
+Ciclos completos
+Mínimo de 3 ciclos de 45 dias concluídos
+Dados longitudinais
+Histórico completo de SVC, GAP-E e taxa de retenção
+Estabilidade de perfil
+Mesmo vetor prioritário FVA por pelo menos 2 ciclos consecutivos
+7.10.2 Mecanismo de Ajuste
+Após cada ciclo, o sistema compara a predição do modelo (baseada no SPI e Nível Adaptativo) com o resultado observado (retenção, progresso operacional, taxa de check-ins):
+plain
+Copy
+Se taxa_predita_abandono vs. taxa_real_abandono > margem_erro (±15%):
+    → Ajustar pesos do SVC em ±0.05, mantendo soma = 1.00
+    
+Se correlação SVC vs. progresso_operacional < 0.60 por 2 ciclos:
+    → Reavaliar distribuição base entre FVA, IM e Score Operacional
+Limites de ajuste:
+	•	Peso mínimo por componente: 0.20
+	•	Peso máximo por componente: 0.50
+	•	Ajuste máximo por ciclo: ±0.05
+	•	Ajuste máximo acumulado: ±0.15 em relação aos pesos originais
+
+Mecanismo de Rollback: Se, após aplicação do ajuste de pesos em um ciclo, a taxa de retenção observada piorar em mais de 10% em relação ao ciclo anterior, o sistema reverte automaticamente para os pesos do ciclo anterior e registra flag_rollback = true no perfil do usuário. O ajuste só será tentado novamente após 2 ciclos completos.
+
+📌 Nota Técnica: A calibração adaptativa opera como feedback loop fechado. Os pesos originais (0.40, 0.25, 0.35) foram validados na construção do sistema e servem como baseline. O ajuste adaptativo personaliza a sensibilidade do modelo ao perfil individual do usuário, mas nunca substitui completamente a estrutura base.
+
+7.11 Explicabilidade e Transparência
+7.11.1 Direito à Explicação
+O usuário pode solicitar explicação detalhada de qualquer score gerado pelo Motor Interpretativo a qualquer momento.
+7.11.2 Formato Padrão de Explicação
+Exemplo — Explicação do SVC:
+plain
+Copy
+Seu SVC é 57,67 porque:
+
+• FVA (40% do cálculo) = 75,00 × 0,40 = 30,00
+  → Você percebe alta dificuldade em manter constância
+
+• IM inverso (25% do cálculo) = (100 − 83,33) × 0,25 = 4,17
+  → Você tem alta intenção de mudar, o que reduz a vulnerabilidade
+
+• Score Operacional (35% do cálculo) = 50,00 × 0,35 = 17,50
+  → Sua execução prática está em nível moderado
+
+• Modificador Camada 2 = +6,00
+  → Sua dificuldade começou de forma súbita e você já tentou 
+    estratégias antes sem sucesso
+
+Total: 30,00 + 4,17 + 17,50 + 6,00 = 57,67
+7.11.3 Conformidade com XAI
+O Motor Interpretativo atende aos princípios de Inteligência Artificial Explicável (XAI):
+Table
+Princípio XAI
+Implementação no Sistema
+Transparência
+Todos os pesos e fórmulas documentados no manual
+Interpretabilidade
+Narrativa Causal traduz matemática em linguagem humana
+Justificabilidade
+Cada score pode ser decomposto em suas fontes
+Auditabilidade
+Timestamp e histórico de todos os cálculos preservados
+
+7.12 Métricas de Validação do Modelo
+7.12.1 Taxa de Predição de Abandono
+Table
+Métrica
+Definição
+Objetivo
+Precisão
+% de usuários identificados como risco_abandono que de fato abandonaram
+> 70%
+Sensibilidade
+% de usuários que abandonaram e foram corretamente identificados
+> 65%
+Especificidade
+% de usuários que não abandonaram e foram corretamente classificados
+> 75%
+Cálculo: Comparar predição do SPI + flags de risco com resultado real (check-ins < 50% no ciclo).
+
+7.12.2 Taxa de Retenção por Nível Adaptativo
+Table
+Nível Adaptativo
+Retenção Mínima Esperada (Ciclo 1)
+Retenção Mínima Esperada (Ciclo 3+)
+Nível 1 — Fundação
+45%
+55%
+Nível 2 — Estruturação
+55%
+65%
+Nível 3 — Construção
+60%
+70%
+Nível 4 — Aceleração
+55%
+65%
+Nível 5 — Transformação
+40%
+50%
+📌 Nota Técnica: Níveis 1 e 5 apresentam retenção menor por motivos distintos: Nível 1 por baixa engajamento inicial, Nível 5 por alta demanda de autonomia. A curva em U é esperada e validada.
+
+7.12.3 Correlação SVC vs. Progresso Operacional Longitudinal
+Table
+Indicador
+Cálculo
+Objetivo
+Correlação de Pearson
+SVC (Ciclo N) vs. Δ Score Operacional (Ciclo N+1)
+r > 0,50 (moderada a forte)
+Validação preditiva
+SPI (Ciclo N) vs. mudança de Nível Adaptativo (Ciclo N+1)
+Concordância > 60%
+
+7.12.4 Pipeline de Testes A/B para Calibração de Pesos
+Table
+Experimento
+Grupo A (Controle)
+Grupo B (Teste)
+Métrica de Sucesso
+Peso FVA
+0,40
+0,35 ou 0,45
+Retenção superior em 5%
+Peso IM
+0,25
+0,20 ou 0,30
+Redução de GAP-E médio
+Peso Score Operacional
+0,35
+0,30 ou 0,40
+Correlação SVC-progresso
+Regras do pipeline:
+	•	Testes A/B realizados a cada 6 meses de operação do sistema
+	•	Mínimo de 500 usuários por grupo
+	•	Duração mínima: 2 ciclos completos (90 dias)
+	•	Aprovação para implementação: melhoria estatisticamente significativa (p < 0,05) em pelo menos 2 das 3 métricas de sucesso
+
+
+
+
+
+
+
+
+
+
+
+SEÇÃO 8
+CAMADA 5: SITEMA ADAPTATIVO
+8.1 Função e Posicionamento
+A Camada 5 é a interface viva do sistema. Recebe os outputs matemáticos da Camada 4 e os transforma em:
+	•	Linguagem que ressoa com a identidade aspiracional do usuário (IM — Camada 1)
+	•	Protocolos de execução calibrados ao seu nível de vulnerabilidade (SVC — Camada 4)
+	•	Estrutura de metas que respeita seu contexto real (GAP-C — Camada 4)
+	•	Sistema de retomada para momentos de queda (Padrão de Abandono — Camada 2)
+📌 Nota Técnica: A Camada 5 não gera novos scores. Ela é puramente tradutora e adaptativa. Seu valor está na precisão da personalização, não na complexidade matemática. Toda personalização deriva de outputs validados das Camadas 1–4.
+
+8.2 Inputs Recebidos da Camada 4
+Table
+Output da Camada 4
+Tipo
+Uso na Camada 5
+SVC por vetor
+Numérico 0–100
+Define intensidade da linguagem e velocidade de progressão
+Vetor Prioritário Integrado
+Vetor + classificação
+Determina foco do plano e protocolo base
+GAP-E
+Numérico
+Calibra expectativa vs. realidade; ajusta micro-objetivos iniciais
+SPI + Nível Adaptativo
+Numérico + categórico (1–5)
+Seleciona protocolo base e tom de linguagem
+Narrativa Causal (4 blocos)
+Texto estruturado
+Base do diagnóstico apresentado ao usuário
+Flags de Risco
+Booleanos
+Ativa protocolos de segurança e ajusta metas
+Recomendação de Ajuste Contextual
+Texto
+Modifica metas iniciais (redução de ambição)
+Mapa Causal
+Texto estruturado
+Personaliza protocolo de retomada e estratégia de ambiente
+Fator de Sustentação
+Texto
+Replicado no plano como elemento de ambiente
+Padrão de Abandono
+Categórico
+Define velocidade de progressão e regras de contingência
+Classificação de Origem
+Categórico
+Influencia linguagem de segurança inicial
+
+8.3 Sistema de Personalização de Linguagem
+8.3.1 Matriz de Tom por Nível Adaptativo
+Table
+Nível
+Tom
+Pronome
+Verbo Principal
+Estrutura de Frase
+1 — Fundação
+Contenedor, seguro
+"A gente"
+"pode experimentar"
+Perguntas abertas, convites
+2 — Estruturação
+Explorador gentil
+"Você"
+"pode tentar"
+Sugestões, pequenos passos
+3 — Construção
+Parceiro colaborativo
+"Você"
+"vamos construir"
+Propostas conjuntas, metas claras
+4 — Aceleração
+Desafiante construtivo
+"Você"
+"vai alcançar"
+Afirmações, desafios moderados
+5 — Transformação
+Coach direto
+"Você"
+"vai fazer acontecer"
+Diretrizes, autonomia exigida
+8.3.2 Vocabulário Aspiracional — Integração da IM (Intenção de Mudança)
+As palavras selecionadas pelo usuário na Etapa 2 (IM) da Camada 1 são reintroduzidas aqui conforme a Tabela Oficial de Vinculação (Seção 3.9.2):
+Exemplo: Usuário selecionou na IM: "Constância, Disciplina, Clareza, Energia, Foco, Progresso"
+Table
+Contexto
+Sem Personalização
+Com Personalização IM
+Abertura do plano
+"Vamos começar sua jornada"
+"Vamos construir Constância e Clareza na sua rotina"
+Meta diária
+"Faça 15 minutos de atividade"
+"15 minutos de Foco total — isso é Progresso real"
+Check-in
+"Como foi seu dia?"
+"Onde você sentiu Energia e Disciplina hoje?"
+Retomada
+"Volte amanhã"
+"A Constância não exige perfeição — exige que você volte"
+📌 Nota Técnica: O sistema mapeia as 6 palavras selecionadas na IM e as distribui proporcionalmente ao longo do ciclo de 45 dias, garantindo que cada palavra seja utilizada pelo menos 3 vezes em contextos relevantes. A vinculação é validada exclusivamente pela Tabela Oficial de Vinculação (Seção 3.9.2).
+
+8.4 Protocolos de Execução por Vetor
+8.4.1 Seleção do Protocolo Base
+O protocolo é selecionado exclusivamente pelo Vetor Prioritário FVA (Pilar Ruim) identificado na Camada 1 e confirmado pelo SVC na Camada 4.
+Table
+Vetor Prioritário FVA
+Protocolo Base
+Mecanismo Central
+Comportamento
+Ativação Progressiva
+Dificuldade de transformar intenção em ação (inércia, procrastinação)
+Constância
+Continuidade Resiliente
+Ciclo de interrupção-recomeço, abandono após falhas
+Gestão Pessoal
+Estrutura Mínima Viável
+Desorganização, rotina reativa, falta de priorização
+Controle Emocional
+Regulação Integrada
+Estados emocionais modulam comportamento e rotina
+
+8.4.2 Protocolo Comportamento — "Ativação Progressiva"
+Mecanismo: Dificuldade de transformar intenção em ação (inércia, procrastinação).
+Table
+Semana
+Micro-objetivo
+Gatilho de Ambiente
+Linguagem da Camada 5
+1
+5 min de movimento ao acordar
+Tênis ao lado da cama
+"Apenas comece. Não precisa terminar."
+2
+10 min no mesmo horário
+Alarme com nome "Eu posso"
+"O Foco é por 10 minutos. O resto é bônus."
+3
+15 min + 1 decisão do dia
+Bloco de notas na porta
+"Uma decisão prática hoje. Isso é Clareza."
+4
+20 min + registro do que funcionou
+App com lembrete 20h
+"Você está construindo Disciplina real."
+5
+25 min + antecipação do próximo dia
+Preparação na noite anterior
+"A Energia de amanhã começa hoje."
+6
+30 min + identidade
+Frase visível: "Eu sou quem começa"
+"Você não tenta mais. Você faz acontecer."
+Regra de ouro: Nunca aumentar duração sem estabilizar frequência. Frequência > duração sempre.
+Calibração por GAP-E:
+	•	GAP-E > 30 (alta intenção, baixa execução): Iniciar na Semana 1 mesmo se Nível Adaptativo = 3 ou 4
+	•	GAP-E < 0 (execução superior à intenção): Iniciar na Semana 2 ou 3, acelerar progressão
+
+8.4.3 Protocolo Constância — "Continuidade Resiliente"
+Mecanismo: Ciclo de interrupção-recomeço, abandono após falhas.
+Table
+Semana
+Micro-objetivo
+Regra de Contingência
+Linguagem da Camada 5
+1
+Frequência mínima: 3x/semana
+Falha = retomada em 24h, não esperar segunda
+"Uma falha não apaga as outras 2 vezes."
+2
+Frequência: 4x/semana
+Se perder 2 dias seguidos, reduzir para 5 min
+"A Constância se mede em semanas, não em dias."
+3
+Frequência: 5x/semana
+Protocolo "não zero": fazer algo, por mínimo que seja
+"5 minutos é Progresso. Zero é só zero."
+4
+Estabilizar 5x com mesma atividade
+Se trocar de atividade, manter frequência
+"Disciplina é manter, mesmo quando muda."
+5
+Introduzir variação leve
+Variação não quebra constância se frequência mantida
+"Você está provando que Energia vem da rotina."
+6
+Autonomia na escolha
+Usuário define próprio horário
+"Você construiu Clareza sobre o que funciona."
+Regra de ouro: A "falha real" é 3 dias seguidos sem retomada. Antes disso, é oscilação normal.
+Calibração por Padrão de Abandono (Camada 2):
+	•	Precoce: Manter Semana 1 por 2 semanas (duplicar fundação)
+	•	Após resultado: Foco em processo desde Semana 1, eliminar métricas de resultado
+	•	Após interrupção: Protocolo de retomada em 24h ativo desde o início
+	•	Nunca tentou: Linguagem de segurança máxima, nenhuma meta quantitativa nas 2 primeiras semanas
+Calibração por Fator de Sustentação (Camada 2):
+	•	Companhia social: Incluir elemento de accountability (check-in com parceiro)
+	•	Horário fixo: Bloquear horário como inegociável no calendário
+	•	Prazer na atividade: Priorizar atividades que o usuário relatou gostar
+	•	Nenhum fator identificado: Testar os 3 fatores nas 3 primeiras semanas
+
+8.4.4 Protocolo Gestão Pessoal — "Estrutura Mínima Viável"
+Mecanismo: Desorganização, rotina reativa, falta de priorização.
+Table
+Semana
+Micro-objetivo
+Ferramenta
+Linguagem da Camada 5
+1
+3 blocos fixos no dia
+Papel + caneta, 3 quadrados
+"Não organize tudo. Organize 3 coisas."
+2
+Bloco 1 = prioridade do dia
+Post-it na tela do celular
+"Clareza é saber o que importa primeiro."
+3
+Bloco 2 = movimento
+Tênis sempre no mesmo lugar
+"A Disciplina vive nos objetos, não na cabeça."
+4
+Bloco 3 = preparação para amanhã
+Alarme 21h "Preparar"
+"Foco no amanhã começa na noite de hoje."
+5
+Revisão semanal de 10 min
+Domingo, mesmo horário
+"A Constância da revisão evita o caos."
+6
+Sistema próprio adaptado
+Usuário modifica à sua realidade
+"Você tem Energia para criar sua própria estrutura."
+Regra de ouro: A estrutura deve ser menor do que o usuário acha que precisa. Estrutura excessiva = abandono.
+Calibração por Classificação de Origem (Camada 2):
+	•	Súbita: Linguagem de segurança nas 2 primeiras semanas (mudança recente = maior resistência)
+	•	Gradual: Ênfase em pequenas adições semanais (padrão construído lentamente = desconstruir lentamente)
+	•	Congênita: Evitar comparação com "antes", focar em identidade nova
+
+8.4.5 Protocolo Controle Emocional — "Regulação Integrada"
+Mecanismo: Estados emocionais modulam comportamento e rotina.
+Table
+Semana
+Micro-objetivo
+Estratégia de Pausa
+Linguagem da Camada 5
+1
+Identificar 1 gatilho emocional
+Check-in 1x/dia: "Como estou?"
+"A Clareza sobre o emocional é o primeiro passo."
+2
+Nomear o estado antes de agir
+Pausa de 2 min antes de decisões
+"Nomear é ter Foco. Agir sem nomear é reagir."
+3
+Estratégia de pausa para 1 gatilho
+Se [gatilho], então [pausa + água]
+"A Disciplina inclui pausar quando preciso."
+4
+Expandir para 2 gatilhos
+Mesmo protocolo, mais contextos
+"Sua Constância agora inclui o emocional."
+5
+Registro de recuperação
+Notar: "Demorei X para voltar"
+"Progresso é recuperar mais rápido."
+6
+Decisão emocional não define ação
+Estado emocional = informação, não comando
+"Você tem Energia para escolher apesar do estado."
+Regra de ouro: Nunca suprimir emoção. Separar emoção da decisão comportamental.
+Calibração por Gatilho Principal (Camada 2):
+	•	Rotina: Foco em estabilidade de horários e ambientes previsíveis
+	•	Emocional: Check-ins emocionais diários obrigatórios desde Semana 1
+	•	Novidade: Protocolo de "uma coisa nova por semana" com pausa obrigatória
+	•	Não identificado: Check-in emocional 2x/dia até identificação
+
+8.5 Protocolos de Retomada
+8.5.1 Árvore de Decisão de Retomada
+plain
+Copy
+Usuário não fez check-in por X dias
+│
+├─ X = 1 dia
+│  └─ Mensagem: "Um dia é pausa. Dois é padrão. Você escolhe."
+│  └─ Oferecer: micro-objetivo do dia anterior reduzido à metade
+│
+├─ X = 2 dias
+│  └─ Mensagem: "A [VETOR PRIORITÁRIO FVA] inclui voltar. Vamos pelo começo."
+│  └─ Ativar: Semana 1 do protocolo, independente da semana real
+│
+├─ X = 3–5 dias
+│  └─ Mensagem: "A rotina saiu do centro. A gente reconstrói."
+│  └─ Ativar: Protocolo de reengajamento (abaixo)
+│
+└─ X > 5 dias
+   └─ Mensagem: "Você está aqui. Isso já é retomada."
+   └─ Ativar: Nova triagem vetorial parcial (3 perguntas FVA)
+📌 Nota Técnica: A mensagem de 2 dias é adaptada ao Vetor Prioritário FVA. Para Constância: "A Constância inclui voltar." Para Comportamento: "A ação inclui voltar." Para Gestão Pessoal: "A estrutura inclui voltar." Para Controle Emocional: "O equilíbrio inclui voltar."
+8.5.2 Protocolo de Reengajamento (3–5 dias sem contato)
+Table
+Dia
+Ação
+Intensidade
+1 (retorno)
+Apenas check-in emocional. Sem meta.
+Mínima
+2
+Micro-objetivo de 5 minutos. Qualquer coisa.
+Mínima
+3
+Retomar meta da Semana 1 do protocolo base
+Fundação
+4
+Se completou 2 dias, retomar semana atual reduzida em 1 nível
+Reduzida
+5
+Se completou 3 dias, calibrar com Autoavaliação rápida (4 perguntas do bloco mais crítico da Camada 3)
+Avaliação
+Calibração por Flag de Risco (Camada 4):
+	•	risco_frustração (GAP-E > 40): Reduzir meta inicial em 30% ao retomar, reforçar celebração
+	•	risco_resistência (IM < 25): Linguagem de segurança máxima, nenhuma meta quantitativa nas 2 primeiras semanas de retomada
+	•	risco_reincidência (B01=Sim + B02=Sim + SVC>70): Evitar estratégias já tentadas, priorizar abordagens inéditas
+
+8.6 Estrutura do Plano de Ação Gerado
+8.6.1 Parte 1 — Diagnóstico Integrado (apresentado ao usuário)
+plain
+Copy
+═══════════════════════════════════════════════════
+PLANO DE AÇÃO CAMILA — CICLO [NÚMERO]
+Usuário: [Nome] | Período: [Data início] a [Data fim]
+═══════════════════════════════════════════════════
+
+SEÇÃO 1 — QUEM VOCÊ É HOJE
+
+Seu perfil comportamental:
+
+[Vetor Prioritário FVA] é seu mecanismo central de desafio.
+
+Isso significa que [descrição do mecanismo em linguagem humana,
+adaptada ao vetor: "iniciar e manter ação" / "continuidade ao longo
+do tempo" / "organizar e conduzir rotina" / "regular emocionalmente"].
+
+Você demonstra [nível de intenção] de evoluir nesta área (IM [VALOR]).
+
+Sua execução prática está em [nível operacional] (Autoavaliação [VALOR]).
+
+O desalinhamento entre intenção e prática é de [GAP-E] pontos —
+[interpretação do GAP-E conforme faixa da Camada 4].
+
+═══════════════════════════════════════════════════
+
+SEÇÃO 2 — SEU CONTEXTO
+
+Disponibilidade semanal: [X horas]
+Experiência com atividade física: [nível]
+Resultado prioritário: [resultado desejado]
+Maior motivador: [motivador]
+
+Ajuste de calibração: [Recomendação de Ajuste Contextual da Camada 4]
+
+═══════════════════════════════════════════════════
+
+SEÇÃO 3 — SEU NÍVEL ADAPTATIVO
+
+Nível: [1 a 5] — [nome do nível]
+SPI: [valor]
+
+Isso significa:
+[descrição do que o nível implica em prática, conforme Seção 7.5.2]
+
+═══════════════════════════════════════════════════
+
+SEÇÃO 4 — SEU FOCO NOS PRÓXIMOS 45 DIAS
+
+Palavras que vão guiar sua jornada:
+[6 palavras da IM, distribuídas visualmente]
+
+Vetor de trabalho principal: [Vetor Prioritário FVA]
+Protocolo ativado: [nome do protocolo]
+
+Fator de sustentação identificado: [Fator de Sustentação da Camada 2,
+se houver — replicado no plano]
+8.6.2 Parte 2 — Protocolo de Execução
+Estrutura Semanal do Protocolo
+Cada semana tem 3 vetores operacionais:
+Table
+Vetor Operacional
+Descrição
+Frequência
+Vetor Base
+Atividade principal do protocolo (Vetor Prioritário FVA)
+3–5x/semana
+Vetor de Suporte
+Atividade secundária (vetor com IM alta e FVA baixa, identificado na Camada 1)
+2–3x/semana
+Vetor de Regulação
+Prática de check-in emocional ou revisão estratégica
+1x/semana
+📌 Nota Técnica: Regra de Desempate do Vetor de Suporte: Em caso de empate entre dois ou mais vetores não prioritários com mesmo IMnorm e FVAnorm, o sistema seleciona aquele com maior IMnorm como critério primário. Se o empate persistir, aplica-se ordem alfabética (Comportamento → Constância → Controle Emocional → Gestão Pessoal) como critério secundário.
+Calendário Tipo — 6 Semanas
+plain
+Copy
+SEMANA 1 — FUNDAÇÃO
+Objetivo: Estabelecer o gatilho inicial
+Vetor Base: [Protocolo do vetor prioritário, Semana 1, com calibração por GAP-E e Padrão de Abandono]
+Vetor de Suporte: [Protocolo do vetor secundário, Semana 1]
+Vetor de Regulação: Check-in de domingo (5 min)
+
+SEMANA 2 — ANCORAGEM
+Objetivo: Estabilizar frequência
+Vetor Base: [Protocolo, Semana 2]
+Vetor de Suporte: [Protocolo, Semana 2]
+Vetor de Regulação: Check-in + ajuste de horário se necessário
+
+SEMANA 3 — EXPANSÃO
+Objetivo: Aumentar duração ou complexidade levemente
+Vetor Base: [Protocolo, Semana 3]
+Vetor de Suporte: [Protocolo, Semana 3]
+Vetor de Regulação: Primeira autoavaliação parcial (4 perguntas do bloco mais crítico da Camada 3)
+
+SEMANA 4 — CONSOLIDAÇÃO
+Objetivo: Provar que a estrutura funciona
+Vetor Base: [Protocolo, Semana 4]
+Vetor de Suporte: [Protocolo, Semana 4]
+Vetor de Regulação: Revisão de metas, celebração de progresso
+
+SEMANA 5 — AUTONOMIA
+Objetivo: Usuário começa a adaptar o protocolo
+Vetor Base: [Protocolo, Semana 5] com escolhas
+Vetor de Suporte: [Protocolo, Semana 5] com variação
+Vetor de Regulação: Check-in emocional aprofundado
+
+SEMANA 6 — TRANSFERÊNCIA
+Objetivo: Preparar para próximo ciclo
+Vetor Base: [Protocolo, Semana 6]
+Vetor de Suporte: [Protocolo, Semana 6]
+Vetor de Regulação: Autoavaliação completa + reavaliação Camada 1
+
+8.7 Regras de Adaptação em Tempo Real
+8.7.1 Gatilhos de Recalibração
+Table
+Gatilho
+Condição
+Ação
+Streak quebrado
+2 falhas seguidas
+Reduzir meta em 20% por 3 dias
+Streak longo
+10+ dias consecutivos
+Oferecer desafio opcional (+10%)
+Check-in emocional 😔 2x seguidos
+2 dias seguidos
+Ativar mensagem de suporte emocional
+Score operacional em queda
+Q3 < Q2 na Autoavaliação
+Revisar bloco Z (sustentação emocional) do vetor prioritário
+Peso alterado
+±2 kg em 45 dias
+Nota no dashboard, sem alarme
+📌 Nota Técnica: Correção aplicada: peso é medido em kg. IMC é kg/m² e não se altera em ±2 kg — altera-se o peso corporal. O sistema monitora peso para evitar alarmes desnecessários, mas não gera restrições automáticas.
+8.7.2 Mensagens Adaptativas por Contexto
+Table
+Contexto
+Mensagem Padrão
+Mensagem Personalizada (ex: Constância + IM alta)
+Primeira meta do dia
+"Bom dia! Hoje você tem [meta]."
+"Bom dia! Mais um dia de Constância. Você já provou que consegue."
+Meta cumprida
+"Parabéns! Meta de hoje completa."
+"Progresso real. Cada dia assim constrói quem você quer ser."
+Meta não cumprida
+"Amanhã é outro dia."
+"A Constância não exige perfeição. Exige que você apareça de novo."
+Retomada após falha
+"Vamos recomeçar."
+"Você está de volta. Isso é Disciplina — não desistir."
+
+8.8 Glossário da Camada 5
+Table
+Termo
+Definição
+Protocolo base
+Estrutura semanal de 6 semanas por vetor
+Micro-objetivo
+Meta mínima viável para um único dia
+Gatilho de ambiente
+Estímulo físico que inicia o comportamento
+Regra de contingência
+O que fazer quando a meta não é cumprida
+Check-in adaptativo
+Pergunta diária rotativa conforme progresso
+Recalibração
+Ajuste automático de intensidade baseado em dados
+Streak
+Sequência de dias consecutivos de engajamento
+Vetor Base
+Atividade principal do protocolo do Vetor Prioritário FVA
+Vetor de Suporte
+Atividade secundária do vetor com IM alta e FVA baixa
+Vetor de Regulação
+Prática semanal de revisão e ajuste emocional/estratégico
+
+8.9 Checklist de Congruência com Sistema Completo
+Table
+Camada
+Output Utilizado na Seção 8
+Status
+Camada 1 (Triagem Vetorial)
+Vetor Prioritário FVA, IM, palavras da IM
+✅ Integrado
+Camada 2 (Investigação Adaptativa)
+Mapa Causal, Fator de Sustentação, Padrão de Abandono, Classificação de Origem, Gatilho Principal
+✅ Agora integrado
+Camada 3 (Autoavaliação Operacional)
+Score por bloco X/Y/Z, flags B01/B02
+✅ Referenciado em calibrações
+Camada 4 (Motor Interpretativo)
+SVC, GAP-E, GAP-P, GAP-C, SPI, Nível Adaptativo, Flags de Risco, Narrativa Causal
+✅ Integrado
+Anamnese (Seção 2)
+Disponibilidade, experiência, resultado desejado, motivador
+✅ Integrado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

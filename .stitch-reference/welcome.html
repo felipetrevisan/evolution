@@ -1,0 +1,195 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Evolution System - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#494358",
+                        "on-primary-fixed": "#251442",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e7e0eb",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1d1a22",
+                        "error": "#ba1a1a",
+                        "on-background": "#1d1a22",
+                        "primary-fixed-dim": "#d0bcff",
+                        "inverse-on-surface": "#f5eff7",
+                        "surface-container": "#f3edf7",
+                        "surface-dim": "#dfd8e1",
+                        "on-tertiary-container": "#251442",
+                        "inverse-surface": "#322f37",
+                        "on-primary-container": "#251442",
+                        "tertiary": "#615b71",
+                        "surface-bright": "#fef7ff",
+                        "tertiary-container": "#e8def8",
+                        "on-secondary-container": "#1e192b",
+                        "surface": "#fef7ff",
+                        "on-tertiary-fixed": "#1d192b",
+                        "outline": "#7a757f",
+                        "primary": "#6750a4",
+                        "secondary-container": "#e8def8",
+                        "outline-variant": "#cbc4cf",
+                        "inverse-primary": "#d0bcff",
+                        "on-error-container": "#410002",
+                        "surface-tint": "#6750a4",
+                        "on-error": "#ffffff",
+                        "secondary": "#625b71",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f9f1fa",
+                        "secondary-fixed": "#e8def8",
+                        "on-primary-fixed-variant": "#4f378b",
+                        "primary-fixed": "#eaddff",
+                        "tertiary-fixed-dim": "#ccc2dc",
+                        "secondary-fixed-dim": "#ccc2dc",
+                        "tertiary-fixed": "#e9def8",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#eaddff",
+                        "on-secondary-fixed": "#1d192b",
+                        "surface-container-high": "#ede7f0",
+                        "on-surface-variant": "#49454f",
+                        "background": "#fef7ff",
+                        "surface-container-highest": "#e6e1e5",
+                        "on-secondary-fixed-variant": "#4a4458",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "gutter-desktop": "24px",
+                        "container-padding": "32px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        .bg-organic-texture {
+            background-image: radial-gradient(circle at 20% 30%, theme('colors.primary-container/0.4') 0%, transparent 40%),
+                              radial-gradient(circle at 80% 70%, theme('colors.secondary-container/0.4') 0%, transparent 40%),
+                              linear-gradient(135deg, theme('colors.surface-container-low') 0%, theme('colors.background') 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(103, 80, 164, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-organic-texture">
+<!-- Decorative Overlay for Readability -->
+<div class="absolute inset-0 bg-background/30 pointer-events-none"></div>
+<main class="relative z-10 w-full max-w-[1280px] px-margin-mobile md:px-gutter-desktop py-stack-lg flex flex-col items-center justify-center min-h-screen text-center">
+<!-- Logo -->
+<div class="mb-stack-lg">
+<img alt="Evolution System Logo" class="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-sm rounded-[24px] bg-white p-2" src="https://lh3.googleusercontent.com/aida/ADBb0uhzhA7qJcqM0tPVDH0BdoRdgDUmig9M2Gj_WK8Dc4xuJiNG-AdHnWPMvFJmIQ7l9_bm3YfuOlECOyoTOT-j9PJctfLDUuFgKvrQlcUfdrspEP_I6VU4_-lzd7As17IoSJpMHHYPDSuygFPXReYCk26FPpjyb0MvR6U9GHZAeqzXt-F9JknYUntGOdu7IUgLKj2HD_GT6AphXMkA2LSl3CynhLJpVeqzAyDaCqpQM2FEz-pUiqHMnfXEfQ">
+</div>
+<!-- Main Content Glass Card -->
+<div class="glass-card rounded-[24px] p-container-padding md:p-stack-lg max-w-2xl w-full flex flex-col items-center gap-stack-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">
+            Sua jornada começa com clareza, cuidado e direção
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            Um sistema que se adapta à sua rotina, corpo, hábitos e contexto emocional para guiar sua transformação.
+        </p>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-stack-sm w-full sm:w-auto mt-base">
+<button class="w-full sm:w-auto px-8 py-4 bg-primary text-on-primary font-label-md text-label-md rounded-full shadow-md hover:bg-primary-container hover:text-primary hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface">
+                Começar minha jornada
+            </button>
+<button class="w-full sm:w-auto px-8 py-4 bg-secondary-container text-secondary font-label-md text-label-md rounded-full hover:bg-secondary-fixed-dim transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface">
+                Entender como funciona
+            </button>
+</div>
+<!-- Feature Icons -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-stack-sm mt-stack-md pt-stack-md border-t border-outline-variant/30 w-full">
+<div class="flex flex-col items-center gap-base group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-container transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">accessibility_new</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Corpo</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-container transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">repeat</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hábitos</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-container transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">restaurant</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nutrição</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-container transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">psychology</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mente</span>
+</div>
+<div class="flex flex-col items-center gap-base group col-span-2 md:col-span-1">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-container transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">schedule</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rotina</span>
+</div>
+</div>
+</div>
+<!-- Privacy Footer -->
+<div class="mt-stack-lg flex items-center gap-base bg-surface-container-low px-6 py-3 rounded-full shadow-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+            Sua privacidade é nossa prioridade. Dados protegidos e criptografados.
+        </p>
+</div>
+</main>
+
+
+</body></html>

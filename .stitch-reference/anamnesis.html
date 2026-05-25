@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Anamnese - System Evolution</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d0bfec",
+                        "primary-fixed": "#ebdcff",
+                        "inverse-primary": "#d4bbff",
+                        "on-tertiary-fixed-variant": "#4c4800",
+                        "tertiary-container": "#b7af2d",
+                        "inverse-on-surface": "#f6eef8",
+                        "surface-container-high": "#ede6ef",
+                        "secondary-fixed": "#ebdcff",
+                        "primary-container": "#8562c3",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#260058",
+                        "on-surface": "#1d1a21",
+                        "on-secondary-fixed": "#211538",
+                        "primary": "#6b48a9",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#d3ca47",
+                        "inverse-surface": "#322f36",
+                        "surface-container-low": "#f9f1fa",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#454100",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#ccc3d3",
+                        "surface-container": "#f3ebf5",
+                        "on-background": "#1d1a21",
+                        "surface-tint": "#6e4bab",
+                        "surface-container-highest": "#e7e0e9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fef7ff",
+                        "outline": "#7b7482",
+                        "on-primary-container": "#fffbff",
+                        "on-tertiary-fixed": "#1e1c00",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dfd8e1",
+                        "secondary-container": "#e1cffe",
+                        "tertiary-fixed": "#f0e760",
+                        "tertiary": "#666000",
+                        "on-surface-variant": "#4a4451",
+                        "on-secondary-fixed-variant": "#4e4066",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#65567e",
+                        "surface-bright": "#fef7ff",
+                        "background": "#fef7ff",
+                        "surface-variant": "#e7e0e9",
+                        "primary-fixed-dim": "#d4bbff",
+                        "on-primary-fixed-variant": "#553291",
+                        "secondary": "#66587f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "24px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #ccc3d3; border-radius: 10px; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .radio-card:checked + label { border-color: #6b48a9; background-color: #f3ebf5; box-shadow: 0 0 0 2px rgba(107, 72, 169, 0.1); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Sidebar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low dark:bg-surface-container-lowest flex flex-col h-full py-lg px-md z-50">
+<div class="mb-xl px-sm">
+<img src="https://lh3.googleusercontent.com/aida/ADBb0uhzhA7qJcqM0tPVDH0BdoRdgDUmig9M2Gj_WK8Dc4xuJiNG-AdHnWPMvFJmIQ7l9_bm3YfuOlECOyoTOT-j9PJctfLDUuFgKvrQlcUfdrspEP_I6VU4_-lzd7As17IoSJpMHHYPDSuygFPXReYCk26FPpjyb0MvR6U9GHZAeqzXt-F9JknYUntGOdu7IUgLKj2HD_GT6AphXMkA2LSl3CynhLJpVeqzAyDaCqpQM2FEz-pUiqHMnfXEfQ" alt="Evolution System Logo" class="h-12 w-auto mb-2">
+<p class="text-on-surface-variant text-xs opacity-70">Health &amp; Wellness</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-md p-sm rounded-lg hover:bg-secondary-container transition-colors duration-200 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-md">Início</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg hover:bg-secondary-container transition-colors duration-200 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-body-md">Minha Jornada</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md">Anamnese</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg hover:bg-secondary-container transition-colors duration-200 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Plano</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg hover:bg-secondary-container transition-colors duration-200 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-body-md">Progresso</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg hover:bg-secondary-container transition-colors duration-200 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md">Perfil</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary text-white py-md px-lg rounded-xl font-bold flex items-center justify-center gap-sm active:scale-95 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add</span>
+                Nova Sessão
+            </button>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface/80 backdrop-blur-md flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-md bg-surface-container rounded-full px-lg py-sm w-96">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full" placeholder="Buscar informações..." type="text">
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+</div>
+<div class="flex items-center gap-md border-l border-outline-variant pl-lg">
+<div class="text-right">
+<p class="font-bold text-on-surface">Olá, Marina</p>
+<p class="text-xs text-on-surface-variant">Plano Premium</p>
+</div>
+<img alt="User avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlHAzVGoVNCUHmlAbrGinLqJOY2DHUnjQl6Ezqu717UHAeFp2jDU5dgmSOl0zjeH-UXtXU6SP17jY0ZArfN3DcwZ05qnM-Nrr-0Q7R_NRDyOiaagHzJWTzp82cVqvguZjB9QidyZIbStS3ctcHKvJQWPnbRbZe0heJoUlJjg9sDHCaIDNih6zDrgnbZFmRUyPgfpDN4D4F7Bpm6-QFowwu59T8o6YY4kdS18wsg5G_Xu_8jiL8Vzml2KEXyVl_VROaXE8FZS-aC24">
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-lg bg-surface">
+<div class="max-w-6xl mx-auto space-y-lg">
+<!-- Progress & Title -->
+<div class="flex justify-between items-end mb-md">
+<div>
+<span class="inline-block px-md py-1 bg-primary/10 text-primary rounded-full font-label-md text-label-md mb-sm">Etapa 1 de 5</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Vamos entender seu ponto de partida</h2>
+</div>
+<div class="w-48 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/5"></div>
+</div>
+</div>
+<div class="bento-grid">
+<!-- Section 1: Dados Pessoais -->
+<section class="col-span-12 lg:col-span-4 glass-card p-xl rounded-[16px] shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">person_outline</span>
+<h3 class="font-headline-md text-headline-md">Dados Pessoais</h3>
+</div>
+<div class="space-y-md">
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Nome Completo</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="text" value="Marina Silva Santos">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Data de Nascimento</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="date" value="1995-08-22">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Sexo</label>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm rounded-lg border-2 border-primary bg-primary-container text-on-primary-container font-medium" onclick="toggleFemHealth(true)">Feminino</button>
+<button class="flex-1 py-sm rounded-lg border border-outline-variant bg-surface hover:bg-surface-container transition-colors" onclick="toggleFemHealth(false)">Masculino</button>
+</div>
+</div>
+<div class="mt-md p-md bg-secondary-container/50 rounded-xl border border-secondary-fixed flex items-start gap-sm" id="femHealthMsg">
+<span class="material-symbols-outlined text-secondary text-sm">auto_awesome</span>
+<p class="text-body-md text-on-secondary-container italic">Ao selecionar Feminino, ativaremos módulos específicos de <strong>Saúde Feminina</strong> em seu plano.</p>
+</div>
+</div>
+</section>
+<!-- Section 2: Composição Corporal -->
+<section class="col-span-12 lg:col-span-8 glass-card p-xl rounded-[16px] shadow-sm">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">body_system</span>
+<h3 class="font-headline-md text-headline-md">Composição Corporal</h3>
+</div>
+<div class="px-md py-sm bg-tertiary-container text-on-tertiary-container rounded-lg font-bold text-label-md">
+                            IMC: 23.4 (Normal)
+                        </div>
+</div>
+<div class="grid grid-cols-2 gap-xl h-[400px]">
+<div class="relative bg-surface-container-low rounded-xl overflow-hidden flex items-center justify-center p-md">
+<img alt="Anatomical guide" class="h-full object-contain mix-blend-multiply opacity-80" data-alt="A clean, minimalist medical illustration of a human body figure shown from front and side perspectives, designed for clinical health assessment. The style is professional and modern with soft olive-green outlines against a pristine off-white background. Arrow markers indicate measurement points for waist, hips, chest, and limbs, conveying a sense of precision and wellness technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrhJFQREiYCll8jUhQNe39C3PTyWxgfmXQvNB3RieU4xDmUAJcG9lWgPp8XF1q5O6BoCiO9hpZoYVfgH8D24aObmkzJ101s4_FgPSNamcY2ngaf2iIIaGmiDY_4F2woM-KRX8ULTpjLmJpGnFe4utOhncM89FtN_-7USLySZ5wxTcoiD0FNb50l7opoyYBKMjpHkldgQgvgBx-KPbcp09li43xyKsnT4EEUAqWQKUqEMZDcl9mwZOC2gyRE0n3AdL14WO11srRrP8">
+<!-- Interactive Markers Simulation -->
+<div class="absolute top-[20%] left-[50%] w-3 h-3 bg-primary rounded-full ring-4 ring-primary/20 animate-pulse"></div>
+<div class="absolute top-[45%] left-[45%] w-3 h-3 bg-primary rounded-full ring-4 ring-primary/20"></div>
+<div class="absolute top-[55%] left-[55%] w-3 h-3 bg-primary rounded-full ring-4 ring-primary/20"></div>
+</div>
+<div class="grid grid-cols-2 gap-md overflow-y-auto custom-scroll pr-md">
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">weight</span> Peso (kg)</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" step="0.1" type="number" value="68.5">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">height</span> Altura (cm)</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="number" value="171">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Cintura (cm)</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="number" value="72">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Quadril (cm)</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="number" value="98">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Braço (cm)</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="number" value="28">
+</div>
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant">Coxa (cm)</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-md py-sm focus:ring-2 focus:ring-primary" type="number" value="54">
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Histórico & Contexto -->
+<section class="col-span-12 lg:col-span-6 glass-card p-xl rounded-[16px] shadow-sm space-y-lg">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">medical_information</span>
+<h3 class="font-headline-md text-headline-md">Histórico de Saúde</h3>
+</div>
+<div class="p-md bg-surface-container rounded-xl flex items-center justify-between">
+<p class="text-body-md">Você possui alguma condição de saúde ou lesão?</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">psychology_alt</span>
+<h3 class="font-headline-md text-headline-md">Vida e Rotina</h3>
+</div>
+<div class="space-y-md">
+<div class="space-y-sm">
+<p class="text-label-md text-on-surface-variant">Qualidade do Sono</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm rounded-lg border border-outline-variant hover:border-primary text-xs">Pobre</button>
+<button class="flex-1 py-sm rounded-lg border-2 border-primary bg-primary-container text-on-primary-container text-xs font-bold">Regular</button>
+<button class="flex-1 py-sm rounded-lg border border-outline-variant hover:border-primary text-xs">Ótima</button>
+</div>
+</div>
+<div class="space-y-sm">
+<p class="text-label-md text-on-surface-variant">Nível de Estresse Diário</p>
+<input class="w-full accent-primary" type="range">
+<div class="flex justify-between text-[10px] text-on-surface-variant font-bold">
+<span class="">ZEN</span>
+<span class="">ALTO</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Resultados & Motivadores -->
+<section class="col-span-12 lg:col-span-6 glass-card p-xl rounded-[16px] shadow-sm space-y-lg">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">target</span>
+<h3 class="font-headline-md text-headline-md">Resultados Desejados</h3>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<label class="cursor-pointer">
+<input checked="" class="hidden peer" name="goal" type="radio">
+<div class="p-md rounded-xl border border-outline-variant bg-surface hover:bg-surface-container peer-checked:border-primary peer-checked:bg-secondary-container transition-all text-center">
+<span class="material-symbols-outlined text-primary mb-xs">fitness_center</span>
+<p class="text-xs font-bold">Perda de Gordura</p>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="goal" type="radio">
+<div class="p-md rounded-xl border border-outline-variant bg-surface hover:bg-surface-container peer-checked:border-primary peer-checked:bg-secondary-container transition-all text-center">
+<span class="material-symbols-outlined text-primary mb-xs">bolt</span>
+<p class="text-xs font-bold">Ganho de Massa</p>
+</div>
+</label>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">favorite</span>
+<h3 class="font-headline-md text-headline-md">O que te motiva?</h3>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<label class="cursor-pointer">
+<input class="hidden peer" name="motive" type="radio">
+<div class="p-md rounded-xl border border-outline-variant bg-surface hover:bg-surface-container peer-checked:border-primary peer-checked:bg-secondary-container transition-all text-center">
+<span class="material-symbols-outlined text-primary mb-xs">spa</span>
+<p class="text-xs font-bold">Saúde e Longevidade</p>
+</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="hidden peer" name="motive" type="radio">
+<div class="p-md rounded-xl border border-outline-variant bg-surface hover:bg-surface-container peer-checked:border-primary peer-checked:bg-secondary-container transition-all text-center">
+<span class="material-symbols-outlined text-primary mb-xs">visibility</span>
+<p class="text-xs font-bold">Aparência e Autoestima</p>
+</div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Action -->
+<div class="flex justify-end pt-lg">
+<button class="bg-primary text-white py-lg px-[48px] rounded-xl font-bold flex items-center gap-md hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all">
+                    Próximo Passo
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+        function toggleFemHealth(show) {
+            const msg = document.getElementById('femHealthMsg');
+            if(show) {
+                msg.style.display = 'flex';
+                msg.style.opacity = '1';
+            } else {
+                msg.style.display = 'none';
+                msg.style.opacity = '0';
+            }
+        }
+    </script>
+
+
+</body></html>

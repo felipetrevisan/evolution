@@ -1,0 +1,419 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Plano de Ação System Evolution — Marina</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(204, 195, 211, 0.3);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#d0bfec",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#4c4800",
+                        "error": "#ba1a1a",
+                        "surface": "#fef7ff",
+                        "surface-tint": "#6e4bab",
+                        "primary-fixed": "#ebdcff",
+                        "on-error": "#ffffff",
+                        "primary": "#6b48a9",
+                        "surface-container-low": "#f9f1fa",
+                        "on-surface": "#1d1a21",
+                        "tertiary-fixed-dim": "#d3ca47",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#ede6ef",
+                        "on-secondary-fixed-variant": "#4e4066",
+                        "on-secondary-fixed": "#211538",
+                        "surface-container": "#f3ebf5",
+                        "secondary-container": "#e1cffe",
+                        "secondary": "#66587f",
+                        "on-tertiary-container": "#454100",
+                        "on-tertiary-fixed": "#1e1c00",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1d1a21",
+                        "surface-bright": "#fef7ff",
+                        "secondary-fixed": "#ebdcff",
+                        "outline-variant": "#ccc3d3",
+                        "inverse-primary": "#d4bbff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e7e0e9",
+                        "on-primary-fixed-variant": "#553291",
+                        "primary-fixed-dim": "#d4bbff",
+                        "outline": "#7b7482",
+                        "surface-variant": "#e7e0e9",
+                        "on-secondary-container": "#65567e",
+                        "on-primary-fixed": "#260058",
+                        "tertiary": "#666000",
+                        "primary-container": "#8562c3",
+                        "on-surface-variant": "#4a4451",
+                        "tertiary-container": "#b7af2d",
+                        "on-primary-container": "#fffbff",
+                        "tertiary-fixed": "#f0e760",
+                        "background": "#fef7ff",
+                        "inverse-on-surface": "#f6eef8",
+                        "surface-dim": "#dfd8e1",
+                        "inverse-surface": "#322f36"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low dark:bg-surface-container-lowest flex flex-col h-full py-lg px-md z-50">
+<div class="mb-xl px-sm"><img src="https://lh3.googleusercontent.com/aida/ADBb0uhzhA7qJcqM0tPVDH0BdoRdgDUmig9M2Gj_WK8Dc4xuJiNG-AdHnWPMvFJmIQ7l9_bm3YfuOlECOyoTOT-j9PJctfLDUuFgKvrQlcUfdrspEP_I6VU4_-lzd7As17IoSJpMHHYPDSuygFPXReYCk26FPpjyb0MvR6U9GHZAeqzXt-F9JknYUntGOdu7IUgLKj2HD_GT6AphXMkA2LSl3CynhLJpVeqzAyDaCqpQM2FEz-pUiqHMnfXEfQ" alt="Evolution System Logo" class="h-12 w-auto mb-2">
+<p class="text-on-surface-variant text-label-md">Health &amp; Wellness</p></div>
+<nav class="flex-1 space-y-sm">
+<!-- Nav Item: Início -->
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">home</span>
+<span class="font-body-md">Início</span>
+</a>
+<!-- Nav Item: Minha Jornada -->
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">auto_awesome</span>
+<span class="font-body-md">Minha Jornada</span>
+</a>
+<!-- Nav Item: Anamnese -->
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">assignment</span>
+<span class="font-body-md">Anamnese</span>
+</a>
+<!-- Nav Item: Plano (ACTIVE) -->
+<a class="flex items-center gap-md p-md rounded-lg text-primary dark:text-primary-fixed font-bold border-r-4 border-primary bg-secondary-container/30 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Plano</span>
+</a>
+<!-- Nav Item: Progresso -->
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">trending_up</span>
+<span class="font-body-md">Progresso</span>
+</a>
+<!-- Nav Item: Perfil -->
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-secondary-container transition-colors duration-200 cursor-pointer active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">person</span>
+<span class="font-body-md">Perfil</span>
+</a>
+</nav>
+<div class="mt-auto px-sm">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="">Nova Sessão</span>
+</button>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface/80 backdrop-blur-md flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-md">
+<div class="bg-surface-container p-sm rounded-lg flex items-center gap-sm min-w-[240px]">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full" placeholder="Buscar no meu plano..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-sm"></div>
+<div class="flex items-center gap-sm">
+<span class="font-body-md font-bold text-on-surface">Marina</span>
+<img alt="User avatar" class="h-10 w-10 rounded-full border-2 border-secondary-container object-cover" data-alt="A professional close-up portrait of a woman with a serene expression, reflecting a modern wellness aesthetic. She has soft natural lighting hitting her face, creating a clean and corporate modern look. The background is a soft-focus minimalist interior with muted purple and olive tones that align with the brand's sophisticated and imaginative identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4xpG0wrRf1YDwbnCAebFHtUojinYCfIjv-cqnOuYwWS5H_oWiG8yUwHL1ph841mJC0wxZzMi2V-9cRarqZniDISwe1u7NWFoCCahDCQkbQnHHKU-us_89r7BaXxbakU03rIt7RF6gGESD7zoWo4VFTMe-yIdylv82DuxINgRM5b0aids9LZQzwWiyTW_C7HxQlNPicKcvKYuoXtv4NvCNVEoXIUevXBcyrKLXPIHFFvM7klWLMBwhP9btRud2QfwdsyROFyrPp6o">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-lg">
+<div class="max-w-6xl mx-auto">
+<!-- Page Header -->
+<header class="mb-xl">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Plano de Ação System Evolution — Ciclo 1</h2>
+<div class="flex items-center gap-sm mt-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<p class="text-on-surface-variant font-body-lg">15 de Outubro até 29 de Novembro</p>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-md border border-outline text-on-surface-variant rounded-xl font-bold hover:bg-surface-container transition-colors">
+                            Ver protocolo semanal
+                        </button>
+<button class="px-lg py-md bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all">
+                            Começar meu plano
+                        </button>
+</div>
+</div>
+</header>
+<!-- Summary Card -->
+<section class="mb-xl bg-gradient-to-br from-primary-container to-primary rounded-2xl p-xl text-on-primary-container shadow-xl flex flex-wrap gap-xl items-center">
+<div class="flex-1 min-w-[200px]">
+<p class="text-label-md uppercase tracking-wider opacity-80 mb-xs">Vetor Prioritário</p>
+<h3 class="font-headline-md text-headline-md">Controle Emocional</h3>
+</div>
+<div class="h-12 w-px bg-on-primary-container/20 hidden md:block"></div>
+<div class="flex-1 min-w-[150px]">
+<p class="text-label-md uppercase tracking-wider opacity-80 mb-xs">Nível Adaptativo</p>
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md">3</span>
+<span class="bg-on-primary-container/20 px-sm py-xs rounded-full text-label-md">Moderado</span>
+</div>
+</div>
+<div class="h-12 w-px bg-on-primary-container/20 hidden md:block"></div>
+<div class="flex-1 min-w-[180px]">
+<p class="text-label-md uppercase tracking-wider opacity-80 mb-xs">Protocolo</p>
+<p class="font-body-lg font-bold">Equilíbrio Dinâmico</p>
+</div>
+<div class="h-12 w-px bg-on-primary-container/20 hidden md:block"></div>
+<div class="flex-[1.5] min-w-[220px] bg-white/10 backdrop-blur-sm rounded-xl p-md border border-white/20">
+<p class="text-label-md uppercase tracking-wider opacity-80 mb-xs">Próxima Micro-meta</p>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<p class="font-body-md font-medium">10 min de respiração diária</p>
+</div>
+</div>
+</section>
+<!-- Bento Grid Sections -->
+<div class="bento-grid">
+<!-- Section 1: Quem você é hoje -->
+<article class="col-span-12 lg:col-span-5 glass-card rounded-2xl p-xl flex flex-col gap-lg">
+<div class="flex items-center gap-md">
+<div class="h-12 w-12 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">psychology</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Quem você é hoje</h4>
+</div>
+<div class="space-y-md">
+<div class="bg-surface-container p-md rounded-xl border-l-4 border-primary">
+<p class="text-label-md text-primary font-bold uppercase mb-xs">Foco Central</p>
+<p class="font-body-lg font-bold">Controle Emocional</p>
+</div>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                            "Você tende a reagir intensamente a imprevistos, o que consome sua energia produtiva."
+                        </p>
+</div>
+<div class="grid grid-cols-3 gap-md mt-auto">
+<div class="text-center p-md bg-surface-container-low rounded-xl">
+<p class="text-label-md text-outline mb-xs">IM</p>
+<p class="font-headline-md text-primary">90%</p>
+</div>
+<div class="text-center p-md bg-surface-container-low rounded-xl">
+<p class="text-label-md text-outline mb-xs">Operacional</p>
+<p class="font-headline-md text-secondary">78%</p>
+</div>
+<div class="text-center p-md bg-surface-container-low rounded-xl">
+<p class="text-label-md text-outline mb-xs">GAP-E</p>
+<p class="font-headline-md text-tertiary">12%</p>
+</div>
+</div>
+</article>
+<!-- Section 2: Seu contexto -->
+<article class="col-span-12 lg:col-span-7 glass-card rounded-2xl p-xl">
+<div class="flex items-center gap-md mb-xl">
+<div class="h-12 w-12 rounded-xl bg-tertiary-container flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined text-[28px]">tune</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Seu contexto</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="space-y-lg">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline mt-xs">event_available</span>
+<div>
+<p class="text-label-md text-outline uppercase">Disponibilidade</p>
+<p class="font-body-lg font-bold">3x por semana</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline mt-xs">fitness_center</span>
+<div>
+<p class="text-label-md text-outline uppercase">Experiência</p>
+<p class="font-body-lg font-bold">Intermediário</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline mt-xs">ads_click</span>
+<div>
+<p class="text-label-md text-outline uppercase">Resultado Desejado</p>
+<p class="font-body-lg font-bold">Perda de Gordura</p>
+</div>
+</div>
+</div>
+<div class="space-y-lg">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline mt-xs">favorite</span>
+<div>
+<p class="text-label-md text-outline uppercase">Motivador</p>
+<p class="font-body-lg font-bold">Saúde e Longevidade</p>
+</div>
+</div>
+<div class="bg-tertiary-container/10 p-lg rounded-xl border border-tertiary-container/30">
+<div class="flex items-center gap-sm mb-sm text-tertiary">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-md font-bold uppercase">Calibração System Evolution</span>
+</div>
+<p class="text-body-md text-on-surface-variant">
+                                    Recomendamos foco em treinos de força para estabilidade hormonal.
+                                </p>
+</div>
+</div>
+</div>
+</article>
+<!-- Section 3: Seu nível adaptativo -->
+<article class="col-span-12 lg:col-span-4 glass-card rounded-2xl p-xl flex flex-col items-center text-center">
+<h4 class="text-label-md text-outline uppercase tracking-widest mb-lg">Seu nível adaptativo</h4>
+<div class="relative w-48 h-48 flex items-center justify-center mb-lg">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-high" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.9" stroke-dashoffset="221.1" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<p class="text-label-md text-outline">Nível</p>
+<span class="font-headline-lg text-[48px] leading-none text-primary">3 <span class="text-headline-md text-outline">/ 5</span></span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="inline-flex items-center gap-sm bg-secondary-container px-md py-xs rounded-full text-secondary font-bold">
+<span class="text-label-md uppercase">SPI Value:</span>
+<span class="text-body-lg">6.8</span>
+</div>
+<h5 class="font-headline-md text-on-surface">Equilibrado e Persistente</h5>
+<p class="text-on-surface-variant font-body-md">
+                            Seu sistema está pronto para desafios moderados sem risco de esgotamento.
+                        </p>
+</div>
+</article>
+<!-- Section 4: Seu foco nos próximos 45 dias -->
+<article class="col-span-12 lg:col-span-8 glass-card rounded-2xl p-xl">
+<div class="flex items-center gap-md mb-xl">
+<div class="h-12 w-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[28px]">rocket_launch</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Seu foco nos próximos 45 dias</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div>
+<p class="text-label-md text-outline uppercase mb-md">Palavras-chave IM</p>
+<div class="flex flex-wrap gap-sm">
+<span class="px-md py-sm bg-secondary-container/50 text-secondary font-medium rounded-full text-body-md">Sono</span>
+<span class="px-md py-sm bg-secondary-container/50 text-secondary font-medium rounded-full text-body-md">Foco</span>
+<span class="px-md py-sm bg-secondary-container/50 text-secondary font-medium rounded-full text-body-md">Rotina</span>
+<span class="px-md py-sm bg-secondary-container/50 text-secondary font-medium rounded-full text-body-md">Alimentação</span>
+<span class="px-md py-sm bg-secondary-container/50 text-secondary font-medium rounded-full text-body-md">Autocrítica</span>
+<span class="px-md py-sm bg-secondary-container/50 text-secondary font-medium rounded-full text-body-md">Consistência</span>
+</div>
+</div>
+<div class="space-y-lg">
+<div>
+<p class="text-label-md text-outline uppercase mb-xs">Vetor Principal</p>
+<p class="font-body-lg font-bold text-primary">Controle Emocional</p>
+</div>
+<div class="p-lg bg-primary-fixed/30 rounded-xl border border-primary/20">
+<p class="text-label-md text-primary font-bold uppercase mb-xs">Protocolo de Execução</p>
+<p class="font-headline-md text-headline-md text-on-primary-fixed-variant">Protocolo de Estabilização Ativa</p>
+</div>
+</div>
+</div>
+<!-- Decorative image placeholder -->
+<div class="mt-xl h-32 w-full rounded-xl overflow-hidden relative">
+<img alt="Journey Visualization" class="w-full h-full object-cover opacity-60" data-alt="A serene, wide landscape of a misty mountain range during sunrise, symbolizing a journey and personal growth. The color palette is composed of soft purples, muted olives, and golden light. The style is professional digital photography with a minimalist feel, reinforcing the wisdom and reliability of the 'Plano de Ação System Evolution'." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCulfGJ8NgGRz7T8IdZ2W55BozcatxDVrX3gIqe36GcRuWqz5aOh60daYRSKGtItz0nixFGGzk9UsdX-jMLRdigaWcWbYdzdgXu3BLEoDJgHfDtIne4DYSdbo-nA--L4gtJMvdQFlxwy_57P96IjQOJlXk7LmL6DtwdHLylrg64GpdMv6AtoQbwD2ew0Z0FEfy5xorutLnbyITHiN8Ub5xAg1_q8yGEgJzhLpRNo3RxupaIS5AniYsYkJipr5Brmmrdm-oE3N3Dpsc">
+<div class="absolute inset-0 bg-gradient-to-r from-surface to-transparent"></div>
+<div class="absolute inset-0 flex items-center px-lg">
+<p class="font-body-lg italic text-secondary font-medium">"A constância é o que transforma o ordinário em extraordinário."</p>
+</div>
+</div>
+</article>
+</div>
+<!-- Bottom Action Bar (Mobile/Table View visible) -->
+<div class="mt-xl pt-lg border-t border-outline-variant flex flex-col md:flex-row items-center justify-center gap-md lg:hidden">
+<button class="w-full md:w-auto px-xl py-md bg-primary text-on-primary rounded-xl font-bold">
+                    Começar meu plano
+                </button>
+<button class="w-full md:w-auto px-xl py-md border border-outline text-on-surface-variant rounded-xl font-bold">
+                    Ver protocolo semanal
+                </button>
+</div>
+</div>
+</main>
+<!-- Floating Atmosphere -->
+<div class="fixed bottom-8 right-8 pointer-events-none opacity-20">
+<div class="w-64 h-64 bg-primary-container rounded-full blur-[100px]"></div>
+</div>
+<div class="fixed top-8 left-8 pointer-events-none opacity-20">
+<div class="w-96 h-96 bg-tertiary-container rounded-full blur-[120px]"></div>
+</div>
+<script>
+        // Micro-interactions for chips and cards
+        document.querySelectorAll('.cursor-pointer, button, a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                // Subtle feedback could be added here
+            });
+        });
+
+        // Initialize any necessary visual states
+        console.log("Plano de Ação Camila initialized for Marina.");
+    </script>
+
+
+</body></html>

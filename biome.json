@@ -24,8 +24,10 @@
     "includes": [
       "**",
       "!**/.next",
+      "!**/.turbo",
       "!**/dist",
       "!**/node_modules",
+      "!*.tsbuildinfo",
       "!bun.lock",
       "!.stitch-reference"
     ]

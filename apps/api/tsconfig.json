@@ -1,0 +1,22 @@
+{
+  "extends": "../../packages/config/tsconfig/base.json",
+  "compilerOptions": {
+    "composite": true,
+    "types": ["bun"],
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {
+      "@evolution/domain": ["../../packages/domain/src/index.ts"],
+      "@evolution/firebase": ["../../packages/firebase/src/index.ts"]
+    }
+  },
+  "references": [
+    {
+      "path": "../../packages/domain"
+    },
+    {
+      "path": "../../packages/firebase"
+    }
+  ],
+  "include": ["src"]
+}

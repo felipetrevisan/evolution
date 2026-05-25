@@ -1,0 +1,24 @@
+{
+  "name": "@evolution/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:migrate": "bun scripts/migrate.ts",
+    "db:seed-config": "bun scripts/seed-admin-config.ts",
+    "dev": "bun --watch src/main.ts",
+    "test": "bun test",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.4.0",
+    "@evolution/domain": "workspace:*",
+    "@evolution/firebase": "workspace:*",
+    "elysia": "1.4.28",
+    "firebase-admin": "13.10.0",
+    "postgres": "^3.4.9"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.15"
+  }
+}

@@ -1,0 +1,77 @@
+type User @table(name: "users", key: ["uid"]) {
+  uid: String!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type Cycle @table(name: "cycles", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type BodyMeasurement @table(name: "body_measurements", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type TriageSession @table(name: "triage_sessions", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type Investigation @table(name: "investigations", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type OperationalAssessment @table(name: "operational_assessments", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type AdaptiveProfile @table(name: "adaptive_profiles", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type ActionPlan @table(name: "action_plans", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type Checkin @table(name: "checkins", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}
+
+type CycleReport @table(name: "cycle_reports", key: ["id"]) {
+  id: String!
+  uid: String!
+  created_at: Timestamp!
+  updated_at: Timestamp!
+  data: Any!
+}

@@ -1,0 +1,17 @@
+query GetUser($uid: String!) @auth(level: NO_ACCESS) {
+  user(uid: $uid) {
+    uid
+    updated_at
+    data
+  }
+}
+
+query ListCheckinsByUser($uid: String!) @auth(level: NO_ACCESS) {
+  checkins(where: { uid: { eq: $uid } }, orderBy: { created_at: DESC }, limit: 45) {
+    id
+    uid
+    created_at
+    updated_at
+    data
+  }
+}

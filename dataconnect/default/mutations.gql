@@ -1,0 +1,3 @@
+mutation UpsertUser($uid: String!, $updated_at: Timestamp!, $data: Any!) @auth(level: NO_ACCESS) {
+  user_upsert(data: { uid: $uid, updated_at: $updated_at, data: $data })
+}

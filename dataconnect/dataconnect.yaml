@@ -1,0 +1,7 @@
+specVersion: "v1"
+serviceId: "evolution"
+location: "us-central1"
+schema:
+  source: "./schema.gql"
+connectorDirs:
+  - "./default"

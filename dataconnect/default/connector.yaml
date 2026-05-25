@@ -1,0 +1,6 @@
+connectorId: "default"
+generate:
+  adminNodeSdk:
+    outputDir: "../../dataconnect-generated/admin"
+    package: "@evolution/dataconnect-admin"
+    packageJsonDir: "../.."

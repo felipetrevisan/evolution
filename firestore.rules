@@ -1,0 +1,75 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function owns(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    match /users/{uid} {
+      allow read, write: if owns(uid) || isAdmin();
+
+      match /cycles/{cycleId} {
+        allow read, write: if owns(uid);
+      }
+
+      match /bodyMeasurements/{entryId} {
+        allow read, write: if owns(uid);
+      }
+
+      match /triageSessions/{sessionId} {
+        allow read, write: if owns(uid);
+      }
+
+      match /investigations/{sessionId} {
+        allow read, write: if owns(uid);
+      }
+
+      match /operationalAssessments/{id} {
+        allow read, write: if owns(uid);
+      }
+
+      match /adaptiveProfiles/{id} {
+        allow read, write: if owns(uid);
+      }
+
+      match /plans/{planId} {
+        allow read, write: if owns(uid);
+      }
+
+      match /checkins/{checkinId} {
+        allow read, write: if owns(uid);
+      }
+
+      match /reports/{reportId} {
+        allow read, write: if owns(uid);
+      }
+    }
+
+    match /adminConfig/{document} {
+      allow read, write: if isAdmin();
+    }
+
+    match /subscriptionPlans/{planId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /paymentEvents/{eventId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

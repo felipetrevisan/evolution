@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@source "../../../../packages/ui/src";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-primary-container: var(--primary-container);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+}
+
+:root {
+  color-scheme: light;
+  --background: #fef7ff;
+  --foreground: #1d1a21;
+  --card: #ffffff;
+  --card-foreground: #1d1a21;
+  --primary: #6b48a9;
+  --primary-foreground: #ffffff;
+  --secondary: #e1cffe;
+  --secondary-foreground: #65567e;
+  --muted: #f3ebf5;
+  --muted-foreground: #4a4451;
+  --accent: #f0e760;
+  --accent-foreground: #4c4800;
+  --border: #ccc3d3;
+  --ring: #6e4bab;
+  --destructive: #ba1a1a;
+  --destructive-foreground: #ffffff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f9f1fa;
+  --surface-container: #f3ebf5;
+  --surface-container-high: #ede6ef;
+  --surface-container-highest: #e7e0e9;
+  --surface-variant: #e7e0e9;
+  --primary-container: #8562c3;
+  --primary-fixed: #ebdcff;
+  --primary-fixed-dim: #d4bbff;
+  --tertiary: #b7af2d;
+  --tertiary-foreground: #454100;
+  --google-blue: #4285f4;
+  --google-green: #34a853;
+  --google-yellow: #fbbc05;
+  --google-red: #ea4335;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #151219;
+  --foreground: #f6eef8;
+  --card: #211d26;
+  --card-foreground: #f6eef8;
+  --primary: #d4bbff;
+  --primary-foreground: #260058;
+  --secondary: #4e4066;
+  --secondary-foreground: #ebdcff;
+  --muted: #322f36;
+  --muted-foreground: #d0c7d7;
+  --accent: #d3ca47;
+  --accent-foreground: #1e1c00;
+  --border: #5f5867;
+  --ring: #d4bbff;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --surface-container-lowest: #111014;
+  --surface-container-low: #1d1a21;
+  --surface-container: #24202a;
+  --surface-container-high: #2f2a36;
+  --surface-container-highest: #3a3441;
+  --surface-variant: #4a4451;
+  --primary-container: #553291;
+  --primary-fixed: #ebdcff;
+  --primary-fixed-dim: #d4bbff;
+  --tertiary: #d3ca47;
+  --tertiary-foreground: #1e1c00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+    --background: #151219;
+    --foreground: #f6eef8;
+    --card: #211d26;
+    --card-foreground: #f6eef8;
+    --primary: #d4bbff;
+    --primary-foreground: #260058;
+    --secondary: #4e4066;
+    --secondary-foreground: #ebdcff;
+    --muted: #322f36;
+    --muted-foreground: #d0c7d7;
+    --accent: #d3ca47;
+    --accent-foreground: #1e1c00;
+    --border: #5f5867;
+    --ring: #d4bbff;
+    --destructive: #ffb4ab;
+    --destructive-foreground: #690005;
+    --surface-container-lowest: #111014;
+    --surface-container-low: #1d1a21;
+    --surface-container: #24202a;
+    --surface-container-high: #2f2a36;
+    --surface-container-highest: #3a3441;
+    --surface-variant: #4a4451;
+    --primary-container: #553291;
+    --primary-fixed: #ebdcff;
+    --primary-fixed-dim: #d4bbff;
+    --tertiary: #d3ca47;
+    --tertiary-foreground: #1e1c00;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+.soft-shadow {
+  box-shadow: 0 24px 64px rgba(107, 72, 169, 0.1);
+}
+
+.stitch-soft-shadow {
+  box-shadow: 0 8px 32px -8px rgba(107, 72, 169, 0.08);
+}
+
+.stitch-glass-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(249, 241, 250, 0.42) 100%);
+  border: 1px solid rgba(204, 195, 211, 0.32);
+  box-shadow: 0 4px 24px -4px rgba(107, 72, 169, 0.06);
+}
+
+.dark .stitch-glass-card {
+  background: linear-gradient(180deg, rgba(33, 29, 38, 0.96) 0%, rgba(36, 32, 42, 0.76) 100%);
+  border-color: rgba(95, 88, 103, 0.6);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.45);
+}
+
+.stitch-auth-glass {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(10px);
+}
+
+.dark .stitch-auth-glass {
+  background: rgba(33, 29, 38, 0.72);
+  border-color: rgba(95, 88, 103, 0.5);
+}
+
+.auth-surface {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(249, 241, 250, 0.72)), var(--background);
+}
+
+.dark .auth-surface {
+  background:
+    linear-gradient(180deg, rgba(21, 18, 25, 0.92), rgba(36, 32, 42, 0.88)), var(--background);
+}
+
+.stitch-organic-bg {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(212, 187, 255, 0.36), transparent 30%),
+    radial-gradient(circle at 82% 74%, rgba(183, 175, 45, 0.18), transparent 32%),
+    linear-gradient(135deg, #fef7ff 0%, #f9f1fa 48%, #ede6ef 100%);
+}
+
+.dark .stitch-organic-bg {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(85, 50, 145, 0.42), transparent 30%),
+    radial-gradient(circle at 82% 74%, rgba(211, 202, 71, 0.12), transparent 32%),
+    linear-gradient(135deg, #151219 0%, #1d1a21 48%, #2f2a36 100%);
+}
+
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.animate-slide-up-soft {
+  animation: slide-up-soft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes slide-up-soft {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

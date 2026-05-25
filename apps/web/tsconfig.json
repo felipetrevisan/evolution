@@ -1,0 +1,33 @@
+{
+  "extends": "../../packages/config/tsconfig/base.json",
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@evolution/domain": ["../../packages/domain/src/index.ts"],
+      "@evolution/firebase": ["../../packages/firebase/src/index.ts"],
+      "@evolution/ui": ["../../packages/ui/src/index.ts"]
+    }
+  },
+  "references": [
+    {
+      "path": "../../packages/domain"
+    },
+    {
+      "path": "../../packages/firebase"
+    },
+    {
+      "path": "../../packages/ui"
+    }
+  ],
+  "include": ["next-env.d.ts", "src", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

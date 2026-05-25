@@ -2,7 +2,7 @@ import type { FirebaseAdminConfig } from "@evolution/firebase";
 
 export type ApiEnv = {
   port: number;
-  corsOrigin: string;
+  corsOrigins: string[];
   adminEmails: string[];
   firebase: FirebaseAdminConfig | null;
   persistence: {
@@ -21,7 +21,9 @@ export function loadApiEnv(source = Bun.env): ApiEnv {
 
   return {
     port: Number(source.PORT ?? 4000),
-    corsOrigin: source.CORS_ORIGIN ?? "http://localhost:3000",
+    corsOrigins: parseCsv(
+      source.CORS_ORIGIN ?? "http://localhost:3000,https://evolution.institutoez.com.br",
+    ),
     adminEmails: parseCsv(source.ADMIN_EMAILS),
     persistence: {
       driver:

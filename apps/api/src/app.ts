@@ -12,8 +12,11 @@ export function createApp() {
   return new Elysia()
     .use(
       cors({
-        origin: env.corsOrigin,
+        origin: env.corsOrigins,
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,
+        preflight: true,
       }),
     )
     .onError(({ error, status }) => handleError(error, status))

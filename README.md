@@ -58,7 +58,7 @@ FIREBASE_PROJECT_ID=
 FIREBASE_CLIENT_EMAIL=
 FIREBASE_PRIVATE_KEY=
 FIREBASE_DATABASE_URL=
-CORS_ORIGIN=http://localhost:3000
+CORS_ORIGIN=http://localhost:3000,https://evolution.institutoez.com.br
 PERSISTENCE_DRIVER=sql
 SQL_CONNECT_DATABASE_URL=
 SQL_CONNECT_SERVICE_ID=evolution
@@ -66,6 +66,7 @@ SQL_CONNECT_LOCATION=us-central1
 ```
 
 `FIREBASE_PRIVATE_KEY` may need escaped newlines (`\n`) depending on the shell or deployment provider.
+`CORS_ORIGIN` accepts a comma-separated list of frontend origins.
 
 ## Firebase Setup
 

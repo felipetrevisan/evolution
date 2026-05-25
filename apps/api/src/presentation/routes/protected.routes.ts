@@ -64,21 +64,35 @@ import {
   triageQuestionsController,
   triageTieBreakController,
 } from "../controllers/triage.controller";
-import { actionPlanBodySchema } from "../dtos/action-plan.dto";
+import { type ActionPlanBodyDto, actionPlanBodySchema } from "../dtos/action-plan.dto";
 import {
+  type AdminInvestigationQuestionsBodyDto,
+  type AdminOperationalQuestionsBodyDto,
+  type AdminTriageQuestionsBodyDto,
   adminInvestigationQuestionsBodySchema,
   adminOperationalQuestionsBodySchema,
   adminTriageQuestionsBodySchema,
+  type PaymentProviderBodyDto,
   paymentProviderBodySchema,
+  type SubscriptionPlanBodyDto,
   subscriptionPlanBodySchema,
+  type UpdateUserAdminBodyDto,
   updateUserAdminBodySchema,
 } from "../dtos/admin.dto";
-import { anamneseBodySchema } from "../dtos/anamnese.dto";
-import { genericAnswerBodySchema } from "../dtos/answer.dto";
-import { checkInBodySchema } from "../dtos/check-in.dto";
-import { operationalAnswerBodySchema } from "../dtos/operational-assessment.dto";
-import { profileBodySchema } from "../dtos/profile.dto";
-import { triageAnswerBodySchema, triageTieBreakBodySchema } from "../dtos/triage.dto";
+import { type AnamneseBodyDto, anamneseBodySchema } from "../dtos/anamnese.dto";
+import { type GenericAnswerBodyDto, genericAnswerBodySchema } from "../dtos/answer.dto";
+import { type CheckInBodyDto, checkInBodySchema } from "../dtos/check-in.dto";
+import {
+  type OperationalAnswerBodyDto,
+  operationalAnswerBodySchema,
+} from "../dtos/operational-assessment.dto";
+import { type ProfileBodyDto, profileBodySchema } from "../dtos/profile.dto";
+import {
+  type TriageAnswerBodyDto,
+  type TriageTieBreakBodyDto,
+  triageAnswerBodySchema,
+  triageTieBreakBodySchema,
+} from "../dtos/triage.dto";
 import { authMiddleware } from "../middlewares/auth-middleware";
 
 async function requireProductUser(headers: Record<string, string | undefined>) {
@@ -91,7 +105,7 @@ export const protectedRoutes = new Elysia()
   .post(
     "/me/profile",
     async ({ headers, body }) =>
-      ok(await upsertProfileController(await requireCurrentUser(headers), body)),
+      ok(await upsertProfileController(await requireCurrentUser(headers), body as ProfileBodyDto)),
     {
       body: profileBodySchema,
     },
@@ -107,7 +121,7 @@ export const protectedRoutes = new Elysia()
   .post(
     "/onboarding/anamnesis",
     async ({ headers, body }) =>
-      ok(await saveAnamneseController(await requireCurrentUser(headers), body)),
+      ok(await saveAnamneseController(await requireCurrentUser(headers), body as AnamneseBodyDto)),
     { body: anamneseBodySchema },
   )
   .get("/onboarding/status", async ({ headers }) =>
@@ -120,7 +134,12 @@ export const protectedRoutes = new Elysia()
   .post(
     "/triage/answer",
     async ({ headers, body }) =>
-      ok(await recordTriageAnswerController(await requireCurrentUser(headers), body)),
+      ok(
+        await recordTriageAnswerController(
+          await requireCurrentUser(headers),
+          body as TriageAnswerBodyDto,
+        ),
+      ),
     { body: triageAnswerBodySchema },
   )
   .post("/triage/complete", async ({ headers }) =>
@@ -129,7 +148,12 @@ export const protectedRoutes = new Elysia()
   .post(
     "/triage/tie-break",
     async ({ headers, body }) =>
-      ok(await triageTieBreakController(await requireCurrentUser(headers), body)),
+      ok(
+        await triageTieBreakController(
+          await requireCurrentUser(headers),
+          body as TriageTieBreakBodyDto,
+        ),
+      ),
     { body: triageTieBreakBodySchema },
   )
   .get("/triage/current-result", async ({ headers }) =>
@@ -141,7 +165,12 @@ export const protectedRoutes = new Elysia()
   .post(
     "/investigation/answer",
     async ({ headers, body }) =>
-      ok(await recordInvestigationAnswerController(await requireCurrentUser(headers), body)),
+      ok(
+        await recordInvestigationAnswerController(
+          await requireCurrentUser(headers),
+          body as GenericAnswerBodyDto,
+        ),
+      ),
     { body: genericAnswerBodySchema },
   )
   .post("/investigation/complete", async ({ headers }) =>
@@ -153,7 +182,12 @@ export const protectedRoutes = new Elysia()
   .post(
     "/operational-assessment/answer",
     async ({ headers, body }) =>
-      ok(await recordOperationalAnswerController(await requireCurrentUser(headers), body)),
+      ok(
+        await recordOperationalAnswerController(
+          await requireCurrentUser(headers),
+          body as OperationalAnswerBodyDto,
+        ),
+      ),
     { body: operationalAnswerBodySchema },
   )
   .post("/operational-assessment/complete", async ({ headers }) =>
@@ -165,7 +199,12 @@ export const protectedRoutes = new Elysia()
   .post(
     "/action-plan/generate",
     async ({ headers, body }) =>
-      ok(await generateActionPlanController(await requireProductUser(headers), body)),
+      ok(
+        await generateActionPlanController(
+          await requireProductUser(headers),
+          body as ActionPlanBodyDto,
+        ),
+      ),
     { body: actionPlanBodySchema },
   )
   .get("/action-plan/current", async ({ headers }) =>
@@ -180,7 +219,7 @@ export const protectedRoutes = new Elysia()
   .post(
     "/check-in",
     async ({ headers, body }) =>
-      ok(await saveCheckInController(await requireProductUser(headers), body)),
+      ok(await saveCheckInController(await requireProductUser(headers), body as CheckInBodyDto)),
     {
       body: checkInBodySchema,
     },
@@ -215,7 +254,7 @@ export const protectedRoutes = new Elysia()
     "/admin/users/:uid",
     async ({ headers, params, body }) => {
       await requireAdminUser(headers);
-      return ok(await adminUpdateUserController(params.uid, body));
+      return ok(await adminUpdateUserController(params.uid, body as UpdateUserAdminBodyDto));
     },
     { body: updateUserAdminBodySchema },
   )
@@ -227,7 +266,7 @@ export const protectedRoutes = new Elysia()
     "/admin/subscription-plans",
     async ({ headers, body }) => {
       await requireAdminUser(headers);
-      return ok(await adminSaveSubscriptionPlanController(body));
+      return ok(await adminSaveSubscriptionPlanController(body as SubscriptionPlanBodyDto));
     },
     { body: subscriptionPlanBodySchema },
   )
@@ -243,7 +282,7 @@ export const protectedRoutes = new Elysia()
     "/admin/payment-provider",
     async ({ headers, body }) => {
       await requireAdminUser(headers);
-      return ok(await adminSavePaymentProviderController(body));
+      return ok(await adminSavePaymentProviderController(body as PaymentProviderBodyDto));
     },
     { body: paymentProviderBodySchema },
   )
@@ -255,7 +294,7 @@ export const protectedRoutes = new Elysia()
     "/admin/triage/questions",
     async ({ headers, body }) => {
       await requireAdminUser(headers);
-      return ok(await adminSaveTriageQuestionsController(body));
+      return ok(await adminSaveTriageQuestionsController(body as AdminTriageQuestionsBodyDto));
     },
     { body: adminTriageQuestionsBodySchema },
   )
@@ -267,7 +306,9 @@ export const protectedRoutes = new Elysia()
     "/admin/investigation/questions",
     async ({ headers, body }) => {
       await requireAdminUser(headers);
-      return ok(await adminSaveInvestigationQuestionsController(body));
+      return ok(
+        await adminSaveInvestigationQuestionsController(body as AdminInvestigationQuestionsBodyDto),
+      );
     },
     { body: adminInvestigationQuestionsBodySchema },
   )
@@ -279,7 +320,9 @@ export const protectedRoutes = new Elysia()
     "/admin/operational-assessment/questions",
     async ({ headers, body }) => {
       await requireAdminUser(headers);
-      return ok(await adminSaveOperationalQuestionsController(body));
+      return ok(
+        await adminSaveOperationalQuestionsController(body as AdminOperationalQuestionsBodyDto),
+      );
     },
     { body: adminOperationalQuestionsBodySchema },
   );

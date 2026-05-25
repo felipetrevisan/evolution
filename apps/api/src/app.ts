@@ -1,4 +1,4 @@
-import cors from "@elysiajs/cors";
+import { cors } from "@elysiajs/cors";
 import { Elysia } from "elysia";
 import { loadApiEnv } from "./infrastructure/env/api-env";
 import { healthRoutes } from "./presentation/routes/health.routes";

@@ -133,6 +133,7 @@ export function AnamneseForm() {
               onChange={(value) => {
                 if (value) update("weightKg", value);
               }}
+              required
               value={form.weightKg}
             />
             <NumberField
@@ -140,28 +141,37 @@ export function AnamneseForm() {
               onChange={(value) => {
                 if (value) update("heightCm", value);
               }}
+              required
               value={form.heightCm}
             />
             <NumberField
               label="Cintura (cm)"
               onChange={(value) => update("waistCm", value)}
+              optional
               value={form.waistCm}
             />
             <NumberField
               label="Quadril (cm)"
               onChange={(value) => update("hipCm", value)}
+              optional
               value={form.hipCm}
             />
             <NumberField
               label="Braço (cm)"
               onChange={(value) => update("armCm", value)}
+              optional
               value={form.armCm}
             />
             <NumberField
               label="Coxa (cm)"
               onChange={(value) => update("thighCm", value)}
+              optional
               value={form.thighCm}
             />
+            <p className="text-muted-foreground text-xs leading-5">
+              Peso e altura são necessários para estimar o IMC. As demais medidas ajudam no
+              acompanhamento, mas podem ficar em branco.
+            </p>
           </div>
         </CardContent>
       </Card>
@@ -369,21 +379,30 @@ function TextField({ label, onChange }: { label: string; onChange: (value: strin
 function NumberField({
   label,
   onChange,
+  optional = false,
+  required = false,
   value,
 }: {
   label: string;
   onChange: (value: number | undefined) => void;
+  optional?: boolean;
+  required?: boolean;
   value: number | undefined;
 }) {
   return (
     <label className="grid gap-2 text-xs font-medium text-muted-foreground">
-      {label}
+      <span className="flex items-center justify-between gap-2">
+        {label}
+        {optional ? <span className="font-normal text-muted-foreground/75">Opcional</span> : null}
+      </span>
       <input
         className="rounded-lg border border-border bg-muted px-4 py-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary"
+        min={required ? 1 : undefined}
         onChange={(event) => {
           const nextValue = event.target.value ? Number(event.target.value) : undefined;
           onChange(nextValue);
         }}
+        required={required}
         type="number"
         value={value ?? ""}
       />

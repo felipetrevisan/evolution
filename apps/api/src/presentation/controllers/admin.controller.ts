@@ -22,7 +22,11 @@ import {
   getAdminTriageQuestions,
   saveAdminTriageQuestions,
 } from "../../application/use-cases/admin/manage-triage-config";
-import { listAdminUsers, updateAdminUser } from "../../application/use-cases/admin/manage-users";
+import {
+  listAdminUsers,
+  resetAdminUserProgress,
+  updateAdminUser,
+} from "../../application/use-cases/admin/manage-users";
 import type { CurrentUser } from "../../infrastructure/auth/current-user";
 import { repositories } from "../../infrastructure/repositories/repository-factory";
 import { ApiError } from "../../shared/errors/api-error";
@@ -49,6 +53,24 @@ export function adminSessionController(currentUser: CurrentUser) {
 
 export async function adminUpdateUserController(uid: string, body: UpdateUserAdminBodyDto) {
   return updateAdminUser(uid, body, repositories().users);
+}
+
+export async function adminResetUserProgressController(uid: string) {
+  const repo = repositories();
+
+  return resetAdminUserProgress(uid, {
+    adaptiveProfiles: repo.adaptiveProfiles,
+    anamnese: repo.anamnese,
+    bodyMeasurements: repo.bodyMeasurements,
+    checkins: repo.checkins,
+    cycles: repo.cycles,
+    investigations: repo.investigations,
+    operationalAssessments: repo.operationalAssessments,
+    plans: repo.plans,
+    reports: repo.reports,
+    triageSessions: repo.triageSessions,
+    users: repo.users,
+  });
 }
 
 export async function adminSubscriptionPlansController() {

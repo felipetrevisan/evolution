@@ -24,6 +24,7 @@ export type UserProfileRecord = {
 };
 
 export type UserRepository = {
+  clearOnboardingProgress(uid: string): Promise<UserProfileRecord | null>;
   get(uid: string): Promise<UserProfileRecord | null>;
   getByEmail(email: string): Promise<UserProfileRecord | null>;
   list(limit?: number): Promise<UserProfileRecord[]>;

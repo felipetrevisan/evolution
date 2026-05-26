@@ -6,6 +6,27 @@ import type { SqlClient } from "../../database/sql-client";
 
 export function createSqlUserRepository(sql: SqlClient): UserRepository {
   return {
+    async clearOnboardingProgress(uid) {
+      const existing = await this.get(uid);
+
+      if (!existing) {
+        return null;
+      }
+
+      const record = {
+        ...existing,
+        onboarding: {},
+        updatedAt: new Date().toISOString(),
+      };
+
+      await sql`
+        update users
+        set updated_at = ${record.updatedAt}, data = ${sql.json(record)}
+        where uid = ${uid}
+      `;
+
+      return record;
+    },
     async get(uid) {
       const rows = await sql`
         select data

@@ -79,6 +79,11 @@ export const api = {
     uid: string,
     body: { role?: "user" | "admin"; subscription?: UserProfile["subscription"] },
   ) => apiRequest<UserProfile, typeof body>(`/admin/users/${uid}`, { method: "PATCH", body }),
+  adminResetUserProgress: (uid: string) =>
+    apiRequest<{ deletedRecords: number; user: UserProfile | null }>(
+      `/admin/users/${uid}/reset-progress`,
+      { method: "POST" },
+    ),
   adminSubscriptionPlans: () => apiRequest<SubscriptionPlan[]>("/admin/subscription-plans"),
   adminSaveSubscriptionPlan: (body: SubscriptionPlan) =>
     apiRequest<SubscriptionPlan, SubscriptionPlan>("/admin/subscription-plans", {

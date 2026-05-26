@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@evolution/ui";
-import { Edit3, Search, ShieldCheck, UserCheck, UsersRound, X } from "lucide-react";
+import { Edit3, RotateCcw, Search, ShieldCheck, UserCheck, UsersRound, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { api, type UserProfile } from "@/lib/api-client";
@@ -64,6 +64,8 @@ export function UsersAdmin() {
   const [editingUser, setEditingUser] = useState<UserProfile | null>(null);
   const [draft, setDraft] = useState<UserEditDraft | null>(null);
   const [savingUser, setSavingUser] = useState(false);
+  const [resettingUser, setResettingUser] = useState<UserProfile | null>(null);
+  const [resettingProgress, setResettingProgress] = useState(false);
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -113,6 +115,28 @@ export function UsersAdmin() {
       toast.error("Não foi possível salvar o usuário.", { id: saveToast });
     } finally {
       setSavingUser(false);
+    }
+  }
+
+  async function resetUserProgress(user: UserProfile) {
+    setResettingProgress(true);
+    const resetToast = toast.loading("Limpando progresso...");
+
+    try {
+      const result = await api.adminResetUserProgress(user.uid);
+
+      if (result.user) {
+        setUsers((current) =>
+          current.map((item) => (item.uid === user.uid ? (result.user ?? item) : item)),
+        );
+      }
+
+      setResettingUser(null);
+      toast.success("Progresso limpo. A pessoa poderá começar do zero.", { id: resetToast });
+    } catch {
+      toast.error("Não foi possível limpar o progresso.", { id: resetToast });
+    } finally {
+      setResettingProgress(false);
     }
   }
 
@@ -220,7 +244,12 @@ export function UsersAdmin() {
             </div>
           ) : null}
           {filteredUsers.map((user) => (
-            <UserRow key={user.uid} onEdit={openUserEditor} user={user} />
+            <UserRow
+              key={user.uid}
+              onEdit={openUserEditor}
+              onResetProgress={setResettingUser}
+              user={user}
+            />
           ))}
         </CardContent>
       </Card>
@@ -252,11 +281,68 @@ export function UsersAdmin() {
           ) : null}
         </DialogContent>
       </Dialog>
+
+      <Dialog
+        onOpenChange={(open) => {
+          if (!open && !resettingProgress) {
+            setResettingUser(null);
+          }
+        }}
+        open={Boolean(resettingUser)}
+      >
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Limpar progresso</DialogTitle>
+            <DialogDescription>
+              Essa ação apaga a jornada, respostas, plano, check-ins e relatórios dessa pessoa. A
+              conta, perfil e status do plano serão preservados.
+            </DialogDescription>
+          </DialogHeader>
+          {resettingUser ? (
+            <div className="grid gap-4">
+              <div className="rounded-xl border border-border bg-muted p-4">
+                <p className="font-medium">{getUserLabel(resettingUser)}</p>
+                <p className="text-muted-foreground text-sm">
+                  {resettingUser.email ?? resettingUser.uid}
+                </p>
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button
+                  className="cursor-pointer"
+                  disabled={resettingProgress}
+                  onClick={() => setResettingUser(null)}
+                  type="button"
+                  variant="outline"
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  className="cursor-pointer border-destructive/30 bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  disabled={resettingProgress}
+                  onClick={() => resetUserProgress(resettingUser)}
+                  type="button"
+                >
+                  <RotateCcw className="size-4" />
+                  {resettingProgress ? "Limpando..." : "Limpar progresso"}
+                </Button>
+              </div>
+            </div>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
 
-function UserRow({ onEdit, user }: { onEdit: (user: UserProfile) => void; user: UserProfile }) {
+function UserRow({
+  onEdit,
+  onResetProgress,
+  user,
+}: {
+  onEdit: (user: UserProfile) => void;
+  onResetProgress: (user: UserProfile) => void;
+  user: UserProfile;
+}) {
   const status = user.subscription?.status ?? "free";
 
   return (
@@ -280,10 +366,26 @@ function UserRow({ onEdit, user }: { onEdit: (user: UserProfile) => void; user: 
         <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">Status</p>
         <p className="mt-1 font-medium text-sm">{subscriptionStatusLabel(status)}</p>
       </div>
-      <Button className="self-center" onClick={() => onEdit(user)} type="button" variant="outline">
-        <Edit3 className="size-4" />
-        Editar
-      </Button>
+      <div className="flex flex-wrap gap-2 self-center xl:justify-end">
+        <Button
+          className="cursor-pointer"
+          onClick={() => onResetProgress(user)}
+          type="button"
+          variant="outline"
+        >
+          <RotateCcw className="size-4" />
+          Limpar progresso
+        </Button>
+        <Button
+          className="cursor-pointer"
+          onClick={() => onEdit(user)}
+          type="button"
+          variant="outline"
+        >
+          <Edit3 className="size-4" />
+          Editar
+        </Button>
+      </div>
     </div>
   );
 }

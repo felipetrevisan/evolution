@@ -77,6 +77,9 @@ describe("dashboard aggregation", () => {
         },
       ]),
       users: {
+        async clearOnboardingProgress() {
+          throw new Error("not used");
+        },
         async get() {
           return {
             uid: "user_1",

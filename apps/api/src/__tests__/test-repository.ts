@@ -10,6 +10,17 @@ export function createMemoryRepository<TRecord extends UserScopedRecord>(
 
   return {
     records,
+    async deleteAll(uid) {
+      const keys = [...records.entries()]
+        .filter(([, record]) => record.uid === uid)
+        .map(([key]) => key);
+
+      for (const key of keys) {
+        records.delete(key);
+      }
+
+      return keys.length;
+    },
     async get(uid, id) {
       return records.get(`${uid}:${id}`) ?? null;
     },

@@ -13,6 +13,15 @@ export function createSqlUserScopedRepository<TRecord extends UserScopedRecord>(
   const table = scopedTableByCollection[collection];
 
   return {
+    async deleteAll(uid) {
+      const rows = await sql`
+        delete from ${sql(table)}
+        where uid = ${uid}
+        returning id
+      `;
+
+      return rows.length;
+    },
     async get(uid, id) {
       const rows = await sql`
         select data

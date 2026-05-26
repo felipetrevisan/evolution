@@ -66,6 +66,15 @@ function createUserRepository(initial: UserProfileRecord[]): UserRepository {
   const records = new Map(initial.map((record) => [record.uid, record]));
 
   return {
+    async clearOnboardingProgress(uid) {
+      const record = records.get(uid) ?? null;
+
+      if (record) {
+        records.set(uid, { ...record, onboarding: {}, updatedAt: new Date().toISOString() });
+      }
+
+      return records.get(uid) ?? null;
+    },
     async get(uid) {
       return records.get(uid) ?? null;
     },

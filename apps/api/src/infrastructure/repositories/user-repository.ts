@@ -6,6 +6,22 @@ import type {
 
 export function createUserRepository(db: Firestore): UserRepository {
   return {
+    async clearOnboardingProgress(uid) {
+      const existing = await this.get(uid);
+
+      if (!existing) {
+        return null;
+      }
+
+      const record = {
+        ...existing,
+        onboarding: {},
+        updatedAt: new Date().toISOString(),
+      };
+
+      await db.doc(`users/${uid}`).set(record);
+      return record;
+    },
     async get(uid) {
       const snapshot = await db.doc(`users/${uid}`).get();
       return snapshot.exists ? (snapshot.data() as UserProfileRecord) : null;

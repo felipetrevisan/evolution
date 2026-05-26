@@ -6,6 +6,7 @@ export type UserScopedRecord = {
 };
 
 export type UserScopedRepository<TRecord extends UserScopedRecord> = {
+  deleteAll(uid: string): Promise<number>;
   get(uid: string, id: string): Promise<TRecord | null>;
   getLatest(uid: string): Promise<TRecord | null>;
   list(uid: string, limit?: number): Promise<TRecord[]>;

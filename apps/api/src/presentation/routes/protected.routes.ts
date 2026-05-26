@@ -13,6 +13,7 @@ import {
   adminInvestigationQuestionsController,
   adminOperationalQuestionsController,
   adminPaymentProviderController,
+  adminResetUserProgressController,
   adminSaveInvestigationQuestionsController,
   adminSaveOperationalQuestionsController,
   adminSavePaymentProviderController,
@@ -258,6 +259,10 @@ export const protectedRoutes = new Elysia()
     },
     { body: updateUserAdminBodySchema },
   )
+  .post("/admin/users/:uid/reset-progress", async ({ headers, params }) => {
+    await requireAdminUser(headers);
+    return ok(await adminResetUserProgressController(params.uid));
+  })
   .get("/admin/subscription-plans", async ({ headers }) => {
     await requireAdminUser(headers);
     return ok(await adminSubscriptionPlansController());

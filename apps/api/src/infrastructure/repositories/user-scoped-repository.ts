@@ -23,6 +23,17 @@ export function createUserScopedRepository<TRecord extends UserScopedRecord>(
   const ref = (uid: string) => db.collection(`users/${uid}/${collection}`);
 
   return {
+    async deleteAll(uid) {
+      const snapshot = await ref(uid).get();
+      const batch = db.batch();
+
+      for (const doc of snapshot.docs) {
+        batch.delete(doc.ref);
+      }
+
+      await batch.commit();
+      return snapshot.size;
+    },
     async get(uid, id) {
       const snapshot = await ref(uid).doc(id).get();
       return snapshot.exists ? (snapshot.data() as TRecord) : null;

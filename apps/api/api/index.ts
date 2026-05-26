@@ -25,9 +25,18 @@ export default async function handler(request: NodeRequest, response: NodeRespon
   }
 
   const app = await getApp().catch((error: unknown) => {
+    console.error("API startup failed", error);
     response.statusCode = 500;
     response.setHeader("content-type", "application/json; charset=utf-8");
-    response.end(JSON.stringify({ error: serializeStartupError(error) }));
+    response.end(
+      JSON.stringify({
+        success: false,
+        error: {
+          code: "STARTUP_ERROR",
+          message: "Não foi possível iniciar o serviço agora.",
+        },
+      }),
+    );
     return null;
   });
 
@@ -63,17 +72,6 @@ function getHeader(headers: NodeRequest["headers"], name: string) {
   const value = headers[name] ?? headers[name.toLowerCase()];
 
   return Array.isArray(value) ? value[0] : value;
-}
-
-function serializeStartupError(error: unknown) {
-  if (error instanceof Error) {
-    return {
-      message: error.message,
-      stack: error.stack,
-    };
-  }
-
-  return { message: String(error) };
 }
 
 async function toWebRequest(request: NodeRequest) {

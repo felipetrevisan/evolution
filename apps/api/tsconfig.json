@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "types": ["bun"],
-    "rootDir": ".",
+    "rootDir": "src",
     "outDir": "dist",
     "paths": {
       "@evolution/domain": ["../../packages/domain/src/index.ts"],
@@ -18,5 +18,5 @@
       "path": "../../packages/firebase"
     }
   ],
-  "include": ["api", "src"]
+  "include": ["src"]
 }

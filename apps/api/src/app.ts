@@ -24,3 +24,5 @@ export function createApp() {
     .use(paymentRoutes)
     .use(protectedRoutes);
 }
+
+export default createApp();

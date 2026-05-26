@@ -1,4 +1,7 @@
-import type { InvestigationAnswer, InvestigationQuestion } from "@evolution/domain";
+import type {
+  InvestigationAnswer,
+  InvestigationQuestion,
+} from "../../../../../../packages/domain/src/index.ts";
 
 export function getNextQuestionFromTree(
   questions: InvestigationQuestion[],

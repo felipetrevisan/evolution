@@ -5,7 +5,7 @@ import {
   resolveOriginClassification,
   resolveSustainingFactor,
   resolveTrigger,
-} from "@evolution/domain";
+} from "../../../../../../packages/domain/src/index.ts";
 import { ApiError, ConfigurationError, NotFoundError } from "../../../shared/errors/api-error";
 import type { AdminConfigRepository } from "../../repositories/admin-config-repository";
 import type { UserScopedRepository } from "../../repositories/base-repository";

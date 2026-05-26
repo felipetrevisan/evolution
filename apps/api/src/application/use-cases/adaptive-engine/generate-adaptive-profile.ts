@@ -10,7 +10,7 @@ import {
   selectSupportVector,
   VECTOR_KEYS,
   type VectorKey,
-} from "@evolution/domain";
+} from "../../../../../../packages/domain/src/index.ts";
 import { NotFoundError } from "../../../shared/errors/api-error";
 import { createId } from "../../../shared/validation/id";
 import type { UserScopedRepository } from "../../repositories/base-repository";

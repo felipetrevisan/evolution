@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { VectorKey } from "@evolution/domain";
+import type { VectorKey } from "../../../../packages/domain/src/index.ts";
 import { completeTriage } from "../application/use-cases/triage/complete-triage";
 import { getCurrentTriageSession } from "../application/use-cases/triage/get-current-triage-session";
 import {

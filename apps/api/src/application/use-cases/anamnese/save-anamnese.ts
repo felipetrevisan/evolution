@@ -1,4 +1,9 @@
-import { CICLO_PADRAO_DIAS, calculateBmi, classifyBmi, validateBmi } from "@evolution/domain";
+import {
+  CICLO_PADRAO_DIAS,
+  calculateBmi,
+  classifyBmi,
+  validateBmi,
+} from "../../../../../../packages/domain/src/index.ts";
 import type { AnamneseBodyDto } from "../../../presentation/dtos/anamnese.dto";
 import { createId } from "../../../shared/validation/id";
 import type { UserScopedRepository } from "../../repositories/base-repository";

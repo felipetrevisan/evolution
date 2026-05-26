@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { OPERATIONAL_QUESTIONS } from "@evolution/domain";
+import { OPERATIONAL_QUESTIONS } from "../../../../packages/domain/src/index.ts";
 import type { AdminConfigRepository } from "../application/repositories/admin-config-repository";
 import { completeOperationalAssessment } from "../application/use-cases/operational-assessment/complete-operational-assessment";
 import type { OperationalAssessmentRecord } from "../application/use-cases/operational-assessment/record-operational-answer";

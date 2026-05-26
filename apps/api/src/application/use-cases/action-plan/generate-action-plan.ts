@@ -3,7 +3,7 @@ import {
   generateActionPlan as generateDomainActionPlan,
   selectImWordOfDay,
   type VectorKey,
-} from "@evolution/domain";
+} from "../../../../../../packages/domain/src/index.ts";
 import type { ActionPlanBodyDto } from "../../../presentation/dtos/action-plan.dto";
 import { NotFoundError } from "../../../shared/errors/api-error";
 import { createId, todayIso } from "../../../shared/validation/id";

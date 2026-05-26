@@ -1,4 +1,8 @@
-import type { InvestigationQuestion, OperationalQuestion, VectorKey } from "@evolution/domain";
+import type {
+  InvestigationQuestion,
+  OperationalQuestion,
+  VectorKey,
+} from "../../../../../../packages/domain/src/index.ts";
 import { ApiError, ConfigurationError } from "../../../shared/errors/api-error";
 import type { AdminConfigRepository } from "../../repositories/admin-config-repository";
 

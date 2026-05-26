@@ -1,6 +1,10 @@
-import { getAdminAuth, getAdminFirestore, getAdminStorageBucket } from "@evolution/firebase";
 import type { Auth } from "firebase-admin/auth";
 import type { Firestore } from "firebase-admin/firestore";
+import {
+  getAdminAuth,
+  getAdminFirestore,
+  getAdminStorageBucket,
+} from "../../../../../packages/firebase/src/index.ts";
 import { ConfigurationError } from "../../shared/errors/api-error";
 import { loadApiEnv } from "../env/api-env";
 

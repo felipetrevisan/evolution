@@ -1,4 +1,7 @@
-import { ALTERNATIVAS_POR_PERGUNTA, SELECOES_OBRIGATORIAS } from "@evolution/domain";
+import {
+  ALTERNATIVAS_POR_PERGUNTA,
+  SELECOES_OBRIGATORIAS,
+} from "../../../../../../packages/domain/src/index.ts";
 import { ConfigurationError } from "../../../shared/errors/api-error";
 import type { AdminConfigRepository } from "../../repositories/admin-config-repository";
 

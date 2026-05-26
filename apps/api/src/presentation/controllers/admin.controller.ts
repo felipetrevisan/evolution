@@ -1,4 +1,8 @@
-import { type InvestigationQuestion, VECTOR_KEYS, type VectorKey } from "@evolution/domain";
+import {
+  type InvestigationQuestion,
+  VECTOR_KEYS,
+  type VectorKey,
+} from "../../../../../packages/domain/src/index.ts";
 import {
   getAdminInvestigationQuestions,
   getAdminOperationalQuestions,

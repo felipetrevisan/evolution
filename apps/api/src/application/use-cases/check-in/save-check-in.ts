@@ -1,4 +1,4 @@
-import { applyRecalibration, clamp } from "@evolution/domain";
+import { applyRecalibration, clamp } from "../../../../../../packages/domain/src/index.ts";
 import type { CheckInBodyDto } from "../../../presentation/dtos/check-in.dto";
 import { createId, todayIso } from "../../../shared/validation/id";
 import type { UserScopedRepository } from "../../repositories/base-repository";

@@ -1,4 +1,7 @@
-import type { InvestigationAnswer, VectorKey } from "@evolution/domain";
+import type {
+  InvestigationAnswer,
+  VectorKey,
+} from "../../../../../../packages/domain/src/index.ts";
 import type { GenericAnswerBodyDto } from "../../../presentation/dtos/answer.dto";
 import { ApiError, ConfigurationError, NotFoundError } from "../../../shared/errors/api-error";
 import { createId } from "../../../shared/validation/id";

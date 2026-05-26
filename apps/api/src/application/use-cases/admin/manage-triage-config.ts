@@ -3,7 +3,7 @@ import {
   ALTERNATIVAS_POR_VETOR,
   type TriageQuestion,
   type VectorKey,
-} from "@evolution/domain";
+} from "../../../../../../packages/domain/src/index.ts";
 import { ApiError, ConfigurationError } from "../../../shared/errors/api-error";
 import type { AdminConfigRepository } from "../../repositories/admin-config-repository";
 

@@ -3,7 +3,7 @@ import {
   generateDiagnosticSummary,
   type TriageQuestion,
   validateTriageSelection,
-} from "@evolution/domain";
+} from "../../../../../../packages/domain/src/index.ts";
 import { ApiError, NotFoundError } from "../../../shared/errors/api-error";
 import type { UserScopedRepository } from "../../repositories/base-repository";
 import { getCurrentTriageSession } from "./get-current-triage-session";

@@ -3,7 +3,7 @@ import {
   selectImWordOfDay,
   VECTOR_DEFINITIONS,
   type VectorKey,
-} from "@evolution/domain";
+} from "../../../../../../packages/domain/src/index.ts";
 import type { UserScopedRepository } from "../../repositories/base-repository";
 import type { UserProfileRecord, UserRepository } from "../../repositories/user-repository";
 import type { ActionPlanRecord } from "../action-plan/generate-action-plan";

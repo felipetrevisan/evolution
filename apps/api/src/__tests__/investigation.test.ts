@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { InvestigationQuestion } from "@evolution/domain";
+import type { InvestigationQuestion } from "../../../../packages/domain/src/index.ts";
 import { getNextQuestionFromTree } from "../application/use-cases/investigation/investigation-flow";
 
 describe("investigation flow", () => {

@@ -1,4 +1,4 @@
-import { getCheckinMode, selectImWordOfDay } from "@evolution/domain";
+import { getCheckinMode, selectImWordOfDay } from "../../../../../../packages/domain/src/index.ts";
 import { todayIso } from "../../../shared/validation/id";
 import type { UserScopedRepository } from "../../repositories/base-repository";
 import type { ActionPlanRecord } from "../action-plan/generate-action-plan";

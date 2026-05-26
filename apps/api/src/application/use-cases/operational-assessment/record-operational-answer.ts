@@ -1,4 +1,4 @@
-import type { OperationalAnswer } from "@evolution/domain";
+import type { OperationalAnswer } from "../../../../../../packages/domain/src/index.ts";
 import type { OperationalAnswerBodyDto } from "../../../presentation/dtos/operational-assessment.dto";
 import { ApiError } from "../../../shared/errors/api-error";
 import { createId } from "../../../shared/validation/id";

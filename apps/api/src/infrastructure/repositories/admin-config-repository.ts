@@ -1,10 +1,10 @@
+import type { Firestore } from "firebase-admin/firestore";
 import type {
   InvestigationQuestion,
   OperationalQuestion,
   TriageQuestion,
   VectorKey,
-} from "@evolution/domain";
-import type { Firestore } from "firebase-admin/firestore";
+} from "../../../../../packages/domain/src/index.ts";
 import type {
   AdminConfigRepository,
   PaymentEventRecord,

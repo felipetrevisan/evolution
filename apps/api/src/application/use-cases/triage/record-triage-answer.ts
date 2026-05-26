@@ -1,4 +1,7 @@
-import { SELECOES_OBRIGATORIAS, type TriageSelection } from "@evolution/domain";
+import {
+  SELECOES_OBRIGATORIAS,
+  type TriageSelection,
+} from "../../../../../../packages/domain/src/index.ts";
 import type { TriageAnswerBodyDto } from "../../../presentation/dtos/triage.dto";
 import { ApiError } from "../../../shared/errors/api-error";
 import { createId } from "../../../shared/validation/id";

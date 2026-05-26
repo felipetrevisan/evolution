@@ -3,7 +3,7 @@ import type {
   OperationalQuestion,
   TriageQuestion,
   VectorKey,
-} from "@evolution/domain";
+} from "../../../../../packages/domain/src/index.ts";
 
 export type SubscriptionPlanRecord = {
   id: string;

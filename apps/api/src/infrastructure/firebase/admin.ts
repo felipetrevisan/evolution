@@ -4,7 +4,7 @@ import {
   getAdminAuth,
   getAdminFirestore,
   getAdminStorageBucket,
-} from "../../../../../packages/firebase/src/index.ts";
+} from "../../../../../packages/firebase/src/admin/app.ts";
 import { ConfigurationError } from "../../shared/errors/api-error";
 import { loadApiEnv } from "../env/api-env";
 

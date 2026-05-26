@@ -1,4 +1,4 @@
-import type { FirebaseAdminConfig } from "../../../../../packages/firebase/src/index.ts";
+import type { FirebaseAdminConfig } from "../../../../../packages/firebase/src/admin/app.ts";
 
 type EnvSource = Record<string, string | undefined>;
 

@@ -1,4 +1,4 @@
-import app from "../src/app";
+import type { Elysia } from "elysia";
 
 type NodeRequest = AsyncIterable<Buffer | string> & {
   body?: unknown;
@@ -13,7 +13,28 @@ type NodeResponse = {
   statusCode: number;
 };
 
+let appPromise: Promise<Elysia> | null = null;
+
 export default async function handler(request: NodeRequest, response: NodeResponse) {
+  setCorsHeaders(request, response);
+
+  if (request.method === "OPTIONS") {
+    response.statusCode = 204;
+    response.end();
+    return;
+  }
+
+  const app = await getApp().catch((error: unknown) => {
+    response.statusCode = 500;
+    response.setHeader("content-type", "application/json; charset=utf-8");
+    response.end(JSON.stringify({ error: serializeStartupError(error) }));
+    return null;
+  });
+
+  if (!app) {
+    return;
+  }
+
   const webResponse = await app.handle(await toWebRequest(request));
 
   response.statusCode = webResponse.status;
@@ -21,6 +42,38 @@ export default async function handler(request: NodeRequest, response: NodeRespon
     response.setHeader(key, value);
   });
   response.end(Buffer.from(await webResponse.arrayBuffer()));
+}
+
+function getApp() {
+  appPromise ??= import("../src/app").then((module) => module.default);
+  return appPromise;
+}
+
+function setCorsHeaders(request: NodeRequest, response: NodeResponse) {
+  const origin = getHeader(request.headers, "origin") ?? "https://evolution.institutoez.com.br";
+
+  response.setHeader("access-control-allow-origin", origin);
+  response.setHeader("access-control-allow-credentials", "true");
+  response.setHeader("access-control-allow-methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
+  response.setHeader("access-control-allow-headers", "Content-Type, Authorization");
+  response.setHeader("vary", "Origin");
+}
+
+function getHeader(headers: NodeRequest["headers"], name: string) {
+  const value = headers[name] ?? headers[name.toLowerCase()];
+
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function serializeStartupError(error: unknown) {
+  if (error instanceof Error) {
+    return {
+      message: error.message,
+      stack: error.stack,
+    };
+  }
+
+  return { message: String(error) };
 }
 
 async function toWebRequest(request: NodeRequest) {

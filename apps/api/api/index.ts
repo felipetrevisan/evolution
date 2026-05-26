@@ -1,1 +1,5 @@
-export { handleVercelRequest as default } from "../src/vercel-handler";
+import { handleVercelRequest } from "../src/vercel-handler";
+
+export default {
+  fetch: handleVercelRequest,
+};

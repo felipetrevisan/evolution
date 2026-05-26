@@ -1,5 +1,7 @@
 import type { FirebaseAdminConfig } from "@evolution/firebase";
 
+type EnvSource = Record<string, string | undefined>;
+
 export type ApiEnv = {
   port: number;
   corsOrigins: string[];
@@ -13,7 +15,7 @@ export type ApiEnv = {
   };
 };
 
-export function loadApiEnv(source = Bun.env): ApiEnv {
+export function loadApiEnv(source = getRuntimeEnv()): ApiEnv {
   const projectId = source.FIREBASE_PROJECT_ID;
   const clientEmail = source.FIREBASE_CLIENT_EMAIL;
   const privateKey = source.FIREBASE_PRIVATE_KEY;
@@ -54,6 +56,15 @@ export function loadApiEnv(source = Bun.env): ApiEnv {
           }
         : null,
   };
+}
+
+function getRuntimeEnv(): EnvSource {
+  const runtime = globalThis as typeof globalThis & {
+    Bun?: { env: EnvSource };
+    process?: { env: EnvSource };
+  };
+
+  return runtime.Bun?.env ?? runtime.process?.env ?? {};
 }
 
 function parseCsv(value?: string) {

@@ -11,6 +11,7 @@ export async function getOnboardingStatus(
       id: string;
       uid: string;
       createdAt: string;
+      result?: unknown;
       status?: string;
     }>;
     investigations: UserScopedRepository<{
@@ -49,11 +50,23 @@ export async function getOnboardingStatus(
     repositories.plans.getLatest(uid),
   ]);
   const anamneseCompleted = Boolean(anamnese ?? bodyMeasurement);
+  const triageResult = triage?.result as
+    | {
+        fvaPriority?: { requiresUserChoice?: boolean; vector?: string };
+        imPriority?: { requiresUserChoice?: boolean; vector?: string };
+      }
+    | undefined;
+  const triageNeedsTieBreak =
+    triage?.status === "completed" &&
+    (triageResult?.fvaPriority?.requiresUserChoice ||
+      triageResult?.imPriority?.requiresUserChoice ||
+      !triageResult?.fvaPriority?.vector);
   const completedSteps: OnboardingStep[] = ["boas-vindas"];
 
   if (anamneseCompleted) completedSteps.push("anamnese");
   if (triage?.status === "completed") completedSteps.push("triagem", "resultado-triagem");
-  if (investigation?.status === "completed") completedSteps.push("investigacao");
+  if (!triageNeedsTieBreak && investigation?.status === "completed")
+    completedSteps.push("investigacao");
   if (operationalAssessment?.status === "completed") completedSteps.push("autoavaliacao");
   if (profile) completedSteps.push("perfil-adaptativo");
   if (plan) completedSteps.push("plano-inicial");
@@ -62,18 +75,21 @@ export async function getOnboardingStatus(
     ? "anamnese"
     : triage?.status !== "completed"
       ? "triagem"
-      : investigation?.status !== "completed"
-        ? "investigacao"
-        : operationalAssessment?.status !== "completed"
-          ? "autoavaliacao"
-          : !profile
-            ? "perfil-adaptativo"
-            : "plano-inicial";
+      : triageNeedsTieBreak
+        ? "resultado-triagem"
+        : investigation?.status !== "completed"
+          ? "investigacao"
+          : operationalAssessment?.status !== "completed"
+            ? "autoavaliacao"
+            : !profile
+              ? "perfil-adaptativo"
+              : "plano-inicial";
 
   return {
     currentStep,
     anamneseCompleted,
     triageCompleted: triage?.status === "completed",
+    triageNeedsTieBreak,
     investigationCompleted: investigation?.status === "completed",
     operationalAssessmentCompleted: operationalAssessment?.status === "completed",
     adaptiveProfileGenerated: Boolean(profile),

@@ -2,7 +2,7 @@ import type {
   DiagnosticSummary,
   InvestigationAnswer,
 } from "../../../../../../packages/domain/src/index.ts";
-import { ConfigurationError, NotFoundError } from "../../../shared/errors/api-error";
+import { ApiError, ConfigurationError, NotFoundError } from "../../../shared/errors/api-error";
 import { createId } from "../../../shared/validation/id";
 import type { AdminConfigRepository } from "../../repositories/admin-config-repository";
 import type { UserScopedRepository } from "../../repositories/base-repository";
@@ -63,9 +63,24 @@ async function getPriorityVector(
   const triage = await repositories.triageSessions.getLatest(uid);
   const result = triage?.result as DiagnosticSummary | undefined;
 
-  if (!result?.fvaPriority.vector) {
+  if (!result) {
     throw new NotFoundError("Conclua a triagem antes da investigação.");
   }
 
+  if (result.fvaPriority.requiresUserChoice || !result.fvaPriority.vector) {
+    throw new ApiError(
+      "TRIAGE_TIE_BREAK_REQUIRED",
+      "Escolha sua prioridade inicial no resultado da triagem antes de continuar.",
+      409,
+    );
+  }
+
+  if (result.imPriority.requiresUserChoice) {
+    throw new ApiError(
+      "TRIAGE_TIE_BREAK_REQUIRED",
+      "Escolha seu foco de motivação no resultado da triagem antes de continuar.",
+      409,
+    );
+  }
   return result.fvaPriority.vector;
 }

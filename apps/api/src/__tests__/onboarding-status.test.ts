@@ -10,7 +10,16 @@ describe("onboarding status", () => {
         { id: "body_1", uid: "user_1", createdAt: "2026-01-01" },
       ]),
       triageSessions: createMemoryRepository([
-        { id: "triage_1", uid: "user_1", createdAt: "2026-01-02", status: "completed" },
+        {
+          id: "triage_1",
+          uid: "user_1",
+          createdAt: "2026-01-02",
+          status: "completed",
+          result: {
+            fvaPriority: { vector: "constancia", requiresUserChoice: false },
+            imPriority: { vector: "comportamento", requiresUserChoice: false },
+          },
+        },
       ]),
       investigations: createMemoryRepository([]),
       operationalAssessments: createMemoryRepository([]),

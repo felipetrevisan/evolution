@@ -48,7 +48,7 @@ export const api = {
   currentTriageSession: () => apiRequest<TriageSessionData | null>("/triage/current-session"),
   completeTriage: () => apiRequest<unknown>("/triage/complete", { method: "POST" }),
   triageTieBreak: (body: { layer: "FVA" | "IM"; vector: string }) =>
-    apiRequest<unknown, typeof body>("/triage/tie-break", { method: "POST", body }),
+    apiRequest<TriageSessionData, typeof body>("/triage/tie-break", { method: "POST", body }),
   currentTriageResult: () => apiRequest<TriageSessionData | null>("/triage/current-result"),
   currentInvestigation: () => apiRequest<InvestigationCurrent>("/investigation/current"),
   investigationAnswer: (body: unknown) =>

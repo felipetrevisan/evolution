@@ -4,6 +4,7 @@ import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from "@evolut
 import { ArrowRight, Compass, Heart, Sparkles, Target } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { api, type TriageDiagnosticSummary, type TriageSessionData } from "@/lib/api-client";
 import { routes } from "@/lib/routes/routes";
 import { formatVectorLabel } from "@/lib/utils/domain-labels";
@@ -38,10 +39,27 @@ export function TriageResultPanel() {
 }
 
 function TriageResult({ result }: { result: TriageDiagnosticSummary }) {
-  const fvaVector = result.fvaPriority.vector;
-  const imVector = result.imPriority.vector;
-  const fvaLabel = formatVectorLabel(fvaVector);
-  const imLabel = formatVectorLabel(imVector);
+  const [localResult, setLocalResult] = useState(result);
+  const needsFvaChoice = localResult.fvaPriority.requiresUserChoice;
+  const needsImChoice = localResult.imPriority.requiresUserChoice;
+  const canContinue = !needsFvaChoice && !needsImChoice && Boolean(localResult.fvaPriority.vector);
+
+  async function chooseTieBreak(layer: "FVA" | "IM", vector: string) {
+    const tieToast = toast.loading("Salvando escolha...");
+
+    try {
+      const session = await api.triageTieBreak({ layer, vector });
+      const nextResult = (session as TriageSessionData).result;
+
+      if (nextResult) {
+        setLocalResult(nextResult);
+      }
+
+      toast.success("Escolha salva.", { id: tieToast });
+    } catch {
+      toast.error("Não foi possível salvar sua escolha.", { id: tieToast });
+    }
+  }
 
   return (
     <section className="grid gap-6 pb-24 md:pb-8">
@@ -57,35 +75,95 @@ function TriageResult({ result }: { result: TriageDiagnosticSummary }) {
               que sustentam o seu comportamento atual.
             </p>
           </div>
-          <Button asChild className="h-12 rounded-xl bg-white text-primary hover:bg-white/90">
-            <Link href={routes.investigation}>
-              Continuar investigação
-              <ArrowRight className="size-4" />
-            </Link>
-          </Button>
+          {canContinue ? (
+            <Button asChild className="h-12 rounded-xl bg-white text-primary hover:bg-white/90">
+              <Link href={routes.investigation}>
+                Continuar investigação
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          ) : null}
         </CardContent>
       </Card>
+
+      {needsFvaChoice ? (
+        <TieBreakCard
+          description="Duas ou mais áreas apareceram com a mesma intensidade. Escolha qual delas parece mais importante trabalhar primeiro."
+          layer="FVA"
+          onChoose={chooseTieBreak}
+          title="Escolha sua prioridade inicial"
+          vectors={localResult.fvaPriority.tiedVectors}
+        />
+      ) : null}
+
+      {!needsFvaChoice && needsImChoice ? (
+        <TieBreakCard
+          description="Essa escolha ajusta a linguagem do seu plano para ficar mais próxima do que te move hoje."
+          layer="IM"
+          onChoose={chooseTieBreak}
+          title="Escolha o foco de motivação"
+          vectors={localResult.imPriority.tiedVectors}
+        />
+      ) : null}
 
       <div className="grid gap-4 md:grid-cols-2">
         <ResultHighlight
           description="É o vetor que pede mais atenção na abertura operacional."
           icon={Target}
           label="Vetor prioritário"
-          value={fvaLabel}
+          value={formatVectorLabel(localResult.fvaPriority.vector)}
         />
         <ResultHighlight
           description="É o vetor que ajuda a linguagem e motivação do plano."
           icon={Heart}
           label="Intenção dominante"
-          value={imLabel}
+          value={formatVectorLabel(localResult.imPriority.vector)}
         />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <VectorGroup icon={Compass} title="Fragilidade vetorial atual" values={result.fva} />
-        <VectorGroup icon={Sparkles} title="Intenção de movimento" values={result.im} />
+        <VectorGroup icon={Compass} title="Fragilidade vetorial atual" values={localResult.fva} />
+        <VectorGroup icon={Sparkles} title="Intenção de movimento" values={localResult.im} />
       </div>
     </section>
+  );
+}
+
+function TieBreakCard({
+  description,
+  layer,
+  onChoose,
+  title,
+  vectors,
+}: {
+  description: string;
+  layer: "FVA" | "IM";
+  onChoose: (layer: "FVA" | "IM", vector: string) => void;
+  title: string;
+  vectors: string[];
+}) {
+  return (
+    <Card className="rounded-2xl border-primary/20 bg-primary/10">
+      <CardContent className="grid gap-4 p-5">
+        <div>
+          <p className="font-semibold text-lg">{title}</p>
+          <p className="mt-1 text-muted-foreground text-sm leading-6">{description}</p>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {vectors.map((vector) => (
+            <Button
+              className="h-auto min-h-12 cursor-pointer justify-start rounded-xl py-3"
+              key={vector}
+              onClick={() => onChoose(layer, vector)}
+              type="button"
+              variant="outline"
+            >
+              {formatVectorLabel(vector)}
+            </Button>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 

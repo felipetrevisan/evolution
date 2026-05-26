@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import type { InvestigationCurrent } from "@/lib/api-client";
-import { api } from "@/lib/api-client";
+import { ApiClientError, api } from "@/lib/api-client";
 import { useApiAction } from "../api/use-api-action";
 
 export function useInvestigationFlow() {
@@ -19,9 +20,14 @@ export function useInvestigationFlow() {
         setCurrent(response);
         setError(null);
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        const message =
+          error instanceof ApiClientError
+            ? error.message
+            : "Não foi possível carregar a investigação.";
         setCurrent(null);
-        setError("Não foi possível carregar a investigação.");
+        setError(message);
+        toast.error(message);
       })
       .finally(() => setLoading(false));
   }, []);

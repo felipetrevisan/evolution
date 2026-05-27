@@ -3,6 +3,7 @@ import type {
   UserScopedRecord,
   UserScopedRepository,
 } from "../../application/repositories/base-repository";
+import { sanitizeForFirestore } from "./firestore-sanitizer";
 
 export type UserScopedCollection =
   | "cycles"
@@ -47,8 +48,9 @@ export function createUserScopedRepository<TRecord extends UserScopedRecord>(
       return snapshot.docs.map((doc) => doc.data() as TRecord);
     },
     async save(uid, id, record) {
-      await ref(uid).doc(id).set(record, { merge: true });
-      return record;
+      const sanitizedRecord = sanitizeForFirestore(record);
+      await ref(uid).doc(id).set(sanitizedRecord, { merge: true });
+      return sanitizedRecord;
     },
   };
 }

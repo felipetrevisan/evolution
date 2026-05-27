@@ -3,6 +3,7 @@ import type {
   UserProfileRecord,
   UserRepository,
 } from "../../application/repositories/user-repository";
+import { sanitizeForFirestore } from "./firestore-sanitizer";
 
 export function createUserRepository(db: Firestore): UserRepository {
   return {
@@ -19,8 +20,9 @@ export function createUserRepository(db: Firestore): UserRepository {
         updatedAt: new Date().toISOString(),
       };
 
-      await db.doc(`users/${uid}`).set(record);
-      return record;
+      const sanitizedRecord = sanitizeForFirestore(record);
+      await db.doc(`users/${uid}`).set(sanitizedRecord);
+      return sanitizedRecord;
     },
     async get(uid) {
       const snapshot = await db.doc(`users/${uid}`).get();
@@ -48,8 +50,9 @@ export function createUserRepository(db: Firestore): UserRepository {
         updatedAt: new Date().toISOString(),
       };
 
-      await db.doc(`users/${uid}`).set(record, { merge: true });
-      return record;
+      const sanitizedRecord = sanitizeForFirestore(record);
+      await db.doc(`users/${uid}`).set(sanitizedRecord, { merge: true });
+      return sanitizedRecord;
     },
   };
 }

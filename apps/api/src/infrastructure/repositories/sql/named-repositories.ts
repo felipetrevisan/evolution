@@ -18,7 +18,7 @@ export function createSqlCycleRepository(sql: SqlClient): CycleRepository {
 }
 
 export function createSqlAnamneseRepository(sql: SqlClient): AnamneseRepository {
-  return createSqlUserScopedRepository(sql, "bodyMeasurements");
+  return createSqlUserScopedRepository(sql, "anamnese");
 }
 
 export function createSqlBodyMeasurementRepository(sql: SqlClient): BodyMeasurementRepository {

@@ -18,7 +18,7 @@ export function createCycleRepository(db: Firestore): CycleRepository {
 }
 
 export function createAnamneseRepository(db: Firestore): AnamneseRepository {
-  return createUserScopedRepository(db, "bodyMeasurements");
+  return createUserScopedRepository(db, "anamnese");
 }
 
 export function createBodyMeasurementRepository(db: Firestore): BodyMeasurementRepository {

@@ -13,9 +13,9 @@ export function OnboardingShell({ step, title, children }: OnboardingShellProps)
   return (
     <AppShell>
       <OnboardingRouteSync />
-      <div className="grid gap-6">
+      <div className="mx-auto grid w-full max-w-6xl gap-6">
         <OnboardingProgress currentStep={step} currentTitle={title} />
-        <header className="stitch-glass-card stitch-soft-shadow rounded-[16px] p-6">
+        <header className="stitch-page-card p-6 md:p-8">
           <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold text-primary">
             Etapa {step} de 6
           </span>

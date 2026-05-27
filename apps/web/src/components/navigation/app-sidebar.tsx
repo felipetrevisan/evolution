@@ -48,7 +48,7 @@ export function AppSidebar({
 
   return (
     <aside
-      className={`fixed left-0 top-0 z-30 hidden h-screen flex-col bg-muted px-4 py-6 transition-[width] duration-200 md:flex ${
+      className={`fixed left-0 top-0 z-30 hidden h-screen flex-col bg-surface-container-low px-4 py-6 transition-[width] duration-200 md:flex ${
         collapsed ? "w-20" : "w-64"
       }`}
     >
@@ -64,7 +64,7 @@ export function AppSidebar({
         </button>
       </div>
       {isAdminArea && !collapsed ? (
-        <div className="mb-5 rounded-2xl border border-border bg-card p-4 text-card-foreground">
+        <div className="mb-5 rounded-[24px] border border-border/40 bg-card/80 p-4 text-card-foreground">
           <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
             Administração
           </p>
@@ -121,8 +121,8 @@ function SidebarLink({
     <Link
       className={`flex items-center gap-4 rounded-lg py-3 text-sm transition active:scale-95 ${
         active
-          ? "border-r-4 border-primary bg-secondary font-bold text-primary"
-          : "text-muted-foreground hover:bg-secondary/70 hover:text-primary"
+          ? "border-r-4 border-primary bg-secondary/70 font-bold text-primary"
+          : "text-muted-foreground hover:bg-secondary/60 hover:text-primary"
       } ${collapsed ? "justify-center px-0" : "px-4"}`}
       href={href}
       title={collapsed ? label : undefined}

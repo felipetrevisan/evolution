@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@evolution/ui";
+import { Button, Card, CardContent } from "@evolution/ui";
+import { ShieldCheck } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -91,12 +92,19 @@ export function TriageQuestionScreen() {
         key={session.question.id}
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Card className="stitch-glass-card stitch-soft-shadow rounded-[16px] border-0">
-          <CardHeader className="items-center text-center">
-            <div className="mb-2 rounded-xl bg-muted px-6 py-4 text-sm italic text-muted-foreground">
-              Responda de forma espontânea. Não há resposta certa ou errada.
-            </div>
-            <div className="flex items-center gap-4">
+        <div className="grid gap-8">
+          <div className="stitch-page-card flex items-center gap-4 p-5">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-secondary text-primary">
+              <ShieldCheck className="size-5" />
+            </span>
+            <p className="text-muted-foreground text-sm italic leading-6">
+              Este espaço foi criado para você com segurança, privacidade e respeito à sua
+              individualidade.
+            </p>
+          </div>
+
+          <section className="grid gap-8">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <span className="grid size-8 place-items-center rounded-full bg-primary text-sm font-bold text-white">
                 1
               </span>
@@ -107,25 +115,28 @@ export function TriageQuestionScreen() {
               <span className="grid size-8 place-items-center rounded-full bg-muted-foreground text-sm font-bold text-background">
                 2
               </span>
+              <span className="text-sm text-muted-foreground">IM: Intenção de Mudança</span>
             </div>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Pergunta {session.questionIndex + 1} de {session.totalQuestions}
-            </p>
-            <CardTitle className="max-w-2xl text-[32px] leading-tight">
-              {session.question.text}
-            </CardTitle>
-            <p className="text-sm text-muted-foreground">
-              {session.selectedIds.length} de {session.maxSelections} selecionadas
-            </p>
-          </CardHeader>
-          <CardContent className="grid gap-4">
+
+            <header className="mx-auto grid max-w-3xl gap-3 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Pergunta {session.questionIndex + 1} de {session.totalQuestions}
+              </p>
+              <h2 className="text-[32px] font-semibold leading-tight text-foreground">
+                {session.question.text}
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                {session.selectedIds.length} de {session.maxSelections} selecionadas
+              </p>
+            </header>
+
             <motion.div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4" layout>
               {session.question.alternatives.map((alternative, index) => {
                 const selected = session.selectedIds.includes(alternative.id);
                 return (
                   <motion.button
                     animate={{ opacity: 1, y: 0 }}
-                    className={`group flex min-h-32 cursor-pointer items-center justify-center rounded-xl border bg-card/75 p-5 text-center font-semibold text-base text-foreground leading-snug transition hover:bg-card/95 data-[selected=true]:text-foreground data-[selected=true]:shadow-[0_16px_40px_rgba(38,0,88,0.14)] data-[selected=true]:ring-2 ${optionBorderStyles[index % optionBorderStyles.length]}`}
+                    className={`group flex min-h-32 cursor-pointer items-center justify-center rounded-xl border bg-card p-6 text-center font-semibold text-base text-foreground leading-snug transition hover:-translate-y-0.5 hover:bg-card/95 data-[selected=true]:text-foreground data-[selected=true]:shadow-[0_16px_40px_rgba(38,0,88,0.14)] data-[selected=true]:ring-2 ${optionBorderStyles[index % optionBorderStyles.length]}`}
                     data-selected={selected}
                     initial={{ opacity: 0, y: 10 }}
                     key={alternative.id}
@@ -141,14 +152,14 @@ export function TriageQuestionScreen() {
               })}
             </motion.div>
             <Button
-              className="ml-auto h-12 rounded-xl px-8 font-semibold"
+              className="ml-auto h-12 rounded-xl px-8 font-bold shadow-lg shadow-primary/20"
               disabled={!session.canContinue || saving}
               onClick={continueFlow}
             >
               {saving ? "Salvando..." : session.isLastQuestion ? "Finalizar triagem" : "Continuar"}
             </Button>
-          </CardContent>
-        </Card>
+          </section>
+        </div>
       </motion.div>
     </AnimatePresence>
   );

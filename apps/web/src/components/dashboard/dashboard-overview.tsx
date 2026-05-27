@@ -28,7 +28,7 @@ export function DashboardOverview() {
   }
 
   return (
-    <div className="grid gap-6 pb-24 md:pb-8">
+    <div className="mx-auto grid w-full max-w-6xl gap-8 pb-24 md:pb-8">
       <SectionHeading
         description="Acompanhe seu ciclo atual, sua presença diária e seus sinais adaptativos."
         eyebrow={`Olá, ${data.user.greetingName}`}
@@ -37,7 +37,7 @@ export function DashboardOverview() {
 
       <SubscriptionAlert subscription={data.subscription} />
 
-      <Card className="stitch-soft-shadow rounded-2xl border-0 bg-gradient-to-br from-primary-container to-primary text-primary-foreground">
+      <Card className="stitch-soft-shadow rounded-[24px] border-0 bg-gradient-to-br from-primary-container to-primary text-primary-foreground">
         <CardContent className="grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center lg:p-8">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider opacity-80">
@@ -65,7 +65,7 @@ export function DashboardOverview() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         <DashboardMetricCard
           helper={`${data.currentCycle.progressPercent}% do ciclo concluído`}
           icon={CalendarDays}
@@ -116,7 +116,7 @@ export function DashboardOverview() {
         />
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="grid gap-6 xl:grid-cols-2">
         <VectorEvolutionChart data={data.vectorEvolution} />
         <BodyHistoryChart data={data.bodyMeasurementHistory} />
         <BlockScoresChart data={data.operationalBlockScores} />

@@ -57,7 +57,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div
         className={`min-h-screen transition-[margin] duration-200 ${sidebarCollapsed ? "md:ml-20" : "md:ml-64"}`}
       >
-        <header className="sticky top-0 z-20 hidden h-16 items-center justify-between border-b border-border/40 bg-background/80 px-6 backdrop-blur-md md:flex">
+        <header className="sticky top-0 z-20 hidden h-16 items-center justify-between bg-background/80 px-6 shadow-sm backdrop-blur-md md:flex">
           <HeaderSearch />
           <div className="flex items-center gap-4" ref={headerMenusRef}>
             <HeaderNotifications
@@ -77,7 +77,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             />
           </div>
         </header>
-        <section className="mx-auto min-w-0 px-4 py-6 pb-24 md:px-6 md:py-8">
+        <section className="mx-auto min-w-0 px-4 py-6 pb-24 md:px-8 md:py-8">
           <PageTransition>
             <RouteGuard>{children}</RouteGuard>
           </PageTransition>

@@ -37,8 +37,8 @@ export function PlanTimeline() {
   );
 
   return (
-    <div className="grid gap-6 pb-24 md:pb-8">
-      <Card className="stitch-soft-shadow rounded-2xl border-0 bg-gradient-to-br from-primary-container to-primary text-primary-foreground">
+    <div className="mx-auto grid w-full max-w-6xl gap-8 pb-24 md:pb-8">
+      <Card className="stitch-soft-shadow rounded-[24px] border-0 bg-gradient-to-br from-primary-container to-primary text-primary-foreground">
         <CardContent className="flex flex-wrap items-center gap-8 p-8">
           <div className="min-w-48">
             <p className="mb-1 text-xs font-semibold uppercase tracking-wider opacity-80">
@@ -66,7 +66,7 @@ export function PlanTimeline() {
       </Card>
 
       {plan.narrative ? (
-        <Card className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0">
+        <Card className="stitch-glass-card stitch-soft-shadow rounded-[24px] border-0">
           <CardHeader>
             <CardTitle>Leitura adaptativa da sua jornada</CardTitle>
           </CardHeader>
@@ -78,7 +78,7 @@ export function PlanTimeline() {
               plan.narrative.direction,
             ].map((text) => (
               <p
-                className="rounded-2xl bg-muted p-4 text-sm leading-7 text-muted-foreground"
+                className="rounded-[24px] bg-muted p-4 text-sm leading-7 text-muted-foreground"
                 key={text}
               >
                 {text}
@@ -88,7 +88,7 @@ export function PlanTimeline() {
         </Card>
       ) : null}
 
-      <Card className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0">
+      <Card className="stitch-glass-card stitch-soft-shadow rounded-[24px] border-0">
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle>Plano de Ação Evolution - Ciclo 1</CardTitle>
@@ -111,7 +111,7 @@ export function PlanTimeline() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-4 lg:grid-cols-6">
+      <div className="grid gap-6 lg:grid-cols-6">
         {plan.weeklyObjectives.map((week) => (
           <button
             className="cursor-pointer text-left"
@@ -120,7 +120,7 @@ export function PlanTimeline() {
             type="button"
           >
             <Card
-              className={`stitch-glass-card stitch-soft-shadow h-full rounded-2xl border transition ${
+              className={`stitch-glass-card h-full rounded-[24px] border transition hover:-translate-y-1 ${
                 activeWeek === week.week ? "border-primary/50 bg-primary/10" : "border-transparent"
               }`}
             >
@@ -140,7 +140,7 @@ export function PlanTimeline() {
         ))}
       </div>
 
-      <Card className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0">
+      <Card className="stitch-glass-card stitch-soft-shadow rounded-[24px] border-0">
         <CardHeader>
           <CardTitle>
             Semana {activeWeek}
@@ -174,7 +174,7 @@ export function PlanTimeline() {
           <div className="grid gap-3">
             {selectedDays.map((day) => (
               <div
-                className="grid gap-3 rounded-2xl border border-border bg-card p-4 md:grid-cols-[88px_1fr_auto] md:items-center"
+                className="grid gap-3 rounded-[24px] border border-border bg-card p-4 md:grid-cols-[88px_1fr_auto] md:items-center"
                 key={day.day}
               >
                 <div className="flex items-center gap-2 font-semibold text-primary">
@@ -217,7 +217,7 @@ function EmptyPlanState() {
       <Card className="overflow-hidden rounded-3xl border-border bg-card">
         <CardContent className="grid gap-8 p-6 md:grid-cols-[1fr_320px] md:p-8">
           <div className="grid content-center gap-5">
-            <span className="grid size-14 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+            <span className="grid size-14 place-items-center rounded-[24px] bg-primary text-primary-foreground shadow-lg shadow-primary/20">
               <Route className="size-7" />
             </span>
             <div className="grid gap-3">
@@ -278,7 +278,7 @@ function EmptyPlanStep({
   title: string;
 }) {
   return (
-    <div className="flex gap-3 rounded-2xl bg-card p-4">
+    <div className="flex gap-3 rounded-[24px] bg-card p-4">
       <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-secondary text-secondary-foreground">
         <Icon className="size-5" />
       </span>
@@ -311,7 +311,7 @@ function ActionBlock({
   value: string;
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-muted p-4">
+    <div className="rounded-[24px] border border-border bg-muted p-4">
       <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wide">{label}</p>
       <p className="mt-2 font-semibold">{title}</p>
       <p className="mt-2 text-sm leading-6">{value}</p>

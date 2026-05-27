@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@evolution/ui";
-import { Brain, CheckCircle2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -9,6 +8,15 @@ import { useCompleteTriage } from "@/hooks/onboarding/use-complete-triage";
 import { useSubmitTriageAnswer } from "@/hooks/onboarding/use-submit-triage-answer";
 import { useTriageSession } from "@/hooks/onboarding/use-triage-session";
 import { routes } from "@/lib/routes/routes";
+
+const optionBorderStyles = [
+  "border-sky-300/45 hover:border-sky-300 data-[selected=true]:border-sky-300 data-[selected=true]:bg-sky-500/10 data-[selected=true]:ring-sky-300/25",
+  "border-orange-300/45 hover:border-orange-300 data-[selected=true]:border-orange-300 data-[selected=true]:bg-orange-500/10 data-[selected=true]:ring-orange-300/25",
+  "border-pink-300/45 hover:border-pink-300 data-[selected=true]:border-pink-300 data-[selected=true]:bg-pink-500/10 data-[selected=true]:ring-pink-300/25",
+  "border-emerald-300/45 hover:border-emerald-300 data-[selected=true]:border-emerald-300 data-[selected=true]:bg-emerald-500/10 data-[selected=true]:ring-emerald-300/25",
+  "border-violet-300/45 hover:border-violet-300 data-[selected=true]:border-violet-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:ring-violet-300/25",
+  "border-rose-300/45 hover:border-rose-300 data-[selected=true]:border-rose-300 data-[selected=true]:bg-rose-500/10 data-[selected=true]:ring-rose-300/25",
+];
 
 export function TriageQuestionScreen() {
   const router = useRouter();
@@ -117,11 +125,8 @@ export function TriageQuestionScreen() {
                 return (
                   <motion.button
                     animate={{ opacity: 1, y: 0 }}
-                    className={`group flex min-h-32 flex-col items-center justify-center gap-3 rounded-xl border p-5 text-center text-sm font-semibold transition ${
-                      selected
-                        ? "border-primary bg-secondary text-primary"
-                        : "border-border bg-card hover:border-primary"
-                    }`}
+                    className={`group flex min-h-32 cursor-pointer items-center justify-center rounded-xl border bg-card/75 p-5 text-center font-semibold text-base text-foreground leading-snug transition hover:bg-card/95 data-[selected=true]:text-foreground data-[selected=true]:shadow-[0_16px_40px_rgba(38,0,88,0.14)] data-[selected=true]:ring-2 ${optionBorderStyles[index % optionBorderStyles.length]}`}
+                    data-selected={selected}
                     initial={{ opacity: 0, y: 10 }}
                     key={alternative.id}
                     onClick={() => session.toggle(alternative.id)}
@@ -130,13 +135,6 @@ export function TriageQuestionScreen() {
                     whileHover={{ scale: 1.015, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <span className="grid size-12 place-items-center rounded-full bg-secondary text-primary transition group-hover:scale-110">
-                      {selected ? (
-                        <CheckCircle2 className="size-6" />
-                      ) : (
-                        <Brain className="size-6" />
-                      )}
-                    </span>
                     {alternative.label}
                   </motion.button>
                 );

@@ -1,7 +1,15 @@
 "use client";
 
 import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from "@evolution/ui";
-import { ArrowRight, ClipboardList, Compass, Route, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarCheck,
+  CheckCircle2,
+  ClipboardList,
+  Compass,
+  Route,
+  Sparkles,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { type ActionPlanData, api } from "@/lib/api-client";
@@ -10,6 +18,7 @@ import { formatVectorLabel } from "@/lib/utils/domain-labels";
 
 export function PlanTimeline() {
   const [plan, setPlan] = useState<ActionPlanData | null>(null);
+  const [activeWeek, setActiveWeek] = useState(1);
 
   useEffect(() => {
     api
@@ -21,6 +30,11 @@ export function PlanTimeline() {
   if (!plan) {
     return <EmptyPlanState />;
   }
+
+  const selectedWeek = getSelectedWeek(plan, activeWeek);
+  const selectedDays = plan.days.filter(
+    (day) => (day.week ?? Math.ceil((day.day ?? 1) / 7)) === activeWeek,
+  );
 
   return (
     <div className="grid gap-6 pb-24 md:pb-8">
@@ -51,6 +65,29 @@ export function PlanTimeline() {
         </CardContent>
       </Card>
 
+      {plan.narrative ? (
+        <Card className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0">
+          <CardHeader>
+            <CardTitle>Leitura adaptativa da sua jornada</CardTitle>
+          </CardHeader>
+          <CardContent className="grid gap-3">
+            {[
+              plan.narrative.diagnosis,
+              plan.narrative.execution,
+              plan.narrative.context,
+              plan.narrative.direction,
+            ].map((text) => (
+              <p
+                className="rounded-2xl bg-muted p-4 text-sm leading-7 text-muted-foreground"
+                key={text}
+              >
+                {text}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+      ) : null}
+
       <Card className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0">
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -76,23 +113,102 @@ export function PlanTimeline() {
 
       <div className="grid gap-4 lg:grid-cols-6">
         {plan.weeklyObjectives.map((week) => (
-          <Card
-            className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0"
+          <button
+            className="cursor-pointer text-left"
             key={week.week}
+            onClick={() => setActiveWeek(week.week)}
+            type="button"
           >
-            <CardContent className="grid gap-3 p-5">
-              <span className="grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
-                {week.week}
-              </span>
-              <p className="font-semibold">Semana {week.week}</p>
-              <p className="text-sm leading-6 text-muted-foreground">{week.objective}</p>
-              <p className="text-xs font-medium text-primary">{week.protocol}</p>
-            </CardContent>
-          </Card>
+            <Card
+              className={`stitch-glass-card stitch-soft-shadow h-full rounded-2xl border transition ${
+                activeWeek === week.week ? "border-primary/50 bg-primary/10" : "border-transparent"
+              }`}
+            >
+              <CardContent className="grid gap-3 p-5">
+                <span className="grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
+                  {week.week}
+                </span>
+                <p className="font-semibold">
+                  Semana {week.week}
+                  {week.title ? ` · ${week.title}` : ""}
+                </p>
+                <p className="text-sm leading-6 text-muted-foreground">{week.objective}</p>
+                <p className="text-xs font-medium text-primary">{week.protocol}</p>
+              </CardContent>
+            </Card>
+          </button>
         ))}
       </div>
+
+      <Card className="stitch-glass-card stitch-soft-shadow rounded-2xl border-0">
+        <CardHeader>
+          <CardTitle>
+            Semana {activeWeek}
+            {selectedWeek?.title ? ` · ${selectedWeek.title}` : ""}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="grid gap-5">
+          {selectedWeek ? (
+            <div className="grid gap-3 md:grid-cols-3">
+              <ActionBlock
+                label="Vetor base"
+                title={formatVectorLabel(selectedWeek.base.vector)}
+                value={selectedWeek.base.action}
+                helper={selectedWeek.base.frequency}
+              />
+              <ActionBlock
+                label="Vetor de suporte"
+                title={formatVectorLabel(selectedWeek.support.vector)}
+                value={selectedWeek.support.action}
+                helper={selectedWeek.support.frequency}
+              />
+              <ActionBlock
+                label="Regulação"
+                title="Revisão da semana"
+                value={selectedWeek.regulation.action}
+                helper={selectedWeek.regulation.frequency}
+              />
+            </div>
+          ) : null}
+
+          <div className="grid gap-3">
+            {selectedDays.map((day) => (
+              <div
+                className="grid gap-3 rounded-2xl border border-border bg-card p-4 md:grid-cols-[88px_1fr_auto] md:items-center"
+                key={day.day}
+              >
+                <div className="flex items-center gap-2 font-semibold text-primary">
+                  <CalendarCheck className="size-4" />
+                  Dia {day.day}
+                </div>
+                <div className="grid gap-1">
+                  <p className="font-semibold">{day.microAction}</p>
+                  <p className="text-muted-foreground text-sm leading-6">{day.message}</p>
+                  <p className="text-muted-foreground text-xs">
+                    Suporte: {day.supportAction} · Regulação: {day.regulationAction}
+                  </p>
+                </div>
+                <Button
+                  asChild
+                  className="rounded-xl"
+                  variant={day.checkpoint ? "default" : "outline"}
+                >
+                  <Link href={routes.checkIn}>
+                    Fazer check-in
+                    <CheckCircle2 className="size-4" />
+                  </Link>
+                </Button>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
+}
+
+function getSelectedWeek(plan: ActionPlanData, week: number) {
+  return plan.weeks?.find((item) => item.week === week);
 }
 
 function EmptyPlanState() {
@@ -179,6 +295,27 @@ function PlanInfo({ label, value }: { label: string; value: string }) {
     <div className="rounded-xl bg-muted p-4">
       <p className="text-sm text-muted-foreground">{label}</p>
       <p className="mt-2 font-semibold">{value}</p>
+    </div>
+  );
+}
+
+function ActionBlock({
+  helper,
+  label,
+  title,
+  value,
+}: {
+  helper: string;
+  label: string;
+  title: string;
+  value: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-muted p-4">
+      <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wide">{label}</p>
+      <p className="mt-2 font-semibold">{title}</p>
+      <p className="mt-2 text-sm leading-6">{value}</p>
+      <p className="mt-3 text-primary text-xs font-semibold">{helper}</p>
     </div>
   );
 }

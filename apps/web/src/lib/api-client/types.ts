@@ -158,15 +158,58 @@ export type PlanSummary = {
   regulationVector: string;
   protocolBase: string;
   imWords: string[];
-  weeklyObjectives: Array<{ week: number; objective: string; protocol: string }>;
+  narrative?: CausalNarrative;
+  weeklyObjectives: PlanWeekSummary[];
+};
+
+export type CausalNarrative = {
+  diagnosis: string;
+  execution: string;
+  context: string;
+  direction: string;
+  fullText: string;
+};
+
+export type PlanWeekSummary = {
+  week: number;
+  title?: string;
+  objective: string;
+  protocol: string;
+  baseAction?: string;
+  supportAction?: string;
+  regulationAction?: string;
 };
 
 export type ActionPlanData = Omit<PlanSummary, "days"> & {
   startDate?: string;
+  weeks?: Array<{
+    week: number;
+    title: string;
+    objective: string;
+    base: {
+      vector: string;
+      action: string;
+      frequency: string;
+      language: string;
+    };
+    support: {
+      vector: string;
+      action: string;
+      frequency: string;
+      language: string;
+    };
+    regulation: {
+      action: string;
+      frequency: string;
+    };
+  }>;
   days: Array<{
     day?: number;
+    week?: number;
     focus?: string;
     microAction?: string;
+    supportAction?: string;
+    regulationAction?: string;
     message?: string;
     protocol?: string;
     checkpoint?: boolean;

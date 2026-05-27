@@ -1,4 +1,5 @@
 import {
+  buildCausalNarrative,
   calculateGapC,
   calculateGapE,
   calculateGapP,
@@ -55,6 +56,7 @@ export type AdaptiveProfileRecord = {
   };
   classifications?: Record<VectorKey, string>;
   protocols: string[];
+  causalNarrative?: ReturnType<typeof buildCausalNarrative>;
   source: string;
 };
 
@@ -102,8 +104,27 @@ export async function generateAdaptiveProfile(
   const gapC = calculateGapC(getGapCInput(anamnese));
   const spi = calculateSpi(svcScores[priorityVector], gapP, gapE, gapC);
   const adaptiveLevel = selectAdaptiveLevel(spi);
-  const supportVector = selectSupportVector(priorityVector, svcScores);
-  const protocols = [selectBaseProtocol(priorityVector, adaptiveLevel)];
+  const supportVector = selectSupportVector(priorityVector, {
+    fva: getNormalizedScores(triageResult.fva),
+    im: getNormalizedScores(triageResult.im),
+  });
+  const protocolBase = selectBaseProtocol(priorityVector, adaptiveLevel);
+  const protocols = [protocolBase];
+  const anamneseContext = getAnamneseContext(anamnese);
+  const causalNarrative = buildCausalNarrative({
+    priorityVector,
+    svc: svcScores[priorityVector],
+    imNorm: triageResult.im[priorityVector].normalized,
+    operationalScoreNorm: operationalNorm,
+    gapE,
+    gapC,
+    spi,
+    adaptiveLevel,
+    protocolBase,
+    weeklyAvailability: anamneseContext.weeklyAvailability,
+    experienceLevel: anamneseContext.experienceLevel,
+    ...(investigation?.output ? { investigation: investigation.output } : {}),
+  });
   const record: AdaptiveProfileRecord = {
     id: createId("adaptive"),
     uid,
@@ -118,6 +139,7 @@ export async function generateAdaptiveProfile(
       VECTOR_KEYS.map((vector) => [vector, classifySvc(svcScores[vector])]),
     ) as Record<VectorKey, string>,
     protocols,
+    causalNarrative,
     source: "triage-investigation-operational-anamnese",
   };
 
@@ -129,12 +151,13 @@ function getOperationalScore(result?: OperationalResult) {
 }
 
 function getGapCInput(anamnese: AnamneseRecord | null) {
+  const context = getAnamneseContext(anamnese);
   const payload = (anamnese?.payload ?? {}) as AnamnesePayload;
   const flags = anamnese?.flags ?? [];
 
   return {
-    weeklyAvailability: payload.weeklyAvailability ?? "2_3h",
-    experienceLevel: payload.experienceLevel ?? "iniciante",
+    weeklyAvailability: context.weeklyAvailability,
+    experienceLevel: context.experienceLevel,
     hasWeightOscillation:
       payload.weightHistory === "oscilacao_frequente" || flags.includes("weight_oscillation"),
     hasHealthCondition:
@@ -143,4 +166,19 @@ function getGapCInput(anamnese: AnamneseRecord | null) {
       flags.includes("health_condition"),
     hasSystemicImpactB02: flags.includes("systemic_impact_b02"),
   };
+}
+
+function getAnamneseContext(anamnese: AnamneseRecord | null) {
+  const payload = (anamnese?.payload ?? {}) as AnamnesePayload;
+
+  return {
+    weeklyAvailability: payload.weeklyAvailability ?? "2_3h",
+    experienceLevel: payload.experienceLevel ?? "iniciante",
+  };
+}
+
+function getNormalizedScores(scores: Record<VectorKey, { normalized: number }>) {
+  return Object.fromEntries(
+    VECTOR_KEYS.map((vector) => [vector, scores[vector]?.normalized ?? 0]),
+  ) as Record<VectorKey, number>;
 }

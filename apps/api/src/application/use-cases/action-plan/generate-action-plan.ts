@@ -23,7 +23,17 @@ export type ActionPlanRecord = {
   spi?: number;
   protocolBase: string;
   imWords: string[];
-  weeklyObjectives: Array<{ week: number; objective: string; protocol: string }>;
+  narrative?: AdaptiveProfileRecord["causalNarrative"];
+  weeklyObjectives: Array<{
+    week: number;
+    title: string;
+    objective: string;
+    protocol: string;
+    baseAction: string;
+    supportAction: string;
+    regulationAction: string;
+  }>;
+  weeks?: unknown[];
   days: unknown[];
 };
 
@@ -45,6 +55,7 @@ export async function generateActionPlan(
   const domainPlan = generateDomainActionPlan(
     profile.dominantVector,
     profile.adaptiveLevel as AdaptiveLevel,
+    profile.supportVector ? { supportVector: profile.supportVector } : {},
   );
   const record: ActionPlanRecord = {
     id: createId("plan"),
@@ -58,15 +69,18 @@ export async function generateActionPlan(
     adaptiveLevel: profile.adaptiveLevel,
     ...(profile.spi ? { spi: profile.spi } : {}),
     protocolBase: profile.protocols[0] ?? "Plano adaptativo personalizado",
+    narrative: profile.causalNarrative,
     imWords: Array.from({ length: 6 }, (_, index) => selectImWordOfDay(index + 1)),
-    weeklyObjectives: domainPlan.days
-      .filter((day) => day.day % 7 === 1)
-      .slice(0, 6)
-      .map((day) => ({
-        week: Math.ceil(day.day / 7),
-        objective: day.focus,
-        protocol: day.protocol,
-      })),
+    weeklyObjectives: domainPlan.weeks.map((week) => ({
+      week: week.week,
+      title: week.title,
+      objective: week.objective,
+      protocol: `${week.base.action} · ${week.base.frequency}`,
+      baseAction: week.base.action,
+      supportAction: week.support.action,
+      regulationAction: week.regulation.action,
+    })),
+    weeks: domainPlan.weeks,
     days: domainPlan.days,
   };
 

@@ -23,5 +23,9 @@ export async function generateActionPlanController(
 }
 
 export async function currentActionPlanController(currentUser: CurrentUser) {
-  return getCurrentActionPlan(currentUser.uid, actionPlanRepository());
+  return getCurrentActionPlan(
+    currentUser.uid,
+    actionPlanRepository(),
+    repositories().scoped<AdaptiveProfileRecord>("adaptiveProfiles"),
+  );
 }

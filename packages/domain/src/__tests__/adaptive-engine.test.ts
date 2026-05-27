@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import {
+  buildCausalNarrative,
   calculateGapC,
   calculateGapE,
   calculateGapP,
@@ -91,5 +92,31 @@ describe("adaptive engine", () => {
     expect(classifySvc(20)).toBe("Vulnerabilidade Mínima");
     expect(classifySvc(60)).toBe("Vulnerabilidade Alta");
     expect(classifySvc(90)).toBe("Vulnerabilidade Crítica");
+  });
+
+  test("builds the section 7.6 causal narrative blocks", () => {
+    const narrative = buildCausalNarrative({
+      priorityVector: "constancia",
+      svc: 57.67,
+      imNorm: 83.33,
+      operationalScoreNorm: 50,
+      gapE: 33.33,
+      gapC: 25,
+      spi: 42.46,
+      adaptiveLevel: "Nível 3 — Construção",
+      protocolBase: "Continuidade Resiliente · Nível 3 — Construção",
+      weeklyAvailability: "2_3h",
+      experienceLevel: "iniciante",
+      investigation: {
+        origin: "subita",
+        abandonmentPattern: "apos_interrupcao",
+        sustainingFactor: "horario_fixo",
+      },
+    });
+
+    expect(narrative.diagnosis).toContain("Constância");
+    expect(narrative.execution).toContain("GAP entre intenção e prática");
+    expect(narrative.context).toContain("2 a 3 horas por semana");
+    expect(narrative.direction).toContain("Nível 3 — Construção");
   });
 });

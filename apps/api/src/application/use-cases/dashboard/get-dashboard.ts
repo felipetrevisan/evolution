@@ -92,7 +92,7 @@ export async function getDashboard(
       label: vectorLabel,
     },
     adaptiveLevel: profile?.adaptiveLevel ?? "Pendente",
-    spi: operational?.result?.total?.normalized ?? 0,
+    spi: profile?.spi ?? 0,
     streak: countStreak(checkins),
     weeklyFrequency: {
       completed: checkins.slice(0, 7).filter((entry) => entry.completedStatus !== "not_completed")
@@ -199,13 +199,16 @@ function buildVectorEvolution(triage: TriageSession | null) {
 function buildWeeklyObjectives(plan: ActionPlanRecord | null) {
   return Array.from({ length: 6 }, (_, index) => {
     const week = index + 1;
+    const savedWeek = plan?.weeklyObjectives?.[index];
     const day =
-      (plan?.days?.[index * 7] as { focus?: string; protocol?: string } | undefined) ?? {};
+      (plan?.days?.[index * 7] as
+        | { focus?: string; protocol?: string; microAction?: string }
+        | undefined) ?? {};
 
     return {
       week,
-      objective: day.focus ?? `Consolidar o ritmo da semana ${week}.`,
-      protocol: day.protocol ?? `Protocolo adaptativo: semana ${week}`,
+      objective: savedWeek?.objective ?? day.focus ?? `Consolidar o ritmo da semana ${week}.`,
+      protocol: savedWeek?.protocol ?? day.protocol ?? `Protocolo adaptativo: semana ${week}`,
     };
   });
 }

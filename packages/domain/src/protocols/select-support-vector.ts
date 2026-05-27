@@ -3,9 +3,18 @@ import type { VectorKey } from "../types/vector.types";
 
 export function selectSupportVector(
   priorityVector: VectorKey,
-  svcScores: Record<VectorKey, number>,
+  scores: {
+    fva: Record<VectorKey, number>;
+    im: Record<VectorKey, number>;
+  },
 ): VectorKey {
-  return VECTOR_KEYS.filter((vector) => vector !== priorityVector).sort(
-    (a, b) => svcScores[b] - svcScores[a],
-  )[0] as VectorKey;
+  return VECTOR_KEYS.filter((vector) => vector !== priorityVector).sort((left, right) => {
+    const imDifference = scores.im[right] - scores.im[left];
+    if (imDifference !== 0) return imDifference;
+
+    const fvaDifference = scores.fva[left] - scores.fva[right];
+    if (fvaDifference !== 0) return fvaDifference;
+
+    return left.localeCompare(right);
+  })[0] as VectorKey;
 }

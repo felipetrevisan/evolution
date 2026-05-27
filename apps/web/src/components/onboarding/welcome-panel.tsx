@@ -39,11 +39,11 @@ export function WelcomePanel() {
         <Card className="stitch-glass-card w-full max-w-2xl rounded-[24px] border-0 transition hover:-translate-y-1">
           <CardContent className="flex flex-col items-center gap-6 p-8 md:p-12">
             <h1 className="text-4xl font-bold leading-tight tracking-normal text-primary md:text-5xl">
-              Evolution System
+              Sua jornada começa com clareza, cuidado e direção
             </h1>
             <p className="max-w-xl text-lg leading-8 text-muted-foreground">
-              Uma experiência guiada para entender seus padrões, reduzir fricção e transformar
-              intenção em rotina.
+              Um sistema que se adapta à sua rotina, corpo, hábitos e contexto emocional para guiar
+              sua transformação.
             </p>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <Button asChild className="h-14 rounded-full px-8 font-semibold">
@@ -57,7 +57,7 @@ export function WelcomePanel() {
                 className="h-14 rounded-full bg-secondary px-8 font-semibold text-secondary-foreground hover:bg-secondary/80"
                 variant="secondary"
               >
-                <Link href={routes.dashboard}>Ver painel</Link>
+                <Link href={routes.dashboard}>Entender como funciona</Link>
               </Button>
             </div>
             <div className="mt-2 flex flex-wrap justify-center gap-4">
@@ -76,7 +76,7 @@ export function WelcomePanel() {
         </Card>
         <div className="mt-12 flex items-center gap-2 rounded-full border border-border/20 bg-muted px-6 py-3 text-xs font-semibold text-muted-foreground shadow-sm">
           <ShieldCheck className="size-4 text-primary" />
-          Protocolo seguro e personalizado
+          Sua privacidade é nossa prioridade. Dados protegidos e criptografados.
         </div>
       </div>
     </main>

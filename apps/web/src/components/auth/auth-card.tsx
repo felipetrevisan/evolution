@@ -39,7 +39,7 @@ export function AuthCard({ mode }: AuthCardProps) {
 
   return (
     <main className="flex min-h-screen overflow-hidden bg-background text-foreground">
-      <section className="relative hidden flex-1 flex-col items-center justify-center overflow-hidden bg-muted px-8 lg:flex">
+      <section className="relative hidden flex-1 flex-col items-center justify-center overflow-hidden bg-surface-container-low px-8 lg:flex">
         <div className="absolute inset-0">
           <Image
             alt="Fundo abstrato em tons suaves de roxo"
@@ -57,7 +57,7 @@ export function AuthCard({ mode }: AuthCardProps) {
             className="mb-8 space-y-4 text-center animate-slide-up-soft"
             style={{ animationDelay: "0.1s" }}
           >
-            <h1 className="text-[32px] font-semibold leading-tight text-primary">
+            <h1 className="text-[32px] font-semibold leading-tight tracking-normal text-primary">
               {isLogin ? "Continue sua jornada de evolução" : "Comece sua jornada de evolução"}
             </h1>
             <p className="mx-auto max-w-lg text-base leading-7 text-muted-foreground">
@@ -209,9 +209,7 @@ function BrandLogo({ className = "", size }: { className?: string; size: "sm" | 
         unoptimized
         width={isLarge ? 96 : 64}
       />
-      <div className={`mt-3 font-semibold text-primary ${isLarge ? "text-3xl" : "text-2xl"}`}>
-        Evolution
-      </div>
+      {isLarge ? null : <div className="mt-3 font-semibold text-2xl text-primary">Evolution</div>}
     </div>
   );
 }

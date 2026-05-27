@@ -11,6 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  Switch,
 } from "@evolution/ui";
 import {
   ArrowRight,
@@ -82,8 +83,8 @@ export function AnamneseForm() {
   }
 
   return (
-    <form className="grid gap-5 lg:grid-cols-12" onSubmit={submit}>
-      <Card className="stitch-glass-card stitch-soft-shadow rounded-[16px] border-0 lg:col-span-4">
+    <form className="grid gap-4 lg:grid-cols-12" onSubmit={submit}>
+      <Card className="stitch-page-card border-0 lg:col-span-4">
         <CardHeader>
           <div className="flex items-center gap-3">
             <PersonStanding className="size-6 text-primary" />
@@ -113,7 +114,7 @@ export function AnamneseForm() {
         </CardContent>
       </Card>
 
-      <Card className="stitch-glass-card stitch-soft-shadow rounded-[16px] border-0 lg:col-span-8">
+      <Card className="stitch-page-card border-0 lg:col-span-8">
         <CardHeader>
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -176,7 +177,7 @@ export function AnamneseForm() {
         </CardContent>
       </Card>
 
-      <Card className="stitch-glass-card stitch-soft-shadow rounded-[16px] border-0 lg:col-span-6">
+      <Card className="stitch-page-card border-0 lg:col-span-6">
         <CardHeader>
           <div className="flex items-center gap-3">
             <HeartPulse className="size-6 text-primary" />
@@ -184,20 +185,16 @@ export function AnamneseForm() {
           </div>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <button
-            className="flex cursor-pointer items-center justify-between rounded-xl bg-muted p-4 text-left text-sm font-medium"
-            onClick={() => {
-              const next = !healthOpen;
-              setHealthOpen(next);
-              update("hasHealthCondition", next);
-            }}
-            type="button"
-          >
-            Possui condição de saúde, lesão ou medicação relevante?
-            <span className="rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground">
-              {healthOpen ? "Sim" : "Não"}
-            </span>
-          </button>
+          <div className="flex items-center justify-between gap-4 rounded-xl bg-surface-container p-4 text-sm font-medium">
+            <span>Possui condição de saúde, lesão ou medicação relevante?</span>
+            <Switch
+              checked={healthOpen}
+              onCheckedChange={(next) => {
+                setHealthOpen(next);
+                update("hasHealthCondition", next);
+              }}
+            />
+          </div>
           <AnimatedCollapse open={healthOpen}>
             <TextField
               label="Condição ou observação"
@@ -225,7 +222,7 @@ export function AnamneseForm() {
         </CardContent>
       </Card>
 
-      <Card className="stitch-glass-card stitch-soft-shadow rounded-[16px] border-0 lg:col-span-6">
+      <Card className="stitch-page-card border-0 lg:col-span-6">
         <CardHeader>
           <div className="flex items-center gap-3">
             <Target className="size-6 text-primary" />
@@ -342,7 +339,7 @@ function SelectField({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
-            className="h-12 cursor-pointer justify-between rounded-lg border border-border bg-muted px-4 text-foreground hover:bg-muted"
+            className="h-12 cursor-pointer justify-between rounded-lg border border-border/40 bg-surface-container-highest px-4 text-foreground hover:bg-muted"
             type="button"
             variant="outline"
           >
@@ -368,7 +365,7 @@ function TextField({ label, onChange }: { label: string; onChange: (value: strin
     <label className="grid gap-2 text-xs font-medium text-muted-foreground">
       {label}
       <input
-        className="rounded-lg border border-border bg-muted px-4 py-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary"
+        className="rounded-lg border border-border/40 bg-surface-container-highest px-4 py-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary"
         onChange={(event) => onChange(event.target.value)}
         type="text"
       />
@@ -396,7 +393,7 @@ function NumberField({
         {optional ? <span className="font-normal text-muted-foreground/75">Opcional</span> : null}
       </span>
       <input
-        className="rounded-lg border border-border bg-muted px-4 py-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary"
+        className="rounded-lg border border-border/40 bg-surface-container-highest px-4 py-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary"
         min={required ? 1 : undefined}
         onChange={(event) => {
           const nextValue = event.target.value ? Number(event.target.value) : undefined;

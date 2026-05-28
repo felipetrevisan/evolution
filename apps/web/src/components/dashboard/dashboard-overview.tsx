@@ -5,6 +5,7 @@ import { Activity, CalendarDays, Flame, Gauge, Route, Sparkles, Target, Timer } 
 import Link from "next/link";
 import { useDashboard } from "@/hooks/dashboard/use-dashboard";
 import { routes } from "@/lib/routes/routes";
+import { CheckInQuickDialog } from "../check-in/check-in-quick-dialog";
 import { SectionHeading } from "../shared/section-heading";
 import { SubscriptionAlert } from "../subscription/subscription-alert";
 import { DashboardMetricCard } from "./cards/dashboard-metric-card";
@@ -50,18 +51,32 @@ export function DashboardOverview() {
               Semana {data.currentWeek} · Palavra IM: {data.checkInStatus.imWord}
             </p>
           </div>
-          <Button
-            asChild
-            className="h-12 rounded-xl bg-card px-6 font-bold text-primary hover:bg-muted"
-          >
-            <Link href={data.subscription.canAccess ? routes.checkIn : routes.checkout}>
-              {data.subscription.canAccess
-                ? data.checkInStatus.completedToday
-                  ? "Ver check-in de hoje"
-                  : "Fazer check-in"
-                : "Renovar acesso"}
-            </Link>
-          </Button>
+          {data.subscription.canAccess ? (
+            data.checkInStatus.completedToday ? (
+              <Button
+                asChild
+                className="h-12 rounded-xl bg-card px-6 font-bold text-primary hover:bg-muted"
+              >
+                <Link href={routes.checkIn}>Ver check-in de hoje</Link>
+              </Button>
+            ) : (
+              <CheckInQuickDialog>
+                <Button
+                  className="h-12 rounded-xl bg-card px-6 font-bold text-primary hover:bg-muted"
+                  type="button"
+                >
+                  Fazer check-in
+                </Button>
+              </CheckInQuickDialog>
+            )
+          ) : (
+            <Button
+              asChild
+              className="h-12 rounded-xl bg-card px-6 font-bold text-primary hover:bg-muted"
+            >
+              <Link href={routes.checkout}>Renovar acesso</Link>
+            </Button>
+          )}
         </CardContent>
       </Card>
 

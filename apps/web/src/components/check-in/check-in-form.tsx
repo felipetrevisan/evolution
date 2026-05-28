@@ -19,6 +19,22 @@ const expandedStates: Array<NonNullable<CheckInPayload["completedStatus"]>> = [
 ];
 
 export function CheckInForm() {
+  return (
+    <Card className="stitch-glass-card stitch-soft-shadow rounded-[24px] border-0">
+      <CheckInPanel />
+    </Card>
+  );
+}
+
+export function CheckInPanel({
+  compact = false,
+  showTitle = true,
+  onSaved,
+}: {
+  compact?: boolean;
+  showTitle?: boolean;
+  onSaved?: () => void;
+}) {
   const { data } = useTodayCheckin();
   const submit = useSubmitCheckin();
   const [emotionalState, setEmotionalState] =
@@ -40,18 +56,24 @@ export function CheckInForm() {
     try {
       await submit.execute(payload);
       toast.success("Check-in registrado.", { id: checkinToast });
+      window.dispatchEvent(new Event("evolua:check-in-saved"));
+      onSaved?.();
     } catch {
       toast.error("Não foi possível registrar o check-in.", { id: checkinToast });
     }
   }
 
   return (
-    <Card className="stitch-glass-card stitch-soft-shadow rounded-[16px] border-0">
-      <CardHeader>
-        <CardTitle>Check-in do dia {data?.cycleDay ?? 1}</CardTitle>
-      </CardHeader>
-      <CardContent className="grid gap-5">
-        <div className="rounded-2xl bg-muted p-4">
+    <>
+      {showTitle ? (
+        <CardHeader className={compact ? "p-0" : undefined}>
+          <CardTitle>
+            {compact ? "Check-in rápido" : `Check-in do dia ${data?.cycleDay ?? 1}`}
+          </CardTitle>
+        </CardHeader>
+      ) : null}
+      <CardContent className={`grid gap-5 ${compact ? "p-0 pt-5" : ""}`}>
+        <div className="rounded-[24px] bg-muted p-4">
           <p className="text-sm text-muted-foreground">Micro-meta</p>
           <p className="mt-2 font-semibold">{data?.microGoal ?? "Carregando..."}</p>
           {expanded ? (
@@ -96,7 +118,7 @@ export function CheckInForm() {
         )}
 
         {data?.recalibrationMessages?.map((message) => (
-          <p className="rounded-2xl bg-accent p-4 text-sm text-accent-foreground" key={message}>
+          <p className="rounded-[24px] bg-accent p-4 text-sm text-accent-foreground" key={message}>
             {message}
           </p>
         ))}
@@ -105,7 +127,7 @@ export function CheckInForm() {
           {submit.loading ? "Registrando..." : "Registrar check-in"}
         </Button>
       </CardContent>
-    </Card>
+    </>
   );
 }
 

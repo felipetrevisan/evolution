@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { type ActionPlanData, api } from "@/lib/api-client";
 import { routes } from "@/lib/routes/routes";
 import { formatVectorLabel } from "@/lib/utils/domain-labels";
+import { CheckInQuickDialog } from "../check-in/check-in-quick-dialog";
 
 export function PlanTimeline() {
   const [plan, setPlan] = useState<ActionPlanData | null>(null);
@@ -188,16 +189,16 @@ export function PlanTimeline() {
                     Suporte: {day.supportAction} · Regulação: {day.regulationAction}
                   </p>
                 </div>
-                <Button
-                  asChild
-                  className="rounded-xl"
-                  variant={day.checkpoint ? "default" : "outline"}
-                >
-                  <Link href={routes.checkIn}>
+                <CheckInQuickDialog>
+                  <Button
+                    className="rounded-xl"
+                    type="button"
+                    variant={day.checkpoint ? "default" : "outline"}
+                  >
                     Fazer check-in
                     <CheckCircle2 className="size-4" />
-                  </Link>
-                </Button>
+                  </Button>
+                </CheckInQuickDialog>
               </div>
             ))}
           </div>
